@@ -1,0 +1,20 @@
+.nombreProducto{
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.descripcionProducto{
+    font-size: 15px;
+}
+.precioProducto{
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.favButton{
+    font-size:xx-large;
+    position: relative;
+    left: 240px;
+    bottom: 180px;
+    z-index: 100;
+}
