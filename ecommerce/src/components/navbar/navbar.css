@@ -1,0 +1,11 @@
+.navbar-toggler{
+    margin-right: 20px;
+    /* margin-top: 10px; */
+    border: none;
+    font-size: 23px;
+    color: transparent;
+}
+.nav-icons-div{
+    display: flex;
+    justify-content: end;
+}
