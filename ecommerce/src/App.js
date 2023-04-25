@@ -1,9 +1,15 @@
+import { Fragment } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from "./components/navbar/index"
+import ProductsCarousel from "./components/carrusel/carrusel";
+
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <Fragment>
+      <Navbar/>
+      <ProductsCarousel/>
+    </Fragment>
   );
 }
 
