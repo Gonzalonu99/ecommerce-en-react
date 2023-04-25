@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-
+import axios from 'axios';
 const useAxios = (url)=>{
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
