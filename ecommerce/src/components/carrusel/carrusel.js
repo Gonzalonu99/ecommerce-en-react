@@ -6,6 +6,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 
 const ProductsCarousel = () => {
     const {data, isLoading, error}= useAxios("http://a365.com.ar/ecommerce/getProductos");
+
     const responsive = {
         0:{items:2},
         768:{items:3},
@@ -26,7 +27,13 @@ const ProductsCarousel = () => {
                     autoPlayInterval={3000}
                     responsive={responsive}
                     items={products.map((product)=>(
-                        <ProductCard product={product}/>
+                        <ProductCard 
+                            id={product.id}
+                            name={product.name}
+                            image={product.image}
+                            description={product.description}
+                            price={product.price}
+                        />
                     ))}
                 />
             </div>
@@ -36,3 +43,52 @@ const ProductsCarousel = () => {
 }
 
 export default ProductsCarousel
+
+
+// const ProductsCarousel = () => {
+//     const { data, isLoading, error } = useAxios(
+//       "http://a365.com.ar/ecommerce/getProductos"
+//     );
+  
+//     const responsive = {
+//       0: { items: 2 },
+//       768: { items: 3 },
+//       1024: { items: 4 },
+//     };
+//     if (isLoading) {
+//       return <div>Loading...</div>;
+//     }
+//     if (error.isError) {
+//       return <div>{error.message}</div>;
+//     }
+//     return (
+//       <>
+//         {data.categories.map((category) => (
+//           <div key={category.name} className="products-carousel-container">
+//             <h2 className="products-carousel-title">{category.name}</h2>
+//             <AliceCarousel
+//               touchMoveDefaultEvents={true}
+//               mouseTracking
+//               infinite
+//               autoPlay
+//               autoPlayInterval={3000}
+//               responsive={responsive}
+//               items={category.products.map((product) => (
+//                 <ProductCard
+//                   key={product.id}
+//                   id={product.id}
+//                   name={product.name}
+//                   image={product.image}
+//                   description={product.description}
+//                   price={product.price}
+//                 />
+//               ))}
+//             />
+//           </div>
+//         ))}
+//       </>
+//     );
+//   };
+  
+//   export default ProductsCarousel;
+  
