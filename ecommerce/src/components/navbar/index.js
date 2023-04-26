@@ -13,18 +13,27 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Badge, Button } from '@mui/material';
+import { Badge} from '@mui/material';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
 import './navbar.css';
 import Favorite from '@mui/icons-material/Favorite';
-import User from '@mui/icons-material/Person'
+import User from '@mui/icons-material/Person';
+import CartDrawer from './cartDrawer';
+import { useCart } from '../../hook/useCart';
 
-const drawerWidth = 240;
+const drawerWidth = 300;
+const drawerCartWidth = 350;
 const navItems = ['Rebozados', 'Pescados', 'Veggie'];
 
 function Navbar(props) {
+  const {cartItems}= useCart();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [cartOpen, setCartOpen] = React.useState(false);
+  // const cartQty = cartItems.reduce((acc,item)=> acc + item.qty, 0);
+  const handleDrawerCart = ()=>{
+    setCartOpen((prevState)=> !prevState);
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -79,14 +88,33 @@ function Navbar(props) {
           <IconButton className='navbar-icons'>
             <Favorite className='nav-icon'/>
           </IconButton>
-          <IconButton className='navbar-icons'>
-          <Badge badgeContent={2} color='secondary'>
+          <IconButton className='navbar-icons' onClick={handleDrawerCart}>
+          <Badge badgeContent={cartItems.reduce((total, item)=> total + item.quantity, 0)} color='error'>
             <ShoppingCart className='nav-icon'/>
           </Badge>
           </IconButton>
         </div>
         </Toolbar>
       </AppBar>
+      {/* Drawer del cart */}
+      <Box>
+        <Drawer
+          anchor='right'
+          variant='temporary'
+          open={cartOpen}
+          onClose={handleDrawerCart}
+          ModalProps={{
+            keepMounted:true,
+          }}
+          sx={{
+            display: { xs: 'block', sm: 'inherit' },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerCartWidth },
+          }}  
+        >
+          <CartDrawer/>
+        </Drawer>
+      </Box>
+        {/* Drawer del menú hamburguesa */}
       <Box component="nav" >
         <Drawer
           container={container}
