@@ -1,15 +1,17 @@
-import { Fragment } from "react";
+import { Fragment} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "./components/navbar/index"
 import ProductsCarousel from "./components/carrusel/carrusel";
+import { CartProvider } from "./hook/useCart";
 
 
 function App() {
+
   return (
-    <Fragment>
+    <CartProvider>
       <Navbar/>
       <ProductsCarousel/>
-    </Fragment>
+    </CartProvider>
   );
 }
 
