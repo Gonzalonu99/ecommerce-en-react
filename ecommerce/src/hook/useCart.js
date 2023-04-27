@@ -16,7 +16,9 @@ export function CartProvider({ children }) {
         const updatedItem = {
           ...prevItems[existingItemIndex],
           quantity: prevItems[existingItemIndex].quantity + 1,
-          price: prevItems[existingItemIndex].price + item.price,
+          price:
+          (prevItems[existingItemIndex].price / prevItems[existingItemIndex].quantity) *
+          (prevItems[existingItemIndex].quantity + 1),
         };
         return [
           ...prevItems.slice(0, existingItemIndex),
