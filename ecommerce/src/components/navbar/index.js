@@ -20,17 +20,34 @@ import Favorite from '@mui/icons-material/Favorite';
 import User from '@mui/icons-material/Person';
 import CartDrawer from './cartDrawer';
 import { useCart } from '../../hook/useCart';
+import { useState, useEffect } from 'react';
 
 const drawerWidth = 300;
 const drawerCartWidth = 350;
-const navItems = ['Rebozados', 'Pescados', 'Veggie'];
 
 function Navbar(props) {
   const {cartItems}= useCart();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [cartOpen, setCartOpen] = React.useState(false);
-  // const cartQty = cartItems.reduce((acc,item)=> acc + item.qty, 0);
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+    useEffect(() => {
+      fetch("http://a365.com.ar/ecommerce/getProductos")
+        .then((response) => response.json())
+        .then((data) => {
+          setData(data);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          setError(error);
+          setIsLoading(false);
+        });
+    }, []);
+    console.log(data);
+
   const handleDrawerCart = ()=>{
     setCartOpen((prevState)=> !prevState);
   };
@@ -46,10 +63,10 @@ function Navbar(props) {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+      {data && data.SubRubros.map((subrubro) => (
+          <ListItem key={subrubro.NombreSubRubro} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={subrubro.NombreSubRubro} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -58,6 +75,11 @@ function Navbar(props) {
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
+  
+  if (isLoading){return <div>Loading...</div>}
+    if (error && error.isError) {
+        return <div>{error.message}</div>;
+      }
 
   return (
     <Box sx={{ display: 'flex' }}>
