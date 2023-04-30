@@ -19,7 +19,7 @@ export default function ProductCard(props) {
     };
 
   return (
-    <Card sx={{ maxWidth: 300 }} style={{borderRadius:'10px', marginLeft:'18px', boxShadow:'2px 2px 4px rgba(0,0,0,0.3)'}} key={props.id}>
+    <Card sx={{ minWidth: 300 }} style={{borderRadius:'10px', marginLeft:'18px', boxShadow:'2px 2px 4px rgba(0,0,0,0.3)'}} key={props.id}>
       <CardMedia
         component="img"
         height="150"
