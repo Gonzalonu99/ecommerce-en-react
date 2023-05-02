@@ -8,6 +8,7 @@ export function useCart() {
 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
+  const [showModal, setShowModal]= useState(false);
 
   function addToCart(item) {
     setCartItems(prevItems => {
@@ -47,11 +48,17 @@ export function CartProvider({ children }) {
       if (existingItemIndex !== -1) {
         const itemToRemove = prevItems[existingItemIndex];
         if (itemToRemove.quantity === 1) {
-          // If the item's quantity is 1, remove the entire item
+          const sameProductItems = prevItems.filter(item=> item.id === id);
+          if(sameProductItems.length === 1){
+            setShowModal(true);
+            return prevItems;
+          } else{
+            // If the item's quantity is 1, remove the entire item
           return [
             ...prevItems.slice(0, existingItemIndex),
             ...prevItems.slice(existingItemIndex + 1),
           ];
+          }
         } else {
           // If the item's quantity is greater than 1, decrease the quantity by 1
           const updatedItem = {

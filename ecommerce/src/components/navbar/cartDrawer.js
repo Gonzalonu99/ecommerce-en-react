@@ -1,10 +1,13 @@
 import React from 'react';
 import { useCart } from '../../hook/useCart';
-import { Button, Divider, IconButton, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, Typography } from '@mui/material';
+import { Button, Divider, IconButton, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
 import { AddCircleOutline,  RemoveCircleOutline } from '@mui/icons-material';
+import { useState } from 'react';
 
 function CartDrawer() {
   const { cartItems, emptyCart, removeFromCartAllProducts,removeFromCartAtOnce, getTotalPrice, addToCart} = useCart();
+  const [openDialog, setOpenDialog] = useState(false);
+  const [itemToRemove, setItemToRemove] = useState(null);
   // Agrupar los elementos del mismo producto en un solo objeto
   const groupedItems = cartItems.reduce((acc, item) => {
     const existingItemIndex = acc.findIndex((i) => i.id === item.id);
@@ -15,6 +18,28 @@ function CartDrawer() {
     }
     return acc;
   }, []);
+  const handleRemoveClick = (item) => {
+    const existingItemIndex = cartItems.findIndex(cartItem => cartItem.id === item.id);
+    if (cartItems[existingItemIndex].quantity === 1) {
+      setItemToRemove(existingItemIndex);
+      setOpenDialog(true);
+    } else {
+      removeFromCartAtOnce(item.id);
+    }
+  };
+  
+  const handleRemoveConfirm = () => {
+    removeFromCartAllProducts(cartItems[itemToRemove].id);
+    setOpenDialog(false);
+  };
+  
+  const handleClose = () => {
+    setOpenDialog(false);
+  };
+  
+  // const handleEmptyClick = () => {
+  //   setCartItems([]);
+  // };
   return (
     <React.Fragment>
       <List dense sx={{ padding: '16px' }}>
@@ -30,7 +55,7 @@ function CartDrawer() {
               />
               <ListItemSecondaryAction>
                 <IconButton
-                  edge="end" aria-label="delete" onClick={() => removeFromCartAtOnce(item.id)}>
+                  edge="end" aria-label="delete" onClick={() => handleRemoveClick(item)}>
                   <RemoveCircleOutline/>
                 </IconButton>
                 <IconButton
@@ -68,6 +93,18 @@ function CartDrawer() {
             Vaciar carrito
         </Button>
       </List>
+      <Dialog open={openDialog} onClose={handleClose}>
+      <DialogTitle>ATENCIÓN</DialogTitle>
+      <DialogContent>
+        <DialogContentText>
+          ¿Desea eliminar el producto del carrito?
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose}>Cancelar</Button>
+        <Button onClick={handleRemoveConfirm} color="error">Quitar</Button>
+      </DialogActions>
+    </Dialog>
     </React.Fragment>
   );
 }
