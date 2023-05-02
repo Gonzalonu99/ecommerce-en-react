@@ -9,3 +9,6 @@
     display: flex;
     justify-content: end;
 }
+.navContainer{
+    margin-bottom: 2rem;
+}

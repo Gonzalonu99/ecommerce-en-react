@@ -1,6 +1,6 @@
 .nombreProducto{
     padding-top: 10px;
-    font-size: 20px;
+    font-size: 10px;
     font-weight: bold;
 }
 .descripcionProducto{
@@ -17,4 +17,48 @@
     left: 240px;
     bottom: 180px;
     z-index: 100;
+}
+
+/*carrusel*/
+.MuiCard-root {
+    margin-right: 0;
+}
+.MuiPaper-root,
+.MuiPaper-elevation,
+.MuiPaper-rounded,
+.MuiPaper-elevation1,
+.MuiCard-root, 
+.css-1xez8po-MuiPaper-root-MuiCard-root{
+    margin-right: 0;
+}
+.slick-slide{
+    width: 300px !important;
+    margin-right: 1rem;
+    margin-left: 25px;
+   
+}
+.slick-list{
+    height: 450px !important;
+}
+.slick-track{
+    margin-top: 2rem;
+}
+.slick-dots {
+    position: absolute;
+    height: auto;
+    width: auto;
+    bottom: 428px !important;
+
+
+}
+
+/*categoria centrar*/
+
+.products-carousel-title{
+    text-align: center;
+    margin: 0;
+}
+
+.MuiBox-root{
+    margin-bottom: 2.5rem;
 }

@@ -19,7 +19,7 @@ export default function ProductCard(props) {
     };
 
   return (
-    <Card sx={{ maxWidth: 300 }} style={{borderRadius:'10px', marginLeft:'18px', boxShadow:'2px 2px 4px rgba(0,0,0,0.3)'}} key={props.id}>
+    <Card sx={{ maxWidth: 300 }} style={{borderRadius:'10px', marginRight:'0px', boxShadow:'2px 2px 4px rgba(0,0,0,0.3)'}} key={props.id}>
       <CardMedia
         component="img"
         height="150"
@@ -27,7 +27,7 @@ export default function ProductCard(props) {
         alt={props.name}
       />
       <CardContent>
-      <Typography variant="body1" color="text.primary" style={{fontSize:"20px", fontWeight:"bold", paddingTop:"10px"}}>
+      <Typography variant="body1" color="text.primary" style={{fontSize:"16px", fontWeight:"bold", paddingTop:"10px"}}>
           {props.name}
         </Typography>
         <Typography variant="body2" color="text.secondary" style={{fontSize:"15px"}}>

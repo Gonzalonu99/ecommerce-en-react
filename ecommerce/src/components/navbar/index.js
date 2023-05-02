@@ -84,7 +84,7 @@ function Navbar(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav" style={{backgroundColor:'#fff', height:'55px'}}>
+      <AppBar component="nav" className='navContainer' style={{backgroundColor:'#fff', height:'55px',}}>
         <Toolbar variant='permanent' style={{marginTop:'5px'}}>
           <IconButton
             color="#333"

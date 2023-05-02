@@ -29,7 +29,7 @@ function CartDrawer() {
                 secondary={`$${item.price}`} 
               />
               <ListItemSecondaryAction>
-                <IconButton 
+                <IconButton
                   edge="end" aria-label="delete" onClick={() => removeFromCartAtOnce(item.id)}>
                   <RemoveCircleOutline/>
                 </IconButton>
