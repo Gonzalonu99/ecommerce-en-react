@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCart } from '../../hook/useCart';
 import { Button, Divider, IconButton, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, Typography } from '@mui/material';
-import { AddOutlined,  RemoveCircleOutline } from '@mui/icons-material';
+import { AddCircleOutline,  RemoveCircleOutline } from '@mui/icons-material';
 
 function CartDrawer() {
   const { cartItems, emptyCart, removeFromCartAllProducts,removeFromCartAtOnce, getTotalPrice, addToCart} = useCart();
@@ -36,7 +36,7 @@ function CartDrawer() {
                 <IconButton
                   edge="end" aria-label='delete' onClick={()=>addToCart(item)}
                 >
-                  <AddOutlined/>
+                  <AddCircleOutline/>
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
