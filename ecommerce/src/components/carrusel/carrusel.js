@@ -8,7 +8,6 @@ const ProductsCarousel = () => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
   useEffect(() => {
     fetch("http://a365.com.ar/ecommerce/getProductos")
       .then((response) => response.json())
@@ -58,6 +57,7 @@ const ProductsCarousel = () => {
     ]
   };
 
+
   if (isLoading){return <div>Loading...</div>}
   if (error && error.isError) {
     return <div>{error.message}</div>;
@@ -65,7 +65,10 @@ const ProductsCarousel = () => {
   return (
     <>
       {data.SubRubros.map((subrubro)=>(
-        <div key={subrubro.NombreSubRubro} className='products-carousel-container'>
+        <div 
+          key={subrubro.NombreSubRubro} className='products-carousel-container'
+          id={subrubro.NombreSubRubro}  
+        >
           <h2 className="products-carousel-title">{subrubro.NombreSubRubro}</h2>
           <Slider {...settings}>
             {subrubro.Productos.map((product)=>(

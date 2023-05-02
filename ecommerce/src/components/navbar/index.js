@@ -28,6 +28,7 @@ const drawerCartWidth = 350;
 function Navbar(props) {
   const {cartItems}= useCart();
   const { window } = props;
+  const {scrollToCategory}= props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [cartOpen, setCartOpen] = React.useState(false);
   const [data, setData] = useState(null);
@@ -65,7 +66,10 @@ function Navbar(props) {
       <List>
       {data && data.SubRubros.map((subrubro) => (
           <ListItem key={subrubro.NombreSubRubro} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
+            <ListItemButton 
+              sx={{ textAlign: 'center' }}
+              onClick={()=>scrollToCategory(subrubro.NombreSubRubro)}  
+            >
               <ListItemText primary={subrubro.NombreSubRubro} />
             </ListItemButton>
           </ListItem>
