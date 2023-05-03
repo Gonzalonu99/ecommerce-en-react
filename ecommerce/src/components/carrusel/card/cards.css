@@ -51,6 +51,9 @@
 
 
 }
+.slick-dots li button:before{
+    color: #348759 !important;
+}
 
 /*categoria centrar*/
 
@@ -60,5 +63,10 @@
 }
 
 .MuiBox-root{
-    margin-bottom: 2.5rem;
+    margin-bottom: 3.5rem;
+}
+
+.products-carousel-container{
+    overflow-x: hidden;
+    
 }

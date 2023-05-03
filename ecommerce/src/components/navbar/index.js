@@ -21,6 +21,7 @@ import User from '@mui/icons-material/Person';
 import CartDrawer from './cartDrawer';
 import { useCart } from '../../hook/useCart';
 import { useState, useEffect } from 'react';
+import logo from '../../img/logo.jpg';
 
 const drawerWidth = 300;
 const drawerCartWidth = 350;
@@ -66,10 +67,9 @@ function Navbar(props) {
       <List>
       {data && data.SubRubros.map((subrubro) => (
           <ListItem key={subrubro.NombreSubRubro} disablePadding>
-            <ListItemButton 
-              sx={{ textAlign: 'center' }}
-              onClick={()=>scrollToCategory(subrubro.NombreSubRubro)}  
-            >
+            <ListItemButton
+              onClick={()=>scrollToCategory(subrubro.NombreSubRubro)}
+             sx={{ textAlign: 'center' }}>
               <ListItemText primary={subrubro.NombreSubRubro} />
             </ListItemButton>
           </ListItem>
@@ -88,24 +88,25 @@ function Navbar(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar component="nav" className='navContainer' style={{backgroundColor:'#fff', height:'55px',}}>
+      <AppBar component="nav" className='nav-container' style={{backgroundColor:'#348759', height:'95px',left:"0px"}}>
         <Toolbar variant='permanent' style={{marginTop:'5px'}}>
-          <IconButton
-            color="#333"
+          <IconButton className='nav-drawer'
+            color="#ffffff"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'list-item' } }}
+            sx={{ mr: 0, display: { sm: 'list-item' } }}
           >
             <MenuIcon />
           </IconButton>
           <Typography
-            variant="h6"
+            variant="img"
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'block', sm: 'block' } }}
             style={{color:'#333'}}
           >
-            Romero y Ajo
+          <img className='nav-logo' src={logo}>
+            </img>
           </Typography>
           <div className="nav-icons-div">
           <IconButton className='navbar-icons'>
@@ -137,7 +138,7 @@ function Navbar(props) {
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerCartWidth },
           }}  
         >
-          <CartDrawer cartOpen={cartOpen} handleDrawerCart={handleDrawerCart}/>
+         <CartDrawer cartOpen={cartOpen} handleDrawerCart={handleDrawerCart}/>
         </Drawer>
       </Box>
         {/* Drawer del menú hamburguesa */}
@@ -155,6 +156,8 @@ function Navbar(props) {
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
         >
+         <img className='nav-logo nav--logo-drawer' src={logo}>
+            </img>
           {drawer}
         </Drawer>
       </Box>
