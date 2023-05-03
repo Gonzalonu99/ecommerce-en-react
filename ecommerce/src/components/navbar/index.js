@@ -137,7 +137,7 @@ function Navbar(props) {
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerCartWidth },
           }}  
         >
-          <CartDrawer/>
+          <CartDrawer cartOpen={cartOpen} handleDrawerCart={handleDrawerCart}/>
         </Drawer>
       </Box>
         {/* Drawer del menú hamburguesa */}

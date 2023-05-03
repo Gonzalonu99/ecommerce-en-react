@@ -1,10 +1,10 @@
 import React from 'react';
 import { useCart } from '../../hook/useCart';
 import { Button, Divider, IconButton, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
-import { AddCircleOutline,  RemoveCircleOutline } from '@mui/icons-material';
+import { AddCircleOutline,  Close,  RemoveCircleOutline } from '@mui/icons-material';
 import { useState } from 'react';
 
-function CartDrawer() {
+function CartDrawer(props) {
   const { cartItems, emptyCart, removeFromCartAllProducts,removeFromCartAtOnce, getTotalPrice, addToCart} = useCart();
   const [openDialog, setOpenDialog] = useState(false);
   const [itemToRemove, setItemToRemove] = useState(null);
@@ -42,6 +42,9 @@ function CartDrawer() {
   // };
   return (
     <React.Fragment>
+      <IconButton style={{ position: 'absolute', zIndex:'2000', top: 0, right: 0 }} onClick={props.handleDrawerCart}>
+        <Close/>
+      </IconButton>
       <List dense sx={{ padding: '16px' }}>
         {groupedItems.length > 0 ? (
           groupedItems.map((item) => (
