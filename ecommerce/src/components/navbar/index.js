@@ -19,6 +19,7 @@ import './navbar.css';
 import Favorite from '@mui/icons-material/Favorite';
 import User from '@mui/icons-material/Person';
 import CartDrawer from './cartDrawer';
+import ModalUser from './modalUser';
 import { useCart } from '../../hook/useCart';
 import { useState, useEffect } from 'react';
 import logo from '../../img/logo.jpg';
@@ -32,6 +33,7 @@ function Navbar(props) {
   const {scrollToCategory}= props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [cartOpen, setCartOpen] = React.useState(false);
+  const [modalOpen, setModalOpen] = React.useState(false);
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -50,6 +52,9 @@ function Navbar(props) {
     }, []);
     console.log(data);
 
+    const handleModalUser = ()=>{
+      setModalOpen((prevState)=> !prevState);
+    }
   const handleDrawerCart = ()=>{
     setCartOpen((prevState)=> !prevState);
   };
@@ -109,7 +114,7 @@ function Navbar(props) {
             </img>
           </Typography>
           <div className="nav-icons-div">
-          <IconButton className='navbar-icons'>
+          <IconButton className='navbar-icons' onClick={handleModalUser}>
             <User className='nav-icon'/>
           </IconButton>
           <IconButton className='navbar-icons'>
@@ -123,6 +128,8 @@ function Navbar(props) {
         </div>
         </Toolbar>
       </AppBar>
+      {/*Modal de Usuario */}
+      <ModalUser modalOpen={modalOpen} handleModalUser={handleModalUser}/>
       {/* Drawer del cart */}
       <Box>
         <Drawer

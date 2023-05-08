@@ -23,17 +23,17 @@ export default function ProductCard(props) {
       <CardMedia
         component="img"
         height="170"
-        image={props.image}
-        alt={props.name}
+        image={props.imagen}
+        alt={props.nombre}
       />
       <CardContent>
       <Typography variant="body1" color="text.primary" style={{fontSize:"16px", fontWeight:"bold", paddingTop:"10px"}}>
-          {props.name}
+          {props.nombre}
         </Typography>
         <Typography variant="body2" color="text.secondary" style={{fontSize:"15px"}}>
-          {props.description}
+          {props.descripcion}
         </Typography>
-        <Typography style={{paddingTop:"20px", fontSize:"25px", fontWeight:"bold"}}>$ {props.price}</Typography>
+        <Typography style={{paddingTop:"20px", fontSize:"25px", fontWeight:"bold"}}>$ {props.precio}</Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites" style={{backgroundColor: isFavorite ? 'red' : 'gray'}} onClick={toggleFavorite} className='favButton'>

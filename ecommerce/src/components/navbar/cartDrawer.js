@@ -14,7 +14,7 @@ function CartDrawer(props) {
     if (existingItemIndex !== -1) {
       acc[existingItemIndex].quantity ++;
     } else {
-      acc.push({ ...item, id: item.id, name: item.name, price: item.price, quantity: item.quantity, Imagen: item.Imagen});
+      acc.push({ ...item, id: item.id, name: item.nombre, price: item.precio, quantity: item.quantity, imagen: item.imagen});
     }
     return acc;
   }, []);
@@ -50,7 +50,7 @@ function CartDrawer(props) {
           groupedItems.map((item) => (
             <ListItem key={item.id}>
               <ListItemAvatar>
-                <img src={item.Imagen}/>
+                <img src={item.imagen}/>
               </ListItemAvatar>
               <ListItemText 
                 primary={`${item.name} x ${item.quantity}`}

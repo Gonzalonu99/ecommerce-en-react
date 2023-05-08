@@ -73,12 +73,12 @@ const ProductsCarousel = () => {
           <Slider {...settings}>
             {subrubro.Productos.map((product)=>(
               <ProductCard 
-                key={product.id}
-                id={product.id}
-                name={product.name}
-                image={product.image}
-                description={product.description}
-                price={product.price}
+                key={product.Id}
+                id={product.Id}
+                nombre={product.Nombre}
+                imagen={product.Imagen}
+                descripcion={product.Descripcion}
+                precio={product.Precio}
               />
             ))}
           </Slider>

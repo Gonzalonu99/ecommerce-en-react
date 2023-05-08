@@ -18,7 +18,7 @@ export function CartProvider({ children }) {
           ...prevItems[existingItemIndex],
           quantity: prevItems[existingItemIndex].quantity + 1,
           price:
-          (prevItems[existingItemIndex].price / prevItems[existingItemIndex].quantity) *
+          (prevItems[existingItemIndex].precio / prevItems[existingItemIndex].quantity) *
           (prevItems[existingItemIndex].quantity + 1),
         };
         return [
@@ -27,7 +27,7 @@ export function CartProvider({ children }) {
           ...prevItems.slice(existingItemIndex + 1),
         ];
       } else {
-        const newItem = { ...item, quantity: 1, price: item.price };
+        const newItem = { ...item, quantity: 1, price: item.precio };
         return [...prevItems, newItem];
       }
     });
@@ -64,7 +64,7 @@ export function CartProvider({ children }) {
           const updatedItem = {
             ...itemToRemove,
             quantity: itemToRemove.quantity - 1,
-            price: itemToRemove.price - itemToRemove.price/itemToRemove.quantity,
+            price: itemToRemove.precio - itemToRemove.precio/itemToRemove.quantity,
           };
           return [
             ...prevItems.slice(0, existingItemIndex),
@@ -84,7 +84,7 @@ export function CartProvider({ children }) {
 
   function getTotalPrice() {
     return cartItems.reduce(
-      (total, item) => total + item.price,
+      (total, item) => total + item.precio,
       0
     );
   }
