@@ -17,9 +17,7 @@ export function CartProvider({ children }) {
         const updatedItem = {
           ...prevItems[existingItemIndex],
           quantity: prevItems[existingItemIndex].quantity + 1,
-          price:
-          (prevItems[existingItemIndex].precio / prevItems[existingItemIndex].quantity) *
-          (prevItems[existingItemIndex].quantity + 1),
+          price: prevItems[existingItemIndex].precio * (prevItems[existingItemIndex].quantity + 1),
         };
         return [
           ...prevItems.slice(0, existingItemIndex),
@@ -64,7 +62,7 @@ export function CartProvider({ children }) {
           const updatedItem = {
             ...itemToRemove,
             quantity: itemToRemove.quantity - 1,
-            price: itemToRemove.precio - itemToRemove.precio/itemToRemove.quantity,
+            price: itemToRemove.precio * (itemToRemove.quantity - 1),
           };
           return [
             ...prevItems.slice(0, existingItemIndex),
@@ -84,7 +82,7 @@ export function CartProvider({ children }) {
 
   function getTotalPrice() {
     return cartItems.reduce(
-      (total, item) => total + item.precio,
+      (total, item) => total + item.price,
       0
     );
   }

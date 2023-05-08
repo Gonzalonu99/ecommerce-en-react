@@ -54,7 +54,7 @@ function CartDrawer(props) {
               </ListItemAvatar>
               <ListItemText 
                 primary={`${item.name} x ${item.quantity}`}
-                secondary={`$${item.price}`} 
+                secondary={`$${item.price*item.quantity}`} 
               />
               <ListItemSecondaryAction>
                 <IconButton
