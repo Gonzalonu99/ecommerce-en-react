@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import SignInModal from "./registroModal";
 
 const ModalUser = (props) => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -35,10 +36,10 @@ const ModalUser = (props) => {
   };
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://a365.com.ar/ecommerce/login', {
-        method: 'POST',
+      const response = await fetch("http://a365.com.ar/ecommerce/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ Email: email, Password: password }),
       });
@@ -46,30 +47,30 @@ const ModalUser = (props) => {
       if (response.status === 200) {
         const data = await response.json();
         // El inicio de sesión fue exitoso, puedes hacer lo que quieras aquí
-        props.handleModalUser(false);	
-        console.log('Inicio de sesión exitoso');
+        props.handleModalUser(false);
+        console.log("Inicio de sesión exitoso");
         console.log(data);
-        if(data.success  === true) {
-          alert('Inicio de sesión exitoso')
-        } else{
-          alert('Inicio de sesión fallido')
+        if (data.success === true) {
+          alert("Inicio de sesión exitoso");
+        } else {
+          alert("Inicio de sesión fallido");
           props.handleModalUser(true);
-          setEmail('');
-          setPassword('');
+          setEmail("");
+          setPassword("");
           setLoginButtonDisabled(true);
         }
       } else {
         // El inicio de sesión falló, muestra un mensaje de error
         const data = await response.json();
-        console.error('Inicio de sesión fallido:', data.error);
+        console.error("Inicio de sesión fallido:", data.error);
       }
     } catch (error) {
-      console.error('Error al iniciar sesión:', error.message);
+      console.error("Error al iniciar sesión:", error.message);
     }
-  
+
     // Finalmente, limpia los campos de email y password y desactiva el botón
-    setEmail('');
-    setPassword('');
+    setEmail("");
+    setPassword("");
     setLoginButtonDisabled(true);
   };
   const style = {
@@ -100,7 +101,7 @@ const ModalUser = (props) => {
             Ingresá usando tu email y contraseña
           </Typography>
           <TextField
-            id="outlined-email-input"
+            id="outlined-email-input-login"
             label="Email"
             type="email"
             style={{ m: 1, width: "25ch" }}
@@ -108,7 +109,7 @@ const ModalUser = (props) => {
             onChange={handleEmailChange}
           />
           <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">
+            <InputLabel htmlFor="outlined-adornment-password-login">
               Password
             </InputLabel>
             <OutlinedInput
@@ -139,11 +140,15 @@ const ModalUser = (props) => {
           >
             Iniciar sesión
           </Button>
-          <div style={{width:'100%', height:'1px', backgroundColor:'#999', marginTop:'15px'}}/>
-          <Typography>
-            o ingresar usando
-          </Typography>
-          
+          <div
+            style={{
+              width: "100%",
+              height: "1px",
+              backgroundColor: "#999",
+              marginTop: "15px",
+            }}
+          />
+          <SignInModal/>
         </Box>
       </Modal>
     </React.Fragment>
