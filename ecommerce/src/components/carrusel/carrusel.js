@@ -50,7 +50,7 @@ const ProductsCarousel = () => {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 0.92,
+          slidesToScroll: .85,
           initialSlide: 0
         }
       }
