@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import { IconButton, Typography, TextField } from "@mui/material";
+import "./registro.css"
 import { Close } from "@mui/icons-material";
 import {
   FormControl,
@@ -104,7 +105,7 @@ const SignInModal = () => {
     transform: "translate(-50%, -50%)",
     width: 320,
     bgcolor: "background.paper",
-    border: "2px solid #000",
+    border: "2px solid #348759",
     boxShadow: 24,
     p: 4,
   };
