@@ -1,0 +1,69 @@
+#modal-modal-description{
+    margin-bottom: .7rem;
+}
+#outlined-password-input-login{
+    margin: 1rem 0 1rem 0;
+    left: 1rem;
+}
+
+#outlined-email-input-login{
+    padding: .5rem;
+}
+
+#outlined-adornment-password{
+    padding: .5rem;
+}
+#outlined-email-input-login-label{
+    font-size: .8rem;
+    top: -0.35rem;
+    font-weight: bold;
+}
+#password-label{
+    font-size: .8rem;
+    top: -0.35rem;
+    font-weight: bold;
+}
+
+.MuiBox-root{
+    border-radius: .7rem !important;
+    border: 2px solid #348759 !important;
+}
+
+#modal-modal-title{
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-bottom: 1px solid #348759 !important;   
+}
+#modal-modal-description{
+    text-align: center;
+    font-weight: bold;
+    font-size: .8rem;
+    margin-bottom: 1rem;
+}
+.btn-login{
+ margin-left: 3.5rem !important; 
+ margin-bottom: .5rem !important;
+} 
+
+.restablecer-contraseña{
+    display: block;
+    margin-top:.5rem;
+    font-size: .7rem;
+    text-align: center;
+}
+
+.register-tittle{
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.MuiButton-text{
+    left: 25% !important;
+    border: 1px solid #348759 !important;
+    background-color: #348759 !important;
+    color: white !important;
+    padding: .5rem 1rem !important;
+    border-radius: 1rem !important;
+}

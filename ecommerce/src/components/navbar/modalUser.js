@@ -4,6 +4,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { IconButton, TextField } from "@mui/material";
 import { Close } from "@mui/icons-material";
+import "./registro.css"
 import {
   FormControl,
   InputLabel,
@@ -104,12 +105,12 @@ const ModalUser = (props) => {
             id="outlined-email-input-login"
             label="Email"
             type="email"
-            style={{ m: 1, width: "25ch" }}
+            style={{ m: 1, width: "25ch", left: "1rem",}}
             value={email}
             onChange={handleEmailChange}
           />
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password-login">
+          <FormControl id="outlined-password-input-login" sx={{ width: "25ch" }} variant="outlined">
+            <InputLabel id="password-label" htmlFor="outlined-adornment-password-login">
               Password
             </InputLabel>
             <OutlinedInput
@@ -133,6 +134,7 @@ const ModalUser = (props) => {
             />
           </FormControl>
           <Button
+            className="btn-login"
             variant="contained"
             color="primary"
             disabled={loginButtonDisabled}
@@ -140,6 +142,9 @@ const ModalUser = (props) => {
           >
             Iniciar sesión
           </Button>
+          <a href="" className="restablecer-contraseña">
+            olvidaste tu contraseña?
+          </a>
           <div
             style={{
               width: "100%",
@@ -148,6 +153,9 @@ const ModalUser = (props) => {
               marginTop: "15px",
             }}
           />
+          <p className="register-tittle">
+          ¿Aún no estas registrado?
+          </p>
           <SignInModal/>
         </Box>
       </Modal>
