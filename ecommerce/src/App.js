@@ -4,12 +4,15 @@ import ProductsCarousel from "./components/carrusel/carrusel";
 import { CartProvider } from "./hook/useCart";
 import { useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     // Verificar si hay un token almacenado en el localStorage al cargar la aplicación
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
       setIsLoggedIn(true);
     }
@@ -38,17 +41,15 @@ function App() {
         console.log("Inicio de sesión exitoso");
         console.log(data);
         if (data.success === true) {
-          alert("Inicio de sesión exitoso");
+          toast.success('Inicio de sesión exitoso');
         } else {
-          alert("Inicio de sesión fallido");
-          // // setEmail("");
-          // // setPassword("");
-          // // setLoginButtonDisabled(true);
+          toast.error('Inicio de sesión fallido');
         }
       } else {
         // El inicio de sesión falló, muestra un mensaje de error
         const data = await response.json();
         setIsLoggedIn(false);
+        toast.error('Inicio de sesión fallido');
         console.error("Inicio de sesión fallido:", data.error);
       }
     } catch (error) {
@@ -57,8 +58,9 @@ function App() {
   };
   const handleLogout = () => {
     // Eliminar el token JWT del almacenamiento local (localStorage)
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     setIsLoggedIn(false);
+    toast.info('Cerraste sesión');
   };
   const scrollToCategory = (categoryId) => {
     const element = document.getElementById(categoryId);
@@ -68,8 +70,14 @@ function App() {
   };
   return (
     <CartProvider>
-      <Navbar scrollToCategory={scrollToCategory} isLoggedIn={isLoggedIn} handleLogin={handleLogin} handleLogout={handleLogout}/>
+      <Navbar
+        scrollToCategory={scrollToCategory}
+        isLoggedIn={isLoggedIn}
+        handleLogin={handleLogin}
+        handleLogout={handleLogout}
+      />
       <ProductsCarousel />
+      <ToastContainer/>
     </CartProvider>
   );
 }
