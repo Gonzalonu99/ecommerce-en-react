@@ -37,6 +37,8 @@ function App() {
         console.log(decodedToken);
         // Almacenar el token JWT en el almacenamiento local (localStorage)
         localStorage.setItem("token", token);
+        const usuarioId = data.usuarioId
+        localStorage.setItem("usuarioId", usuarioId);
         setIsLoggedIn(true);
         console.log("Inicio de sesión exitoso");
         console.log(data);
@@ -58,6 +60,8 @@ function App() {
   };
   const handleLogout = () => {
     // Eliminar el token JWT del almacenamiento local (localStorage)
+    localStorage.clear();
+    localStorage.removeItem('usuarioId');
     localStorage.removeItem("token");
     setIsLoggedIn(false);
     toast.info('Cerraste sesión');
