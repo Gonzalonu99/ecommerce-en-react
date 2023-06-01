@@ -1,0 +1,28 @@
+/* DIV COMPLETO DE EL ALERT */
+.MuiDialog-paperScrollPaper{
+    overflow: hidden !important;
+
+    padding: .5rem;
+    border-radius: 1rem !important;
+}
+
+.alert-tittle-cart{
+    color: red;
+    text-align: center;
+}
+.btn-cart-clear-remove{
+    margin-right: 5rem !important;
+   
+   
+}
+
+/* FLEX DE LOS BOTONES */
+.MuiDialogActions-root{
+    position: relative !important;
+    left: -3.2rem !important;
+    gap: .5rem !important;
+}
+
+.MuiButton-textPrimary {
+    background-color: transparent !important;
+}

@@ -129,7 +129,7 @@ function Navbar(props) {
                 <h6
                   style={{ fontSize: "15px", position: "relative", top: "5px" }}
                 >
-                  ¡Bienvenido!
+                  ¡Bienvenido! 
                 </h6>
               ) : null}
               <User className="nav-icon" />

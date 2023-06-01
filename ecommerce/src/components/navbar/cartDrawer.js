@@ -2,6 +2,7 @@ import React from 'react';
 import { useCart } from '../../hook/useCart';
 import { Button, Divider, IconButton, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
 import { AddCircleOutline,  Close,  RemoveCircleOutline } from '@mui/icons-material';
+import './cartDrawer.css';
 import { useState } from 'react';
 
 function CartDrawer(props) {
@@ -96,16 +97,16 @@ function CartDrawer(props) {
             Vaciar carrito
         </Button>
       </List>
-      <Dialog open={openDialog} onClose={handleClose}>
-      <DialogTitle>ATENCIÓN</DialogTitle>
+      <Dialog className='alert-cart' open={openDialog} onClose={handleClose}>
+      <DialogTitle className='alert-tittle-cart'>ATENCIÓN</DialogTitle>
       <DialogContent>
-        <DialogContentText>
+        <DialogContentText className='subtittle-cart-clear'>
           ¿Desea eliminar el producto del carrito?
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancelar</Button>
-        <Button onClick={handleRemoveConfirm} color="error">Quitar</Button>
+        <Button className='btn-cart-clear-cancell' onClick={handleClose}>Cancelar</Button>
+        <Button className='btn-cart-clear-remove' onClick={handleRemoveConfirm} color="error">Quitar</Button>
       </DialogActions>
     </Dialog>
     </React.Fragment>
