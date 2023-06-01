@@ -79,6 +79,7 @@ const ProductsCarousel = () => {
                 imagen={product.Imagen}
                 descripcion={product.Descripcion}
                 precio={product.Precio}
+                precioId={product.PrecioId}
               />
             ))}
           </Slider>
