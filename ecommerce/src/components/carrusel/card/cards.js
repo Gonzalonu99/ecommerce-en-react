@@ -9,6 +9,8 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AddToCart from "../../cartButton/cartButton";
 import "./cards.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useCart } from "../../../hook/useCart";
 
 export default function ProductCard(props) {
@@ -62,6 +64,20 @@ export default function ProductCard(props) {
         }
       } else {
         // Aquí puedes manejar el caso en el que el usuario no esté autenticado
+        toast.error(`Necesitas inciar sesion para poder agregar productos a favoritos`, {
+          position: "top-left",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          className: 'mobile-toast',
+          progressStyle:{
+            background:"red"
+          },
+        });
         console.log(
           "El usuario no está autenticado. No se puede agregar a favoritos."
         );

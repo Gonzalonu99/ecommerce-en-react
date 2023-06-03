@@ -36,7 +36,7 @@ export function CartProvider({ children }) {
       }
     });
     // const productName = item.nombre;
-    toast(`Producto agregado al carrito`, {
+    toast.success(`Producto agregado al carrito`, {
       position: "top-left",
       autoClose: 3000,
       hideProgressBar: false,
@@ -44,6 +44,7 @@ export function CartProvider({ children }) {
       pauseOnHover: false,
       draggable: true,
       progress: undefined,
+      className: 'mobile-toast',
       theme: "light",
       progressStyle:{
         background:"#C0FF00"
@@ -57,7 +58,9 @@ export function CartProvider({ children }) {
       if (index === -1) return prevItems;
       const newItems = [...prevItems];
       newItems.splice(index, 1);
+      
       return newItems;
+      
     });
   }
   function removeFromCartAtOnce(id) {

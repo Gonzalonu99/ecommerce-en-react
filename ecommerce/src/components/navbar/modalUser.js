@@ -91,7 +91,7 @@ const ModalUser = (props) => {
               id="outlined-email-input-login"
               label="Email"
               type="email"
-              style={{ m: 1, width: "25ch", left: "1rem" }}
+              style={{ m: 1, width: "25ch" }}
               value={email}
               onChange={handleEmailChange}
             />

@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-import { IconButton, Typography, TextField } from "@mui/material";
+import { IconButton, Typography, TextField, Radio } from "@mui/material";
 import "./registro.css"
-import { Close } from "@mui/icons-material";
+import 'animate.css';
+import logo from "../../img/logo.jpg";
+import { CheckBox, Close } from "@mui/icons-material";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   FormControl,
   InputLabel,
@@ -84,6 +88,20 @@ const SignInModal = () => {
         const data = await response.json();
         handleSignInModal(false);
         console.log("Registro de usuario exitoso: ", JSON.stringify(data));
+        toast.success(`Cuenta creada con exito`, {
+          position: "top-left",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          className: 'mobile-toast',
+          progressStyle:{
+            background:"#C0FF00"
+          },
+        });
         setName("");
         setLastName("");
         setPhone("");
@@ -118,24 +136,30 @@ const SignInModal = () => {
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
-        <Box sx={{ ...style }}>
+        <Box className="animate__animated animate__fadeIn" sx={{ ...style }}>
           <IconButton
             style={{ position: "absolute", zIndex: "3000", top: 0, right: 0 }}
             onClick={handleSignInModal}
           >
             <Close />
           </IconButton>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          
+          <img className="register-logo-form animate__animated animate__fadeIn" src={logo} alt="Logo" />
+         
+          <Typography id="modal-register-title" variant="h6" component="h2">
             Crea tu cuenta
           </Typography>
-          <TextField
+          <Typography className="register-subtittle">
+            Registrate completando todos los campos a continuacion
+          </Typography> 
+          <TextField className="input-register"
             required
             id="outlined-required-name"
             label="Name"
             value={name}
             onChange={handleNameChange}
           />
-          <TextField
+          <TextField className="input-register"
             required
             id="outlined-required-lastName"
             label="Last Name"
@@ -143,14 +167,14 @@ const SignInModal = () => {
             onChange={handleLastNameChange}
           />
          
-          <TextField
+          <TextField className="input-register"
             required
             id="outlined-required-phone"
             label="Phone Number"
             value={phone}
             onChange={handlePhoneChange}
           />
-          <TextField
+          <TextField className="input-register"
             required
             id="outlined-email-input"
             label="Email"
@@ -183,6 +207,8 @@ const SignInModal = () => {
               value={password}
               onChange={handlePasswordChange}
             />
+            
+        
           </FormControl>
           <TextField
             required
@@ -191,12 +217,12 @@ const SignInModal = () => {
             value={userType}
             style={{display:"none"}}
           />
-          <Button
+          <Button  className="btn-register-confirm"
             variant="contained"
-            color="primary"
+            style={{ backgroundColor: loginButtonDisabled ? 'grey' : 'green' }}
             disabled={loginButtonDisabled}
             onClick={handleSignIn}
-          >
+            >
             Crear cuenta
           </Button>
         </Box>
