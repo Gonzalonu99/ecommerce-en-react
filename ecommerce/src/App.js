@@ -43,19 +43,23 @@ function App() {
         console.log("Inicio de sesión exitoso");
         console.log(data);
         if (data.success === true) {
-          toast.success('Inicio de sesión exitoso');
-        } else {
-          toast.error('Inicio de sesión fallido');
-        }
+          toast.success('Inicio de sesión exitoso',{
+            className: 'mobile-toast',
+          });
+        }/* aca borre el else xq no estaba funcionando el toast, asi que agarre el toast y lo meti en la linea 60  */
+          /*donde funciona bien */
+        
       } else {
         // El inicio de sesión falló, muestra un mensaje de error
         const data = await response.json();
         setIsLoggedIn(false);
-        toast.error('Inicio de sesión fallido');
         console.error("Inicio de sesión fallido:", data.error);
       }
     } catch (error) {
       console.error("Error al iniciar sesión:", error.message);
+        toast.error('Inicio de sesión fallido',{
+          className: 'mobile-toast'
+      })        
     }
   };
   const handleLogout = () => {
@@ -64,7 +68,9 @@ function App() {
     localStorage.removeItem('usuarioId');
     localStorage.removeItem("token");
     setIsLoggedIn(false);
-    toast.info('Cerraste sesión');
+    toast.info('Cerraste sesión',{
+      className: 'mobile-toast',
+    });
   };
   const scrollToCategory = (categoryId) => {
     const element = document.getElementById(categoryId);
