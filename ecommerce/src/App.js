@@ -4,9 +4,9 @@ import ProductsCarousel from "./components/carrusel/carrusel";
 import { CartProvider } from "./hook/useCart";
 import { useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FavoritesProvider } from "./hook/useFav";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -37,21 +37,21 @@ function App() {
         console.log(decodedToken);
         // Almacenar el token JWT en el almacenamiento local (localStorage)
         localStorage.setItem("token", token);
-        const usuarioId = data.usuarioId
+        const usuarioId = data.usuarioId;
         localStorage.setItem("usuarioId", usuarioId);
         setIsLoggedIn(true);
         console.log("Inicio de sesión exitoso");
         console.log(data);
         if (data.success === true) {
-          toast.success('Inicio de sesión exitoso');
+          toast.success("Inicio de sesión exitoso");
         } else {
-          toast.error('Inicio de sesión fallido');
+          toast.error("Inicio de sesión fallido");
         }
       } else {
         // El inicio de sesión falló, muestra un mensaje de error
         const data = await response.json();
         setIsLoggedIn(false);
-        toast.error('Inicio de sesión fallido');
+        toast.error("Inicio de sesión fallido");
         console.error("Inicio de sesión fallido:", data.error);
       }
     } catch (error) {
@@ -61,10 +61,10 @@ function App() {
   const handleLogout = () => {
     // Eliminar el token JWT del almacenamiento local (localStorage)
     localStorage.clear();
-    localStorage.removeItem('usuarioId');
+    localStorage.removeItem("usuarioId");
     localStorage.removeItem("token");
     setIsLoggedIn(false);
-    toast.info('Cerraste sesión');
+    toast.info("Cerraste sesión");
   };
   const scrollToCategory = (categoryId) => {
     const element = document.getElementById(categoryId);
@@ -73,16 +73,18 @@ function App() {
     }, 100);
   };
   return (
-    <CartProvider>
-      <Navbar
-        scrollToCategory={scrollToCategory}
-        isLoggedIn={isLoggedIn}
-        handleLogin={handleLogin}
-        handleLogout={handleLogout}
-      />
-      <ProductsCarousel />
-      <ToastContainer/>
-    </CartProvider>
+    <FavoritesProvider>
+      <CartProvider>
+        <Navbar
+          scrollToCategory={scrollToCategory}
+          isLoggedIn={isLoggedIn}
+          handleLogin={handleLogin}
+          handleLogout={handleLogout}
+        />
+        <ProductsCarousel />
+        <ToastContainer />
+      </CartProvider>
+    </FavoritesProvider>
   );
 }
 
