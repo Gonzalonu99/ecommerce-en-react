@@ -82,8 +82,7 @@ function App() {
   };
   const scrollToCategory = (categoryId) => {
     const element = document.getElementById(categoryId);
-    const offset = 130; // Ajusta el valor según tus necesidades
-
+    const offset = 130;
     setTimeout(() => {
       const topPos = element.offsetTop - offset;
       window.scrollTo({ top: topPos, behavior: "smooth" });
