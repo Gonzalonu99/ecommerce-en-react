@@ -26,6 +26,7 @@ import logo from "../../img/logo.jpg";
 import FavDrawer from "./favDrawer";
 import { FavoritesContext } from "../../hook/useFav";
 
+
 const drawerWidth = 300;
 const drawerCartWidth = 350;
 
@@ -130,6 +131,7 @@ function Navbar(props) {
             <img className="nav-logo" src={logo} alt="Romero y Ajo logo" />
           </Typography>
           <div className="nav-icons-div">
+          
             <IconButton className="navbar-icons" onClick={handleModalUser}>
               {isLoggedIn ? (
                 <h6
@@ -138,6 +140,7 @@ function Navbar(props) {
                   ¡Bienvenido!
                 </h6>
               ) : null}
+              
               <User className="nav-icon" />
             </IconButton>
             <IconButton className="navbar-icons" onClick={handleFavDrawer}>
@@ -231,6 +234,7 @@ function Navbar(props) {
             alt="Romero y Ajo"
           />
           {drawer}
+
         </Drawer>
       </Box>
     </Box>

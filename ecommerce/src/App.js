@@ -8,13 +8,16 @@ import jwt_decode from "jwt-decode";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/footer/footer";
+import WspLogo from "./components/wspLogo/wspLogo";
 import { FavoritesContext, FavoritesProvider } from "./hook/useFav";
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showFooter, setShowFooter] = useState(false);
   const {getFavProduct} = useContext(FavoritesContext);
   const favoritesProviderRef = useRef();
+
   useEffect(() => {
     setTimeout(() => {
       setShowFooter(true);
@@ -103,6 +106,7 @@ function App() {
         <ProductsCarousel />
         <ToastContainer />
         {showFooter && <Footer />}
+        <WspLogo/>
       </CartProvider>
     </FavoritesProvider>
   );

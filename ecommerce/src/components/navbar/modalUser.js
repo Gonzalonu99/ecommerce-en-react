@@ -69,6 +69,7 @@ const ModalUser = (props) => {
             >
               <Close />
             </IconButton>
+            <p>¿Deseas cerrar la sesion?</p>
             <Button onClick={handleLogout}>Cerrar sesión</Button>
           </Box>
         </Modal>
