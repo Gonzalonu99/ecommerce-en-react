@@ -43,3 +43,7 @@
 .css-11b3ww9-MuiPaper-root-MuiAppBar-root{
     width: 100vw !important;
 }
+
+.user-drawer-navbar{
+    flex-direction: row-reverse !important;
+}

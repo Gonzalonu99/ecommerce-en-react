@@ -36,3 +36,9 @@
     /* Estilos para el estado desactivado */
     background-color: grey !important;
   }
+
+  .carrito-vacio-img{
+    overflow: hidden;
+    width: 15rem;
+  }
+

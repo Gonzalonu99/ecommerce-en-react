@@ -1,9 +1,10 @@
 import React from 'react';
 import { useCart } from '../../hook/useCart';
-import { Button, Divider, IconButton, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
+import { Button, Divider, IconButton, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Box } from '@mui/material';
 import { AddCircleOutline,  Close,  RemoveCircleOutline } from '@mui/icons-material';
 import './cartDrawer.css';
 import { useState } from 'react';
+import CarritoVacio  from '../../img/carritoVacio.webp';
 
 function CartDrawer(props) {
   const { cartItems, emptyCart, removeFromCartAllProducts,removeFromCartAtOnce, getTotalPrice, addToCart} = useCart();
@@ -71,13 +72,23 @@ function CartDrawer(props) {
             </ListItem>
           ))
         ) : (
+          <Box>
           <Typography 
             variant="subtitle1" align="center">
-              No hay productos en el carrito
+              Tu carrito está vacío
           </Typography>
+          <img className='carrito-vacio-img' src={CarritoVacio}/>
+          <Button className='btn-vaciar-carrito' onClick={props.handleDrawerCart}>
+            Agrega nuevos productos
+          </Button>
+          </Box> 
         )}
+        
       </List>
       <Divider />
+      
+      {groupedItems.length > 0 && (
+        <>
       <List sx={{ padding: '16px' }}>
         <ListItem>
           <ListItemText primary="Total" />
@@ -109,6 +120,9 @@ function CartDrawer(props) {
         <Button className='btn-cart-clear-remove' onClick={handleRemoveConfirm} color="error">Quitar</Button>
       </DialogActions>
     </Dialog>
+        </>
+        
+      )}
     </React.Fragment>
   );
 }

@@ -8,6 +8,7 @@ import jwt_decode from "jwt-decode";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/footer/footer";
+import WspLogo from "./components/wspLogo/wspLogo";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -100,6 +101,7 @@ function App() {
       <ProductsCarousel />
       <ToastContainer />
       {showFooter && <Footer />}
+      <WspLogo/>
     </CartProvider>
   );
 }
