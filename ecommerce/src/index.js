@@ -1,15 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import { CartProvider } from "./hook/useCart";
-import { FavoritesProvider } from "./hook/useFav";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import { CartProvider } from './hook/useCart';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <FavoritesProvider>
-    <CartProvider>
-      <App />
-    </CartProvider>
-  </FavoritesProvider>
+  <CartProvider>
+    <App />
+  </CartProvider>
 );
