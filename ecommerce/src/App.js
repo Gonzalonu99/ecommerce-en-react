@@ -2,14 +2,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/navbar/index";
 import ProductsCarousel from "./components/carrusel/carrusel";
 import { CartProvider } from "./hook/useCart";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import jwt_decode from "jwt-decode";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FavoritesProvider } from "./hook/useFav";
+import { FavoritesContext, FavoritesProvider } from "./hook/useFav";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const {getFavProduct} = useContext(FavoritesContext);
+  const favoritesProviderRef = useRef();
   useEffect(() => {
     // Verificar si hay un token almacenado en el localStorage al cargar la aplicación
     const token = localStorage.getItem("token");
@@ -42,6 +44,7 @@ function App() {
         setIsLoggedIn(true);
         console.log("Inicio de sesión exitoso");
         console.log(data);
+        getFavProduct();
         if (data.success === true) {
           toast.success("Inicio de sesión exitoso");
         } else {
@@ -73,7 +76,7 @@ function App() {
     }, 100);
   };
   return (
-    <FavoritesProvider>
+    <FavoritesProvider isLoggedIn={isLoggedIn} ref={favoritesProviderRef}>
       <CartProvider>
         <Navbar
           scrollToCategory={scrollToCategory}

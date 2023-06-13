@@ -1,12 +1,21 @@
 import React, { createContext, useState, useEffect } from "react";
 const FavoritesContext = createContext();
 
-const FavoritesProvider = ({ children }) => {
+const FavoritesProvider = ({ isLoggedIn, children }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [favData, setFavData] = useState([]);
   const [favoriteIds, setFavoriteIds] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [shouldUpdate, setShouldUpdate] = useState(false);
+  useEffect(() => {
+    if (shouldUpdate) {
+      getFavProduct();
+      setShouldUpdate(false);
+    }
+  }, [shouldUpdate, favoriteIds]);
+  const updateFavorites =()=>{
+    setShouldUpdate(true);
+  }
   const getUserId = () => {
     const usuarioId = localStorage.getItem("usuarioId");
     if (usuarioId) {
@@ -47,6 +56,7 @@ const FavoritesProvider = ({ children }) => {
           localStorage.setItem("favorites", JSON.stringify(favorites));
 
           setFavData([...favData, data]);
+          setShouldUpdate(true);
         } else {
           // Manejar errores en la respuesta del servidor
           console.error(
@@ -55,13 +65,11 @@ const FavoritesProvider = ({ children }) => {
           );
         }
       } else {
-        // Aquí puedes manejar el caso en el que el usuario no esté autenticado
         console.log(
           "El usuario no está autenticado. No se puede agregar a favoritos."
         );
       }
     } catch (error) {
-      // Manejar cualquier otro error que ocurra durante la ejecución
       console.error("Error al agregar producto a favoritos:", error);
     }
   };
@@ -102,6 +110,7 @@ const FavoritesProvider = ({ children }) => {
           // Filtrar los datos de favData basados en los IDs actualizados
           const filteredData = favData.filter((fav) => fav.ProductoId !== id);
           setFavData(filteredData);
+          setShouldUpdate(true);
         } else {
           console.error(
             "Error al eliminar producto de favoritos:",
@@ -141,12 +150,15 @@ const FavoritesProvider = ({ children }) => {
         );
         const favProd = await response.json();
         console.log("favProd:", favProd);
-        setFavData(favProd);
         // Obtener los IDs de los productos favoritos
         const favoriteIds = favProd.map((fav) => fav.Id);
         setFavoriteIds(favoriteIds);
         // Guardar los IDs de los productos favoritos en el almacenamiento local
         localStorage.setItem("favorites", JSON.stringify(favoriteIds));
+        // Actualizar el estado solo si los datos son diferentes
+      if (favProd !== favData) {
+        setFavData(favProd);
+      }
       } else {
         console.log(
           "El usuario no está autenticado. No se puede ver los favoritos."
@@ -159,8 +171,48 @@ const FavoritesProvider = ({ children }) => {
     }
   };
   useEffect(() => {
-    getFavProduct();
-  }, []);
+    const loadFavorites = async () => {
+      try {
+        setLoading(true);
+        const userId = getUserId();
+        if (userId && isLoggedIn) {
+          // Cargar los favoritos solo cuando el usuario esté autenticado
+          const response = await fetch(
+            `https://a365.com.ar/ecommerce/favoritos/${userId}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            }
+          );
+          const favProd = await response.json();
+          console.log("favProd:", favProd);
+          // Obtener los IDs de los productos favoritos
+          const favoriteIds = favProd.map((fav) => fav.Id);
+          setFavoriteIds(favoriteIds);
+          // Guardar los IDs de los productos favoritos en el almacenamiento local
+          localStorage.setItem("favorites", JSON.stringify(favoriteIds));
+          // Actualizar el estado solo si los datos son diferentes
+          if (favProd !== favData) {
+            setFavData(favProd);
+          }
+        } else {
+          console.log(
+            "El usuario no está autenticado o isLoggedIn es falso. No se pueden ver los favoritos."
+          );
+        }
+      } catch (error) {
+        console.error("Error al ver productos de favoritos:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadFavorites();
+  }, [isLoggedIn]);
+
   return (
     <FavoritesContext.Provider
       value={{
@@ -174,6 +226,7 @@ const FavoritesProvider = ({ children }) => {
         removeFromFavorites,
         getFavProduct,
         handleFavorites,
+        updateFavorites
       }}
     >
       {children}
