@@ -12,21 +12,144 @@ import "./cards.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useCart } from "../../../hook/useCart";
-import { useContext } from "react";
-import { FavoritesContext } from "../../../hook/useFav";
 
 export default function ProductCard(props) {
   const { addToCart } = useCart();
-  const { favoriteIds, handleFavorites, setFavoriteIds } = useContext(FavoritesContext);
-  const isFavorite = favoriteIds.includes(props.id);
+  const [isFavorite, setIsFavorite] = React.useState(false);
+
+  const getUserId = () => {
+    const usuarioId = localStorage.getItem("usuarioId");
+    if (usuarioId) {
+      return usuarioId;
+    } else {
+      return "";
+    }
+  };
+  const addToFavorites = async () => {
+    try {
+      const userId = getUserId();
+      if (userId) {
+        const data = {
+          ProductoId: props.id,
+          UsuarioId: userId,
+          PrecioId: props.precioId,
+        };
+        console.log(data);
+        // Verificar si el producto ya está marcado como favorito
+        if (isFavorite) {
+          console.log("El producto ya está marcado como favorito");
+          return;
+        }
+        const response = await fetch("http://a365.com.ar/ecommerce/favoritos", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify(data),
+        });
+        if (response.ok) {
+          console.log("Producto agregado a favoritos");
+          // Guardar los datos de favoritos en el almacenamiento local
+          const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+          favorites.push(props.id);
+          localStorage.setItem("favorites", JSON.stringify(favorites));
+          setIsFavorite(true);
+        } else {
+          // Manejar errores en la respuesta del servidor
+          console.error(
+            "Error al agregar producto a favoritos:",
+            response.status
+          );
+        }
+      } else {
+        // Aquí puedes manejar el caso en el que el usuario no esté autenticado
+        toast.error(`Necesitas inciar sesion para poder agregar productos a favoritos`, {
+          position: "top-left",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          className: 'mobile-toast',
+          progressStyle:{
+            background:"red"
+          },
+        });
+        console.log(
+          "El usuario no está autenticado. No se puede agregar a favoritos."
+        );
+      }
+    } catch (error) {
+      // Manejar cualquier otro error que ocurra durante la ejecución
+      console.error("Error al agregar producto a favoritos:", error);
+    }
+  };
+  const removeFromFavorites = async () => {
+    // Verificar si el producto ya está marcado como favorito
+    if (!isFavorite) {
+      console.log("El producto se quitó de favoritos");
+      return;
+    }
+
+    try {
+      const userId = getUserId();
+      if (userId) {
+        const data = {
+          ProductoId: props.id,
+          UsuarioId: userId,
+          PrecioId: props.precioId,
+        };
+
+        const response = await fetch("http://a365.com.ar/ecommerce/favoritos", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          console.log("Producto eliminado de favoritos");
+
+          // Eliminar el producto de favoritos del almacenamiento local
+          const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+          const updatedFavorites = favorites.filter((id) => id !== props.id);
+          localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+
+          setIsFavorite(false);
+        } else {
+          console.error(
+            "Error al eliminar producto de favoritos:",
+            response.status
+          );
+        }
+      } else {
+        console.log(
+          "El usuario no está autenticado. No se puede eliminar de favoritos."
+        );
+      }
+    } catch (error) {
+      console.error("Error al eliminar producto de favoritos:", error);
+    }
+  };
 
   useEffect(() => {
     // Verificar si el producto está en la lista de favoritos al cargar la página
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    setFavoriteIds(favorites);
-  }, []);
-  
-  
+    const isProductFavorite = favorites.includes(props.id);
+    setIsFavorite(isProductFavorite);
+  }, [props.id]);
+  const handleFavorites = () => {
+    if (isFavorite) {
+      removeFromFavorites();
+    } else {
+      addToFavorites();
+    }
+  };
   return (
     <Card
       sx={{ maxWidth: 270 }}
@@ -69,7 +192,7 @@ export default function ProductCard(props) {
       <CardActions disableSpacing>
         <IconButton
           aria-label="add to favorites"
-          onClick={() => handleFavorites(props.id, props.precioId)}
+          onClick={handleFavorites}
           className="favButton"
           style={{ backgroundColor: isFavorite ? "red" : "gray" }}
         >

@@ -23,8 +23,6 @@ import ModalUser from "./modalUser";
 import { useCart } from "../../hook/useCart";
 import { useState, useEffect } from "react";
 import logo from "../../img/logo.jpg";
-import FavDrawer from "./favDrawer";
-import { FavoritesContext } from "../../hook/useFav";
 
 const drawerWidth = 300;
 const drawerCartWidth = 350;
@@ -34,11 +32,9 @@ function Navbar(props) {
   const { window } = props;
   const { isLoggedIn, handleLogin, handleLogout } = props;
   const { scrollToCategory } = props;
-  const {favData} = React.useContext(FavoritesContext);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [cartOpen, setCartOpen] = React.useState(false);
   const [modalOpen, setModalOpen] = React.useState(false);
-  const [favDrawerOpen, setFavDrawerOpen] = React.useState(false);
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -56,9 +52,7 @@ function Navbar(props) {
       });
   }, []);
   console.log(data);
-  const handleFavDrawer = () => {
-    setFavDrawerOpen((prevState) => !prevState);
-  };
+
   const handleModalUser = () => {
     setModalOpen((prevState) => !prevState);
   };
@@ -135,13 +129,13 @@ function Navbar(props) {
                 <h6
                   style={{ fontSize: "15px", position: "relative", top: "5px" }}
                 >
-                  ¡Bienvenido!
+                  ¡Bienvenido! 
                 </h6>
               ) : null}
               <User className="nav-icon" />
             </IconButton>
-            <IconButton className="navbar-icons" onClick={handleFavDrawer}>
-              <Favorite className="nav-icon" style={{color: favData.length > 0 ? 'red' : '#fff'}}/>
+            <IconButton className="navbar-icons">
+              <Favorite className="nav-icon" />
             </IconButton>
             <IconButton className="navbar-icons" onClick={handleDrawerCart}>
               <Badge
@@ -184,27 +178,6 @@ function Navbar(props) {
           }}
         >
           <CartDrawer cartOpen={cartOpen} handleDrawerCart={handleDrawerCart} />
-        </Drawer>
-      </Box>
-      {/* Drawer de Favoritos */}
-      <Box>
-        <Drawer
-          anchor="right"
-          variant="temporary"
-          open={favDrawerOpen}
-          onClose={handleFavDrawer}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          sx={{
-            display: { xs: "block", sm: "inherit" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerCartWidth,
-            },
-          }}
-        >
-          <FavDrawer favDrawerOpen={favDrawerOpen} handleFavDrawer={handleFavDrawer}/>
         </Drawer>
       </Box>
       {/* Drawer del menú hamburguesa */}
