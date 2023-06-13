@@ -1,16 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/navbar/index";
 import ProductsCarousel from "./components/carrusel/carrusel";
-import footer1 from "./components/footer/footer";
 import { CartProvider } from "./hook/useCart";
 import { useState, useEffect, useContext, useRef } from "react";
 import jwt_decode from "jwt-decode";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/footer/footer";
-import WspLogo from "./components/wspLogo/wspLogo";
 import { FavoritesContext, FavoritesProvider } from "./hook/useFav";
-
+import WspLogo from "./components/wspLogo/wspLogo";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -106,8 +104,8 @@ function App() {
         <ProductsCarousel />
         <ToastContainer />
         {showFooter && <Footer />}
-        <WspLogo/>
       </CartProvider>
+      <WspLogo/>
     </FavoritesProvider>
   );
 }
