@@ -24,6 +24,7 @@ import { useCart } from "../../hook/useCart";
 import { useState, useEffect } from "react";
 import logo from "../../img/logo.jpg";
 import FavDrawer from "./favDrawer";
+import { FavoritesContext } from "../../hook/useFav";
 
 const drawerWidth = 300;
 const drawerCartWidth = 350;
@@ -33,6 +34,7 @@ function Navbar(props) {
   const { window } = props;
   const { isLoggedIn, handleLogin, handleLogout } = props;
   const { scrollToCategory } = props;
+  const {favData} = React.useContext(FavoritesContext);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [cartOpen, setCartOpen] = React.useState(false);
   const [modalOpen, setModalOpen] = React.useState(false);
@@ -139,7 +141,7 @@ function Navbar(props) {
               <User className="nav-icon" />
             </IconButton>
             <IconButton className="navbar-icons" onClick={handleFavDrawer}>
-              <Favorite className="nav-icon" />
+              <Favorite className="nav-icon" style={{color: favData.length > 0 ? 'red' : '#fff'}}/>
             </IconButton>
             <IconButton className="navbar-icons" onClick={handleDrawerCart}>
               <Badge
