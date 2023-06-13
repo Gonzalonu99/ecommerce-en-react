@@ -1,17 +1,26 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/navbar/index";
 import ProductsCarousel from "./components/carrusel/carrusel";
+import footer1 from "./components/footer/footer";
 import { CartProvider } from "./hook/useCart";
 import { useState, useEffect, useContext, useRef } from "react";
 import jwt_decode from "jwt-decode";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from "./components/footer/footer";
 import { FavoritesContext, FavoritesProvider } from "./hook/useFav";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showFooter, setShowFooter] = useState(false);
   const {getFavProduct} = useContext(FavoritesContext);
   const favoritesProviderRef = useRef();
+  useEffect(() => {
+    setTimeout(() => {
+      setShowFooter(true);
+    }, 2000);
+  }, []);
+
   useEffect(() => {
     // Verificar si hay un token almacenado en el localStorage al cargar la aplicación
     const token = localStorage.getItem("token");
@@ -46,19 +55,22 @@ function App() {
         console.log(data);
         getFavProduct();
         if (data.success === true) {
-          toast.success("Inicio de sesión exitoso");
-        } else {
-          toast.error("Inicio de sesión fallido");
-        }
+          toast.success("Inicio de sesión exitoso", {
+            className: "mobile-toast",
+          });
+        } /* aca borre el else xq no estaba funcionando el toast, asi que agarre el toast y lo meti en la linea 60  */
+        /*donde funciona bien */
       } else {
         // El inicio de sesión falló, muestra un mensaje de error
         const data = await response.json();
         setIsLoggedIn(false);
-        toast.error("Inicio de sesión fallido");
         console.error("Inicio de sesión fallido:", data.error);
       }
     } catch (error) {
       console.error("Error al iniciar sesión:", error.message);
+      toast.error("Inicio de sesión fallido", {
+        className: "mobile-toast",
+      });
     }
   };
   const handleLogout = () => {
@@ -67,12 +79,16 @@ function App() {
     localStorage.removeItem("usuarioId");
     localStorage.removeItem("token");
     setIsLoggedIn(false);
-    toast.info("Cerraste sesión");
+    toast.info("Cerraste sesión", {
+      className: "mobile-toast",
+    });
   };
   const scrollToCategory = (categoryId) => {
     const element = document.getElementById(categoryId);
+    const offset = 130;
     setTimeout(() => {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      const topPos = element.offsetTop - offset;
+      window.scrollTo({ top: topPos, behavior: "smooth" });
     }, 100);
   };
   return (
@@ -86,6 +102,7 @@ function App() {
         />
         <ProductsCarousel />
         <ToastContainer />
+        {showFooter && <Footer />}
       </CartProvider>
     </FavoritesProvider>
   );

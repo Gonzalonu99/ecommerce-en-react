@@ -9,6 +9,8 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AddToCart from "../../cartButton/cartButton";
 import "./cards.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useCart } from "../../../hook/useCart";
 import { useContext } from "react";
 import { FavoritesContext } from "../../../hook/useFav";

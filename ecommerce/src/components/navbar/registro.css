@@ -1,9 +1,15 @@
+/*logo de romero arriba del form */
+.register-logo-form{
+    border-radius: 1rem;
+    width: 8rem;
+}
+
 #modal-modal-description{
     margin-bottom: .7rem;
 }
 #outlined-password-input-login{
     margin: 1rem 0 1rem 0;
-    left: 1rem;
+ 
 }
 
 #outlined-email-input-login{
@@ -23,12 +29,16 @@
     top: -0.35rem;
     font-weight: bold;
 }
-
-.MuiBox-root{
+/*div completo de login */
+.css-18twnu7{
     border-radius: .7rem !important;
     border: 2px solid #348759 !important;
 }
-
+.css-1mx2gd{
+    border-radius: .7rem !important;
+    border: 2px solid #348759 !important;
+}
+/*                      */
 #modal-modal-title{
     text-align: center;
     font-size: 1.4rem;
@@ -42,7 +52,7 @@
     margin-bottom: 1rem;
 }
 .btn-login{
- margin-left: 3.5rem !important; 
+
  margin-bottom: .5rem !important;
 } 
 
@@ -58,12 +68,79 @@
     text-align: center;
     font-weight: bold;
 }
-
+/*btn de register*/
 .MuiButton-text{
-    left: 25% !important;
+
     border: 1px solid #348759 !important;
     background-color: #348759 !important;
     color: white !important;
     padding: .5rem 1rem !important;
     border-radius: 1rem !important;
+}
+
+/*registro style modal */
+
+#modal-register-title{
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-bottom: 1px solid #7abd4a !important;   
+    margin-bottom: 1rem;
+}
+.register-subtittle{
+    font-size: .8rem !important;
+    font-weight: bold !important;
+    margin-bottom: .8rem !important;
+    text-align: center !important;
+
+}
+/*todos los inputs de register  */
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+    padding: .5rem !important;
+}
+
+/*label input */
+.MuiFormLabel-root{
+    font-size: .8rem !important;
+    top: -0.35rem !important;
+    font-weight: bold !important;
+}
+
+
+
+.MuiBox-root{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.input-register{
+    margin-bottom: .9rem !important;
+}
+
+#outlined-password-input{
+    margin-bottom: 1rem;
+}
+
+/*register  btn confirm */
+.btn-register-confirm{
+    transition: transform .3s !important;
+}
+
+
+.btn-register-confirm:hover{
+    transform: scale(1.1);
+}
+
+
+@media((max-width: 768px)){
+    .mobile-toast {
+        width: 80vw !important;
+        max-width: 300px !important;
+        top: 10px !important;
+        left: 10px !important;
+        right: unset !important;
+        bottom: unset !important;
+      }
 }
