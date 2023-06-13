@@ -1,0 +1,15 @@
+
+
+.wsp-Logo-container{
+    width: 300px;
+    position: fixed;
+    bottom: -5.7rem;
+    right: -6.6rem;
+    z-index: 100000;
+}
+
+.wsp-logo-img{
+    width: 100%;
+    object-fit: cover;
+    
+}
