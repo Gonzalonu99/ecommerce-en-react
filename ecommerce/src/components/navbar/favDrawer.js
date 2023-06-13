@@ -12,10 +12,7 @@ import React, { useContext, useEffect } from "react";
 import { FavoritesContext } from "../../hook/useFav";
 
 const FavDrawer = (props) => {
-const {favData, getFavProduct} = useContext(FavoritesContext);
-useEffect(()=>{
-  getFavProduct();
-}, []);
+  const { favData, removeFromFavorites } = useContext(FavoritesContext);
 
   return (
     <React.Fragment>
@@ -26,19 +23,21 @@ useEffect(()=>{
         <Close />
       </IconButton>
       {favData.length > 0 ? (
-        favData.map((item) => (
-          <ListItem key={item.Id} id={item.Id}>
-            <ListItemAvatar>
-              <img src={item.Imagen} alt={item.Nombre} />
-            </ListItemAvatar>
-            <ListItemText primary={item.Nombre} />
-            <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="delete">
-                <RemoveCircleOutline />
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
-        ))
+        favData.map((item, index) => {
+          return (
+            <ListItem key={index} id={item.Id}>
+              <ListItemAvatar>
+                <img src={item.Imagen} alt={item.Nombre} />
+              </ListItemAvatar>
+              <ListItemText primary={item.Nombre} />
+              <ListItemSecondaryAction>
+                <IconButton edge="end" aria-label="delete">
+                  <RemoveCircleOutline/>
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+          );
+        })
       ) : (
         <Typography>Agregá tus favoritos</Typography>
       )}
