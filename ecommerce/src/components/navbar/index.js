@@ -35,6 +35,7 @@ function Navbar(props) {
   const { window } = props;
   const { isLoggedIn, handleLogin, handleLogout } = props;
   const { scrollToCategory } = props;
+  const {userData} = props;
   const {favData} = React.useContext(FavoritesContext);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [cartOpen, setCartOpen] = React.useState(false);
@@ -136,7 +137,7 @@ function Navbar(props) {
                 <h6
                   style={{ fontSize: "15px", position: "relative", top: "5px" }}
                 >
-                  ¡Bienvenido!
+                  {`¡Hola ${userData && userData.nombre}!`}
                 </h6>
               ) : null}
               
