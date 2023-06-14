@@ -56,7 +56,6 @@ function Navbar(props) {
         setIsLoading(false);
       });
   }, []);
-  console.log(data);
   const handleFavDrawer = () => {
     setFavDrawerOpen((prevState) => !prevState);
   };

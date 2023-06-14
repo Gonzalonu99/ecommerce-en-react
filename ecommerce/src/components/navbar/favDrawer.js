@@ -1,4 +1,4 @@
-import { Close, RemoveCircleOutline } from "@mui/icons-material";
+import { Close } from "@mui/icons-material";
 import {
   Button,
   Box,
@@ -13,10 +13,12 @@ import {
 import React, { useContext, useEffect } from "react";
 import { FavoritesContext } from "../../hook/useFav";
 import './favDrawer.css';
-
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 const FavDrawer = (props) => {
-  const { favData, removeFromFavorites } = useContext(FavoritesContext);
-
+  const { favData, handleFavorites } = useContext(FavoritesContext);
+  const handleDelete = async (id, precioId)=>{
+    await handleFavorites(id, precioId);
+  }
   return (
     <React.Fragment>
     <>
@@ -38,8 +40,8 @@ const FavDrawer = (props) => {
              
               <ListItemText primary={item.Nombre} />
               <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete">
-                  <RemoveCircleOutline/>
+                <IconButton edge="end" aria-label="delete" onClick={()=>handleDelete(item.Id, item.PrecioId)}>
+                  <DeleteOutlineOutlinedIcon/>
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
