@@ -1,5 +1,7 @@
 import { Close, RemoveCircleOutline } from "@mui/icons-material";
 import {
+  Button,
+  Box,
   IconButton,
   List,
   ListItem,
@@ -10,12 +12,16 @@ import {
 } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import { FavoritesContext } from "../../hook/useFav";
+import './favDrawer.css';
 
 const FavDrawer = (props) => {
   const { favData, removeFromFavorites } = useContext(FavoritesContext);
 
   return (
     <React.Fragment>
+    <>
+    <p className="tittle-fav-drawer">Mis Favoritos</p>
+    </>
       <IconButton
         style={{ position: "absolute", zIndex: "2000", top: 0, right: 0 }}
         onClick={props.handleFavDrawer}
@@ -25,10 +31,11 @@ const FavDrawer = (props) => {
       {favData.length > 0 ? (
         favData.map((item, index) => {
           return (
-            <ListItem key={index} id={item.Id}>
+            <ListItem className="list-drawer-fav" key={index} id={item.Id}>
               <ListItemAvatar>
-                <img src={item.Imagen} alt={item.Nombre} />
+                <img className="img-drawer-fav" src={item.Imagen} alt={item.Nombre} />
               </ListItemAvatar>
+             
               <ListItemText primary={item.Nombre} />
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete">
@@ -39,7 +46,7 @@ const FavDrawer = (props) => {
           );
         })
       ) : (
-        <Typography>Agregá tus favoritos</Typography>
+          <Typography >Agregar al carrito</Typography>      
       )}
     </React.Fragment>
   );
