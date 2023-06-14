@@ -23,10 +23,6 @@
     gap: .5rem !important;
 }
 
-.MuiButton-textPrimary {
-    background-color: transparent !important;
-}
-
 .btn-register-confirm {
     /* Estilos por defecto */
     background-color: #348759 !important;
