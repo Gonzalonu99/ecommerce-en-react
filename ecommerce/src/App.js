@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/navbar/index";
 import ProductsCarousel from "./components/carrusel/carrusel";
 import { CartProvider } from "./hook/useCart";
-import { useState, useEffect, useContext, useRef } from "react";
+import { useState, useEffect, useContext } from "react";
 import jwt_decode from "jwt-decode";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,7 +14,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showFooter, setShowFooter] = useState(false);
   const {getFavProduct} = useContext(FavoritesContext);
-  const favoritesProviderRef = useRef();
 
   useEffect(() => {
     setTimeout(() => {
@@ -93,7 +92,7 @@ function App() {
     }, 100);
   };
   return (
-    <FavoritesProvider isLoggedIn={isLoggedIn} ref={favoritesProviderRef}>
+    <FavoritesProvider isLoggedIn={isLoggedIn} >
       <CartProvider>
         <Navbar
           scrollToCategory={scrollToCategory}
