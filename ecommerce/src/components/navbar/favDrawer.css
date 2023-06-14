@@ -1,0 +1,33 @@
+.img-drawer-fav{
+    border-radius: .5rem;
+    width: 5rem;
+    height: 4rem;
+    margin-right: 1rem;
+}
+
+.list-drawer-fav{
+    list-style: none;
+    
+}
+
+.MuiListItem-container {
+    list-style: none;
+    border: 1px solid #E0E0E0;
+}
+
+.tittle-fav-drawer{
+    margin: .5rem;
+    font-weight: 550;
+}
+
+.MuiListItemText-primary{
+    font-weight: 550 !important;
+    font-size: 1rem !important;
+}
+.container-buttons-fav{
+    position: relative;
+    justify-content: center;
+    bottom: -1rem !important;
+    gap: 1rem;
+    display: flex !important;
+}
