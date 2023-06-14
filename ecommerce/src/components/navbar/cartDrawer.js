@@ -44,25 +44,30 @@ function CartDrawer(props) {
   // };
   return (
     <React.Fragment>
+    
       <IconButton style={{ position: 'absolute', zIndex:'2000', top: 0, right: 0 }} onClick={props.handleDrawerCart}>
         <Close/>
       </IconButton>
       <List dense sx={{ padding: '16px' }}>
-        {groupedItems.length > 0 ? (
+      
+        {groupedItems.length > 0  ? (
           groupedItems.map((item) => (
             <ListItem key={item.id}>
               <ListItemAvatar>
-                <img src={item.imagen}/>
+                <img className='img-cart-drawer-product'  src={item.imagen}/>
               </ListItemAvatar>
-              <ListItemText 
-                primary={`${item.name} x ${item.quantity}`}
+              <ListItemText className='text-cart-drawer-product'
+                primary={`${item.name}`}
                 secondary={`$${item.price*item.quantity}`} 
               />
               <ListItemSecondaryAction>
-                <IconButton
+                <IconButton style={{marginRight:"0px"}}
                   edge="end" aria-label="delete" onClick={() => handleRemoveClick(item)}>
                   <RemoveCircleOutline/>
                 </IconButton>
+                <>
+                  {item.quantity}
+                </>
                 <IconButton
                   edge="end" aria-label='delete' onClick={()=>addToCart(item)}
                 >
@@ -70,7 +75,9 @@ function CartDrawer(props) {
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
+            
           ))
+
         ) : (
           <Box>
           <Typography 
@@ -83,8 +90,14 @@ function CartDrawer(props) {
           </Button>
           </Box> 
         )}
-        
+        <List sx={{ padding: '16px' }}>
+        <button className='empty-cart-drawer'
+          onClick={emptyCart}>
+            Vaciar carrito
+        </button>
       </List>
+      </List>
+      
       <Divider />
       
       {groupedItems.length > 0 && (
@@ -99,15 +112,7 @@ function CartDrawer(props) {
         </ListItem>
       </List>
       <Divider />
-      <List sx={{ padding: '16px' }}>
-        <Button 
-          variant="contained" 
-          color="error" 
-          fullWidth 
-          onClick={emptyCart}>
-            Vaciar carrito
-        </Button>
-      </List>
+      
       <Dialog className='alert-cart' open={openDialog} onClose={handleClose}>
       <DialogTitle className='alert-tittle-cart'>ATENCIÓN</DialogTitle>
       <DialogContent>
