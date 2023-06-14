@@ -76,7 +76,6 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
   const removeFromFavorites = async (id, precioId) => {
     // Verificar si el producto ya está marcado como favorito
     if (!favoriteIds.includes(id)) {
-      console.log("El producto se quitó de favoritos");
       return;
     }
 
@@ -88,7 +87,7 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
           UsuarioId: userId,
           PrecioId: precioId,
         };
-
+        console.log(data);
         const response = await fetch("http://a365.com.ar/ecommerce/favoritos", {
           method: "DELETE",
           headers: {
@@ -132,6 +131,7 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
     } else {
       addToFavorites(id, precioId);
     }
+    getFavProduct();
   };
   const getFavProduct = async () => {
     try {

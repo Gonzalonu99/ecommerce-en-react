@@ -20,7 +20,6 @@ const ProductsCarousel = () => {
         setIsLoading(false);
       });
   }, []);
-  console.log(data);
 
   const settings = {
     dots: true,
