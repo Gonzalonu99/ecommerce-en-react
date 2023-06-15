@@ -63,7 +63,7 @@ const FavDrawer = (props) => {
           );
         })
       ) : (
-        <Typography>Agregar al carrito</Typography>
+        null
       )}
     </React.Fragment>
   );
