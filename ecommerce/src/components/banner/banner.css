@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&family=Roboto&display=swap');
+
+.banner{
+    height: 46vh;
+    background-image: url(../../img/banner.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: fadeAnimation 1.7s ease-in-out;
+    align-items: center;
+    
+    
+}
+.banner-tittle{
+    font-size: 5rem !important;
+    font-family: 'PT Serif', serif;
+    margin-top: 3.5rem !important;
+    color: white;
+}
+.banner-sub-tittle{
+    font-family: 'PT Serif', serif;
+    text-align: center;
+    font-size: 1.4rem !important;
+    color: white;
+    font-weight: bold;
+    width: fit-content;
+}
+
+@media (max-width: 1024px){
+    .banner-tittle{
+        font-size: 4rem !important;
+    }
+    .banner-sub-tittle{
+        font-size: 1rem !important;
+    }
+}
+
+@media (max-width: 768px){
+    .banner-tittle{
+        text-align: center;
+        font-size: 3rem !important;
+    }
+    .banner-sub-tittle{
+        display: none ;
+    }
+}
+
+@keyframes fadeAnimation {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
