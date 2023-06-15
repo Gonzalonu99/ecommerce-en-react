@@ -15,19 +15,23 @@
 }
 .banner-tittle{
     font-size: 5rem !important;
-    font-family: 'PT Serif', serif;
+    font-family: 'PT Serif', serif !important;
     margin-top: 3.5rem !important;
     color: white;
 }
 .banner-sub-tittle{
-    font-family: 'PT Serif', serif;
+    font-family: 'PT Serif', serif !important;
     text-align: center;
     font-size: 1.4rem !important;
     color: white;
     font-weight: bold;
     width: fit-content;
 }
-
+@media(max-width:1366px){
+    .banner{
+        height: 60vh !important;
+    }
+}
 @media (max-width: 1024px){
     .banner-tittle{
         font-size: 4rem !important;
