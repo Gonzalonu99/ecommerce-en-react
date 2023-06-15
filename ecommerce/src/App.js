@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/footer/footer";
 import { FavoritesContext, FavoritesProvider } from "./hook/useFav";
 import WspLogo from "./components/wspLogo/wspLogo";
+import Banner from "./components/banner/banner";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -20,6 +21,7 @@ function App() {
       setShowFooter(true);
     }, 2000);
   }, []);
+
 
   useEffect(() => {
     // Verificar si hay un token  y userData almacenados en el localStorage al cargar la aplicación
@@ -91,6 +93,7 @@ function App() {
   return (
     <FavoritesProvider isLoggedIn={isLoggedIn}>
       <CartProvider>
+       <Banner/>
         <Navbar
           scrollToCategory={scrollToCategory}
           isLoggedIn={isLoggedIn}
