@@ -1,0 +1,49 @@
+.tutorial-flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.tutorial-flex-none{
+    display: none;
+}
+
+.tutorial-box {
+    margin: 10px;
+    padding: 30px;
+    width: 300px;
+    display: flex;
+    align-items: center !important;
+}
+
+.tittle-tutorial {
+    font-size: 1.1rem !important;
+    font-weight: bold !important;
+}
+
+.sub-tittle-tutorial {
+    padding-top: .3rem !important;
+    text-align: center;
+}
+
+.tutorial-icon {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.tittle-tutorial-section {
+    margin-top: 3rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.sub-title-tutorial-section {
+    font-weight: bold !important;
+}
+
+@media (max-width: 768px) {
+    .sub-title-tutorial-section{
+        text-align: center;
+    }
+}
