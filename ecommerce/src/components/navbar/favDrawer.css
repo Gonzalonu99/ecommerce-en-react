@@ -34,3 +34,11 @@
     gap: 1rem;
     display: flex !important;
 }
+.fd-cart-icon{
+    position: relative;
+    top: 1.25rem;
+}
+.fd-trash-icon{
+    position: relative;
+    top: -1.25rem;
+}

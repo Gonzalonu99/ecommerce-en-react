@@ -28,6 +28,12 @@
     width: fit-content;
 }
 
+@media(max-width:1366px){
+    .banner{
+        height: 60vh !important;
+    }
+}
+
 @media (max-width: 1024px){
     .banner-tittle{
         font-size: 4rem !important;
