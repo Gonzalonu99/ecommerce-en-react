@@ -10,24 +10,24 @@ const Footer = () => {
       <div className="sb__footer section__padding">
         <div className="sb__footer-links">
           <div className="sb__footer-links-div">
-            <h4>For businnes</h4>
+            <h4>Para empresas</h4>
             <a href="#">
-              <p>Employer</p>
+              <p>Empleador</p>
             </a>
             <a href="#">
-              <p>Healt plan</p>
+              <p>Plan de salud</p>
             </a>
             <a href="#">
-              <p>Individuals</p>
+              <p>Individuos</p>
             </a>
           </div>
           <div className="sb__footer-links-div">
-            <h4>Resources</h4>
+            <h4>Recursos</h4>
             <a href="#">
-              <p>Resource center</p>
+              <p>Centro de recursos</p>
             </a>
             <a href="#">
-              <p>Testimonials</p>
+              <p>Testimonios</p>
             </a>
             <a href="#">
               <p>STV</p>
@@ -40,35 +40,35 @@ const Footer = () => {
             </a>
           </div>
           <div className="sb__footer-links-div">
-            <h4>Company</h4>
+            <h4>Compañía</h4>
             <a href="#">
-              <p>About</p>
+              <p>Acerca de</p>
             </a>
             <a href="#">
-              <p>Press</p>
+              <p>Prensa</p>
             </a>
             <a href="#">
-              <p>Carrer</p>
+              <p>Carrera</p>
             </a>
             <a href="#">
-              <p>Contact</p>
+              <p>Contacto</p>
             </a>
           </div>
           <div className="sb__footer-links-div">
-          <h4>Links</h4>
+            <h4>Enlaces</h4>
             <a href="">
               <div>
-                <p>Terminos y condiciones</p>
+                <p>Términos y condiciones</p>
               </div>
             </a>
             <a href="">
               <div>
-                <p>Privacy</p>
+                <p>Privacidad</p>
               </div>
             </a>
             <a href="">
               <div>
-                <p>Security</p>
+                <p>Seguridad</p>
               </div>
             </a>
             <a href="">
@@ -78,16 +78,16 @@ const Footer = () => {
             </a>
           </div>
           <div className="sb__footer-links-div">
-            <h4>Coming soon</h4>
+            <h4>Próximamente</h4>
             <div className="social-media">
               <p>
-                <img src={fb} alt="facebookLogo"></img>
+                <img src={fb} alt="Logo de Facebook"></img>
               </p>
               <p>
-                <img src={twitter} alt="twitterLogo"></img>
+                <img src={twitter} alt="Logo de Twitter"></img>
               </p>
               <p>
-                <img src={instagram} alt="instagramLogo"></img>
+                <img src={instagram} alt="Logo de Instagram"></img>
               </p>
             </div>
           </div>
@@ -96,7 +96,9 @@ const Footer = () => {
         <hr></hr>
 
         <div className="sb__footer-below">
-            <p>&copy;{new Date().getFullYear()} Romero y Ajo all right reserved</p>
+          <p>
+            &copy;{new Date().getFullYear()} Romero y Ajo all right reserved
+          </p>
         </div>
       </div>
     </div>

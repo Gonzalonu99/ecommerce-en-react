@@ -10,14 +10,17 @@ import Footer from "./components/footer/footer";
 import { FavoritesContext, FavoritesProvider } from "./hook/useFav";
 import WspLogo from "./components/wspLogo/wspLogo";
 import Banner from "./components/banner/banner";
+import Tutorial from "./components/tutorial/tutorial";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
   const [showFooter, setShowFooter] = useState(false);
+  const [showTutorial, setShowTutorial] = useState(false)
   const {getFavProduct} = useContext(FavoritesContext);
   useEffect(() => {
     setTimeout(() => {
+      setShowTutorial(true)
       setShowFooter(true);
     }, 2000);
   }, []);
@@ -103,6 +106,7 @@ function App() {
         />
         <ProductsCarousel />
         <ToastContainer />
+        {showTutorial && <Tutorial/>}
         {showFooter && <Footer />}
       </CartProvider>
       <WspLogo/>
