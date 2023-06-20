@@ -9,12 +9,14 @@ import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 
 
 const TutorialBox = () => {
+  
   useEffect(() => {
     const handleScroll = () => {
       const tutorialFlex = document.querySelector(".tutorial-flex");
       const y = window.scrollY;
+      
 
-      if (tutorialFlex && y <= 637.03125) {
+      if (tutorialFlex) {
         tutorialFlex.classList.remove("tutorial-flex-none");
         ScrollReveal().reveal(".tutorial-flex", slideFromLeft);
         window.removeEventListener("scroll", handleScroll);
@@ -65,7 +67,7 @@ const TutorialBox = () => {
     },
   ];
   return (
-    <>
+    <div className="tutorial-section">
       <Box
         sx={{
           display: "flex",
@@ -111,7 +113,7 @@ const TutorialBox = () => {
       <Box
         sx={{ display: "flex", justifyContent: "center", marginBottom: "50px" }}
       ></Box>
-    </>
+    </div>
   );
 };
 
