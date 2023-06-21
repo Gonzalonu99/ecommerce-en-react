@@ -3,7 +3,8 @@
 }
 
 .footer{
-    border-radius: .3rem;
+    border-top-left-radius: .3rem;
+    border-top-right-radius: .3rem;
     background-color: #2d2d32;
 }
 .sb__footer{

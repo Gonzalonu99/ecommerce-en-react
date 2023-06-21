@@ -1,11 +1,20 @@
 
 
 .wsp-Logo-container{
-    width: 70px;
+    width: 60px;
     position: fixed;
     bottom: .9rem;
     right: .9rem;
     z-index: 1000;
+    padding: .5rem;
+    border-radius: 50%;
+    background-color: #43C653;
+}
+
+@media (max-width:768px){
+    .wsp-Logo-container{
+        width: 55px;
+    }
 }
 
 .wsp-logo-img{

@@ -1,10 +1,13 @@
+.tutorial-section{
+    margin-top: 6rem;
+    margin-bottom:  9rem !important;
+}
+
 .tutorial-flex {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 10px;
 }
 .tutorial-flex-none{
     display: none;
@@ -16,9 +19,11 @@
     width: 300px;
     display: flex;
     align-items: center !important;
+    
 }
 
 .tittle-tutorial {
+    
     font-size: 1.1rem !important;
     font-weight: bold !important;
 }
@@ -26,6 +31,8 @@
 .sub-tittle-tutorial {
     padding-top: .3rem !important;
     text-align: center;
+ 
+    
 }
 
 .tutorial-icon {
@@ -34,7 +41,7 @@
 }
 
 .tittle-tutorial-section {
-    margin-top: 3rem !important;
+    
     margin-bottom: 1rem !important;
 }
 
