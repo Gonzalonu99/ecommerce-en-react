@@ -5,8 +5,8 @@ import { Typography } from "@mui/material";
 
 const Banner = () => {
   return (
-   
-      <div className="banner">
+   <>
+    <div className="banner">
       <Typography variant="h2" className="banner-tittle">
             Bienvenido a Romero & Ajo
       </Typography>
@@ -15,6 +15,7 @@ const Banner = () => {
          cuidadosamente seleccionados para tu deleite. ¡Sabores auténticos te esperan!
         </Typography>
       </div>
+   </>
  
   );
 };
