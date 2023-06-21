@@ -28,6 +28,7 @@
   }
 
   .banner-tittle{
+    font-family: 'PT Serif', serif !important;
     margin-top: 4.5rem !important;
     padding: 1rem;
     z-index: 110;
