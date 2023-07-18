@@ -38,10 +38,7 @@ const ModalUser = (props) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lógica de validación del formulario
-    // Llamada a la función handleLogin pasando el email y password
     handleLogin(email, password);
-    // Finalmente, limpia los campos de email y password y desactiva el botón
     setEmail("");
     setPassword("");
     setLoginButtonDisabled(true);

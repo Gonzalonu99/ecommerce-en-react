@@ -33,7 +33,6 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
           UsuarioId: userId,
           PrecioId: precioId,
         };
-        // Verificar si el producto ya está marcado como favorito
         if (favoriteIds.includes(id)) {
           console.log("El producto ya está marcado como favorito");
           return;
@@ -48,7 +47,7 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
         });
         if (response.ok) {
           console.log("Producto agregado a favoritos");
-          // Guardar los datos de favoritos en el almacenamiento local
+          // Guardar favoritos en el local
           const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
           favorites.push(id);
           setFavoriteIds([...favoriteIds, id]);
@@ -57,7 +56,6 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
           setFavData([...favData, data]);
           setShouldUpdate(true);
         } else {
-          // Manejar errores en la respuesta del servidor
           console.error(
             "Error al agregar producto a favoritos:",
             response.status
@@ -73,7 +71,6 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
     }
   };
   const removeFromFavorites = async (id, precioId) => {
-    // Verificar si el producto ya está marcado como favorito
     if (!favoriteIds.includes(id)) {
       return;
     }
@@ -97,13 +94,11 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
 
         if (response.ok) {
           console.log("Producto eliminado de favoritos");
-
-          // Eliminar el producto de favoritos del almacenamiento local
+          // Eliminar el fav del local
           const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
           const updatedFavorites = favorites.filter((favId) => favId !== id);
           localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
           setFavoriteIds(updatedFavorites);
-
           // Filtrar los datos de favData basados en los IDs actualizados
           const filteredData = favData.filter((fav) => fav.ProductoId !== id);
           setFavData(filteredData);
@@ -147,12 +142,9 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
           }
         );
         const favProd = await response.json();
-        // Obtener los IDs de los productos favoritos
         const favoriteIds = favProd.map((fav) => fav.Id);
         setFavoriteIds(favoriteIds);
-        // Guardar los IDs de los productos favoritos en el almacenamiento local
         localStorage.setItem("favorites", JSON.stringify(favoriteIds));
-        // Actualizar el estado solo si los datos son diferentes
       if (favProd !== favData) {
         setFavData(favProd);
       }
@@ -173,7 +165,6 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
         setLoading(true);
         const userId = getUserId();
         if (userId && isLoggedIn) {
-          // Cargar los favoritos solo cuando el usuario esté autenticado
           const response = await fetch(
             `https://a365.com.ar/ecommerce/favoritos/${userId}`,
             {
@@ -185,12 +176,9 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
             }
           );
           const favProd = await response.json();
-          // Obtener los IDs de los productos favoritos
           const favoriteIds = favProd.map((fav) => fav.Id);
           setFavoriteIds(favoriteIds);
-          // Guardar los IDs de los productos favoritos en el almacenamiento local
           localStorage.setItem("favorites", JSON.stringify(favoriteIds));
-          // Actualizar el estado solo si los datos son diferentes
           if (favProd !== favData) {
             setFavData(favProd);
           }

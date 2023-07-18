@@ -46,9 +46,7 @@ function App() {
       });
       if (response.status === 200) {
         const data = await response.json();
-        // Obtener el token
         const token = data.token;
-        // Almacenar el token localStorage
         localStorage.setItem("token", token);
         const usuarioId = data.usuarioId;
         localStorage.setItem("usuarioId", usuarioId);
