@@ -109,7 +109,7 @@ function Navbar(props) {
       <AppBar
         component="nav"
         className="nav-container"
-        style={{ backgroundColor: "#348759", height: "95px", left: "0px" }}
+        style={{ backgroundColor: "#348759", height: "90px", left: "0px" }}
       >
         <Toolbar variant="permanent" style={{ marginTop: "5px" }}>
           <IconButton
@@ -135,9 +135,9 @@ function Navbar(props) {
             <IconButton className="navbar-icons" onClick={handleModalUser}>
               {isLoggedIn ? (
                 <h6
-                  style={{ fontSize: "15px", position: "relative", top: "5px" }}
+                  style={{ fontSize: "15px", position: "relative", top: "5px", padding: "2px" }}
                 >
-                  {`¡Hola ${userData && userData.nombre}!`}
+                  {`${userData.nombre}`}
                 </h6>
               ) : null}
               
@@ -218,7 +218,7 @@ function Navbar(props) {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true,
+            keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
             display: { xs: "block", sm: "inherit" },
@@ -242,6 +242,10 @@ function Navbar(props) {
 }
 
 Navbar.propTypes = {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
   window: PropTypes.func,
 };
 
