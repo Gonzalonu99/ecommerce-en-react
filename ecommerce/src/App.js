@@ -37,7 +37,7 @@ function App() {
   }, []);
   const handleLogin = async (email, password) => {
     try {
-      const response = await fetch("http://a365.com.ar/ecommerce/login", {
+      const response = await fetch("https://a365.com.ar/ecommerce/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
