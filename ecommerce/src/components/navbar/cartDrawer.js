@@ -85,6 +85,7 @@ function CartDrawer(props) {
     setEmptyModal(false);
   };
   return (
+    
     <React.Fragment>
       <IconButton
         style={{ position: "absolute", zIndex: "2000", top: 0, right: 0 }}
@@ -92,6 +93,9 @@ function CartDrawer(props) {
       >
         <Close />
       </IconButton>
+      {groupedItems.length > 0 &&(
+        <Typography style={{borderBottom:"1px solid #cccc", padding:".4rem", margin: ".5rem",fontWeight:"bold"}}>Mi carrito</Typography>
+      )}
       <List dense sx={{ padding: "16px" }}>
         {groupedItems.length > 0 ? (
           groupedItems.map((item) => (
@@ -139,6 +143,7 @@ function CartDrawer(props) {
           </Box>
         )}
       </List>
+      
       {groupedItems.length > 0 && (
         <>
           <List sx={{ padding: "16px" }}>
