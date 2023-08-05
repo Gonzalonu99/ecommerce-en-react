@@ -9,7 +9,7 @@ const ProductsCarousel = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   useEffect(() => {
-    fetch("http://a365.com.ar/ecommerce/getProductos")
+    fetch("https://a365.com.ar/ecommerce/getProductos")
       .then((response) => response.json())
       .then((data) => {
         setData(data);

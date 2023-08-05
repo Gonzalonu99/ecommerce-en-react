@@ -37,7 +37,7 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
           console.log("El producto ya está marcado como favorito");
           return;
         }
-        const response = await fetch("http://a365.com.ar/ecommerce/favoritos", {
+        const response = await fetch("https://a365.com.ar/ecommerce/favoritos", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -83,7 +83,7 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
           UsuarioId: userId,
           PrecioId: precioId,
         };
-        const response = await fetch("http://a365.com.ar/ecommerce/favoritos", {
+        const response = await fetch("https://a365.com.ar/ecommerce/favoritos", {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
