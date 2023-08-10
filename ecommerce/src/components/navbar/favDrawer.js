@@ -16,7 +16,10 @@ import "./favDrawer.css";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
 import corazonVacio from "../../img/corazonVacio.svg";
+import { CartContext } from "../../hook/useCart";
+
 const FavDrawer = (props) => {
+  const { addToCart } = useContext(CartContext);
   const { favData, handleFavorites } = useContext(FavoritesContext);
   const handleDelete = async (id, precioId) => {
     await handleFavorites(id, precioId);
@@ -55,6 +58,7 @@ const FavDrawer = (props) => {
                   edge="end"
                   aria-label="cart"
                   className="fd-cart-icon"
+                  onClick={()=> addToCart(item)}
                 >
                   <AddShoppingCartOutlinedIcon />
                 </IconButton>
