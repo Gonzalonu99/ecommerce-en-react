@@ -70,15 +70,15 @@ const ProductsCarousel = () => {
         >
           <h2 className="products-carousel-title">{subrubro.NombreSubRubro}</h2>
           <Slider {...settings}>
-            {subrubro.Productos.map((product)=>(
+            {subrubro.Productos.map((item)=>(
               <ProductCard 
-                key={product.Id}
-                id={product.Id}
-                nombre={product.Nombre}
-                imagen={product.Imagen}
-                descripcion={product.Descripcion}
-                precio={product.Precio}
-                precioId={product.PrecioId}
+                key={item.Id}
+                Id={item.Id}
+                Nombre={item.Nombre}
+                Imagen={item.Imagen}
+                Descripcion={item.Descripcion}
+                Precio={item.Precio}
+                PrecioId={item.PrecioId}
               />
             ))}
           </Slider>
