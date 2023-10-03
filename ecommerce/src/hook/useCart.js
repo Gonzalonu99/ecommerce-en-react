@@ -48,6 +48,7 @@ const CartProvider = ({ isLoggedIn, children }) => {
           setCartItemsIds([...cartItemIds, item.Id]);
           localStorage.setItem("carrito", JSON.stringify(carrito));
           setCartData([...cartData, data]);
+          getCartItem();
         }
       }
     } catch (error) {

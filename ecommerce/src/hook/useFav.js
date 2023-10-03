@@ -142,6 +142,7 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
           }
         );
         const favProd = await response.json();
+        console.log("FavProd: ", favProd);
         const favoriteIds = favProd.map((fav) => fav.Id);
         setFavoriteIds(favoriteIds);
         localStorage.setItem("favorites", JSON.stringify(favoriteIds));
@@ -210,7 +211,8 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
         removeFromFavorites,
         getFavProduct,
         handleFavorites,
-        updateFavorites
+        updateFavorites,
+        getUserId
       }}
     >
       {children}
