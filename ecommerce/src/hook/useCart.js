@@ -49,6 +49,9 @@ const CartProvider = ({ isLoggedIn, children }) => {
           localStorage.setItem("carrito", JSON.stringify(carrito));
           setCartData([...cartData, data]);
           getCartItem();
+          toast.info(`${item.Nombre} agregado al carrito.`, {
+            className: "mobile-toast",
+          })
         }
       }
     } catch (error) {
@@ -78,6 +81,9 @@ const CartProvider = ({ isLoggedIn, children }) => {
         if (response) {
           console.log("Producto eliminado del carrito");
           getCartItem();
+          toast.info(`${item.Nombre} eliminado del carrito.`, {
+            className: "mobile-toast",
+          })
         } else {
           console.error(
             "Error al eliminar producto del carrito:",
