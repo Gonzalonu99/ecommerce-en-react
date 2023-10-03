@@ -47,7 +47,6 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
         });
         if (response.ok) {
           console.log("Producto agregado a favoritos");
-          // Guardar favoritos en el local
           const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
           favorites.push(id);
           setFavoriteIds([...favoriteIds, id]);
@@ -94,12 +93,10 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
 
         if (response.ok) {
           console.log("Producto eliminado de favoritos");
-          // Eliminar el fav del local
           const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
           const updatedFavorites = favorites.filter((favId) => favId !== id);
           localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
           setFavoriteIds(updatedFavorites);
-          // Filtrar los datos de favData basados en los IDs actualizados
           const filteredData = favData.filter((fav) => fav.ProductoId !== id);
           setFavData(filteredData);
           setShouldUpdate(true);
