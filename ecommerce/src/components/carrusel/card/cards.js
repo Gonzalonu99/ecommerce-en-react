@@ -11,14 +11,14 @@ import AddToCart from "../../cartButton/cartButton";
 import "./cards.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useCart } from "../../../hook/useCart";
 import { useContext } from "react";
 import { FavoritesContext } from "../../../hook/useFav";
+import { CartContext } from "../../../hook/useCart";
 
 export default function ProductCard(props) {
-  const { addToCart } = useCart();
+  const { addToCart } = useContext(CartContext);
   const { favoriteIds, handleFavorites, setFavoriteIds } = useContext(FavoritesContext);
-  const isFavorite = favoriteIds.includes(props.id);
+  const isFavorite = favoriteIds.includes(props.Id);
 
   useEffect(() => {
     // Verificar si el producto está en la lista de favoritos al cargar la página
@@ -36,14 +36,14 @@ export default function ProductCard(props) {
         marginRight: "0px",
         boxShadow: "2px 2px 4px rgba(0,0,0,0.3)",
       }}
-      key={props.id}
-      id={props.id}
+      key={props.Id}
+      id={props.Id}
     >
       <CardMedia
         component="img"
         height="170"
-        image={props.imagen}
-        alt={props.nombre}
+        image={props.Imagen}
+        alt={props.Nombre}
       />
       <CardContent>
         <Typography
@@ -51,31 +51,31 @@ export default function ProductCard(props) {
           color="text.primary"
           style={{ fontSize: "16px", fontWeight: "bold", paddingTop: "10px" }}
         >
-          {props.nombre}
+          {props.Nombre}
         </Typography>
         <Typography
           variant="body2"
           color="text.secondary"
           style={{ fontSize: "15px" }}
         >
-          {props.descripcion}
+          {props.Descripcion}
         </Typography>
         <Typography
           style={{ paddingTop: "20px", fontSize: "25px", fontWeight: "bold" }}
         >
-          $ {props.precio}
+          $ {props.Precio}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
         <IconButton
           aria-label="add to favorites"
-          onClick={() => handleFavorites(props.id, props.precioId)}
+          onClick={() => handleFavorites(props.Id, props.PrecioId)}
           className="favButton"
           style={{ backgroundColor: isFavorite ? "red" : "gray" }}
         >
           <FavoriteIcon style={{ color: "#fff" }} />
         </IconButton>
-        <AddToCart onClick={() => addToCart({ id: props.id, ...props })} />
+        <AddToCart onClick={() => addToCart({ id: props.Id, ...props })} />
       </CardActions>
     </Card>
   );
