@@ -1,5 +1,4 @@
-import React from "react";
-import { useCart } from "../../hook/useCart";
+import React, { useContext, useEffect } from "react";
 import {
   Button,
   Divider,
@@ -25,53 +24,51 @@ import {
 import "./cartDrawer.css";
 import { useState } from "react";
 import CarritoVacio from "../../img/carritoVacio.webp";
+import { CartContext } from "../../hook/useCart";
 
 function CartDrawer(props) {
   const {
-    cartItems,
-    removeFromCartAllProducts,
+    cartData,
     removeFromCartAtOnce,
     getTotalPrice,
     addToCart,
     emptyCart,
-  } = useCart();
+  } = useContext(CartContext);
   const [openDialog, setOpenDialog] = useState(false);
   const [emptyModal, setEmptyModal] = useState(false);
   const [itemToRemove, setItemToRemove] = useState(null);
-  // Agrupar los elementos del mismo producto en un solo objeto
-  const groupedItems = cartItems.reduce((acc, item) => {
-    const existingItemIndex = acc.findIndex((i) => i.id === item.id);
+
+  const groupedItems = cartData.reduce((acc, item) => {
+    const existingItemIndex = acc.findIndex((i) => i.Id === item.ProductoId);
     if (existingItemIndex !== -1) {
-      acc[existingItemIndex].quantity++;
+      acc[existingItemIndex].Cantidad++;
     } else {
       acc.push({
         ...item,
-        id: item.id,
-        name: item.nombre,
-        price: item.precio,
-        quantity: item.quantity,
-        imagen: item.imagen,
+        Id: item.Id,
+        Nombre: item.Nombre,
+        Precio: item.Precio,
+        Cantidad: item.Cantidad,
+        Imagen: item.Imagen,
       });
     }
     return acc;
   }, []);
+
   const handleEmptyCartModal = () => {
     setEmptyModal(true);
   };
   const handleRemoveClick = (item) => {
-    const existingItemIndex = cartItems.findIndex(
-      (cartItem) => cartItem.id === item.id
-    );
-    if (cartItems[existingItemIndex].quantity === 1) {
-      setItemToRemove(existingItemIndex);
+    if (item.Cantidad === 1) {
+      setItemToRemove(item);
       setOpenDialog(true);
     } else {
-      removeFromCartAtOnce(item.id);
+      removeFromCartAtOnce(item);
     }
   };
 
-  const handleRemoveConfirm = () => {
-    removeFromCartAllProducts(cartItems[itemToRemove].id);
+  const handleRemoveConfirm = async (item) => {
+    await removeFromCartAtOnce(item);
     setOpenDialog(false);
   };
 
@@ -85,7 +82,6 @@ function CartDrawer(props) {
     setEmptyModal(false);
   };
   return (
-    
     <React.Fragment>
       <IconButton
         style={{ position: "absolute", zIndex: "2000", top: 0, right: 0 }}
@@ -93,20 +89,29 @@ function CartDrawer(props) {
       >
         <Close />
       </IconButton>
-      {groupedItems.length > 0 &&(
-        <Typography style={{borderBottom:"1px solid #cccc", padding:".4rem", margin: ".5rem",fontWeight:"bold"}}>Mi carrito</Typography>
+      {groupedItems.length > 0 && (
+        <Typography
+          style={{
+            borderBottom: "1px solid #cccc",
+            padding: ".4rem",
+            margin: ".5rem",
+            fontWeight: "bold",
+          }}
+        >
+          Mi carrito
+        </Typography>
       )}
       <List dense sx={{ padding: "16px" }}>
         {groupedItems.length > 0 ? (
-          groupedItems.map((item) => (
-            <ListItem key={item.id}>
+          groupedItems.map((item, index) => (
+            <ListItem key={index} id={item.Id}>
               <ListItemAvatar>
-                <img className="img-cart-drawer-product" src={item.imagen} />
+                <img className="img-cart-drawer-product" src={item.Imagen} />
               </ListItemAvatar>
               <ListItemText
                 className="text-cart-drawer-product"
-                primary={`${item.name}`}
-                secondary={`$${item.price * item.quantity}`}
+                primary={`${item.Nombre}`}
+                secondary={`$${item.Precio * item.Cantidad}`}
               />
               <ListItemSecondaryAction>
                 <IconButton
@@ -117,7 +122,7 @@ function CartDrawer(props) {
                 >
                   <RemoveCircleOutline />
                 </IconButton>
-                <>{item.quantity}</>
+                <>{item.Cantidad}</>
                 <IconButton
                   edge="end"
                   aria-label="delete"
@@ -143,16 +148,19 @@ function CartDrawer(props) {
           </Box>
         )}
       </List>
-      
+
       {groupedItems.length > 0 && (
         <>
           <List sx={{ padding: "16px" }}>
             <ListItem sx={{ padding: "16px" }}>
-              <button className="empty-cart-drawer" onClick={handleEmptyCartModal}>
+              <button
+                className="empty-cart-drawer"
+                onClick={handleEmptyCartModal}
+              >
                 Vaciar carrito
               </button>
             </ListItem>
-            <Divider/>
+            <Divider />
             <ListItem>
               <ListItemText primary="Total" />
               <Typography variant="subtitle1" component="span">
@@ -178,7 +186,7 @@ function CartDrawer(props) {
               </Button>
               <Button
                 className="btn-cart-clear-remove"
-                onClick={handleRemoveConfirm}
+                onClick={()=> handleRemoveConfirm(itemToRemove)}
                 color="error"
               >
                 Quitar

@@ -8,18 +8,7 @@ const CartProvider = ({ isLoggedIn, children }) => {
   const [cartData, setCartData] = useState([]);
   const [cartItemIds, setCartItemsIds] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [shouldUpdate, setShouldUpdate] = useState(false);
-  const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
-    if (shouldUpdate) {
-      getCartItem();
-      setShouldUpdate(false);
-    }
-  }, [shouldUpdate, cartItemIds]);
-  const updateCart = () => {
-    setShouldUpdate(true);
-  };
 
   const getUserId = () => {
     const usuarioId = localStorage.getItem("usuarioId");
@@ -40,6 +29,7 @@ const CartProvider = ({ isLoggedIn, children }) => {
           ProductoId: item.Id,
           PrecioId: item.PrecioId,
           Cantidad: 1,
+          Precio: item.Precio,
         };
         const response = await fetch(
           `https://a365.com.ar/ecommerce/newPendiente`,
@@ -55,11 +45,9 @@ const CartProvider = ({ isLoggedIn, children }) => {
         if (response) {
           console.log("Producto agregado al carrito", data);
           const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-          carrito.push(item.id);
           setCartItemsIds([...cartItemIds, item.Id]);
           localStorage.setItem("carrito", JSON.stringify(carrito));
           setCartData([...cartData, data]);
-          setShouldUpdate(true);
         }
       }
     } catch (error) {
@@ -67,19 +55,16 @@ const CartProvider = ({ isLoggedIn, children }) => {
     }
   };
 
-  const removeFromCartAllProducts = async (id) => {
-    if (!cartItemIds.includes(id)) {
-      return;
-    }
+  const removeFromCartAtOnce = async (item) => {
     try {
       const userId = getUserId();
       if (userId) {
         const data = {
           UsuarioId: userId,
-          ProductoId: id,
+          ProductoId: item.Id,
         };
         const response = await fetch(
-          `https://a365.com.ar/ecommerce/deleteProd/${userId}`,
+          `https://a365.com.ar/ecommerce/deleteProd`,
           {
             method: "DELETE",
             headers: {
@@ -89,87 +74,9 @@ const CartProvider = ({ isLoggedIn, children }) => {
             body: JSON.stringify(data),
           }
         );
-        if (response.ok) {
+        if (response) {
           console.log("Producto eliminado del carrito");
-          const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-          const updatedCarrito = carrito.filter((carId) => carId !== id);
-          localStorage.setItem("carrito", JSON.stringify(updatedCarrito));
-          setCartItemsIds(updatedCarrito);
-
-          const filteredCartData = cartData.filter(
-            (car) => car.ProductoId !== id
-          );
-          setCartData(filteredCartData);
-          setShouldUpdate(true);
-          console.log(filteredCartData);
-        } else {
-          console.error(
-            "Error al eliminar producto del carrito:",
-            response.status
-          );
-        }
-      } else {
-        console.log(
-          "El usuario no está autenticado. No se puede eliminar del carrito."
-        );
-      }
-    } catch (error) {
-      console.error("Error al eliminar producto del carrito:", error);
-    }
-  };
-
-  const removeFromCartAtOnce = async (id) => {
-    try {
-      const userId = getUserId();
-      if (userId) {
-        const data = {
-          UsuarioId: userId,
-          ProductoId: id,
-        };
-        const response = await fetch(
-          `https://a365.com.ar/ecommerce/deleteProd/${userId}`,
-          {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-            body: JSON.stringify(data),
-          }
-        );
-        if (response.ok) {
-          console.log("Producto eliminado del carrito");
-          const existingItemIndex = cartData.findIndex(
-            (item) => item.ProductoId === id
-          );
-          if (existingItemIndex !== -1) {
-            const itemToRemove = cartData[existingItemIndex];
-            if (itemToRemove.Cantidad === 1) {
-              const sameProductItems = cartData.filter(
-                (item) => item.ProductoId === id
-              );
-              if (sameProductItems.length === 1) {
-                setShowModal(true);
-                return;
-              } else {
-                const updatedCartItems = cartData.filter(
-                  (item) => item.ProductoId !== id
-                );
-                setCartData(updatedCartItems);
-              }
-            } else {
-              const updatedItem = {
-                ...itemToRemove,
-                Cantidad: itemToRemove.Cantidad - 1,
-              };
-              const updatedCartItems = [
-                ...cartData.slice(0, existingItemIndex),
-                updatedItem,
-                ...cartData.slice(existingItemIndex + 1),
-              ];
-              setCartData(updatedCartItems);
-            }
-          }
+          getCartItem();
         } else {
           console.error(
             "Error al eliminar producto del carrito:",
@@ -242,7 +149,6 @@ const CartProvider = ({ isLoggedIn, children }) => {
           }
         );
         const cartProd = await response.json();
-        console.log("CartProd: ", cartProd);
         const cartItemIds = cartProd.map((cart) => cart.Id);
         setCartItemsIds(cartItemIds);
         localStorage.setItem("carrito", JSON.stringify(cartItemIds));
@@ -278,12 +184,10 @@ const CartProvider = ({ isLoggedIn, children }) => {
             }
           );
           const cartProd = await response.json();
-          console.log("Cart data from API:", cartProd);
           const cartItemIds = cartProd.map((cart) => cart.Id);
           setCartItemsIds(cartItemIds);
           localStorage.setItem("carrito", JSON.stringify(cartItemIds));
           if (cartProd !== cartData) {
-            console.log("Cart data updated:", cartProd);
             setCartData(cartProd);
           }
         } else {
@@ -305,11 +209,10 @@ const CartProvider = ({ isLoggedIn, children }) => {
       value={{
         cartData,
         addToCart,
-        removeFromCartAllProducts,
         removeFromCartAtOnce,
         emptyCart,
         getTotalPrice,
-        updateCart,
+        getCartItem,
       }}
     >
       {children}

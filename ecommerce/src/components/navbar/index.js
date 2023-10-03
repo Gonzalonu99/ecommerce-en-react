@@ -20,18 +20,19 @@ import Favorite from "@mui/icons-material/Favorite";
 import User from "@mui/icons-material/Person";
 import CartDrawer from "./cartDrawer";
 import ModalUser from "./modalUser";
-import { useCart } from "../../hook/useCart";
 import { useState, useEffect } from "react";
 import logo from "../../img/logo.jpg";
 import FavDrawer from "./favDrawer";
 import { FavoritesContext } from "../../hook/useFav";
+import { useContext } from "react";
+import { CartContext } from "../../hook/useCart";
 
 
 const drawerWidth = 300;
 const drawerCartWidth = 350;
 
 function Navbar(props) {
-  const { cartItems } = useCart();
+  const { cartData } = useContext(CartContext);
   const { window } = props;
   const { isLoggedIn, handleLogin, handleLogout } = props;
   const { scrollToCategory } = props;
@@ -148,10 +149,7 @@ function Navbar(props) {
             </IconButton>
             <IconButton className="navbar-icons" onClick={handleDrawerCart}>
               <Badge
-                badgeContent={cartItems.reduce(
-                  (total, item) => total + item.quantity,
-                  0
-                )}
+                badgeContent={cartData.length}
                 color="error"
               >
                 <ShoppingCart className="nav-icon" />
