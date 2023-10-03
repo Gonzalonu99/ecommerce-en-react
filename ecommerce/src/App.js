@@ -1,7 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/navbar/index";
 import ProductsCarousel from "./components/carrusel/carrusel";
-import { CartProvider } from "./hook/useCart";
 import { useState, useEffect, useContext } from "react";
 import jwt_decode from "jwt-decode";
 import { toast, ToastContainer } from "react-toastify";
@@ -11,23 +10,23 @@ import { FavoritesContext, FavoritesProvider } from "./hook/useFav";
 import WspLogo from "./components/wspLogo/wspLogo";
 import Banner from "./components/banner/banner";
 import Tutorial from "./components/tutorial/tutorial";
+import { CartContext, CartProvider } from "./hook/useCart";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
   const [showFooter, setShowFooter] = useState(false);
-  const [showTutorial, setShowTutorial] = useState(false)
-  const {getFavProduct} = useContext(FavoritesContext);
+  const [showTutorial, setShowTutorial] = useState(false);
+  const { getFavProduct } = useContext(FavoritesContext);
+  const { getCartItem } = useContext(CartContext);
   useEffect(() => {
     setTimeout(() => {
-      setShowTutorial(true)
+      setShowTutorial(true);
       setShowFooter(true);
     }, 2000);
   }, []);
 
-
   useEffect(() => {
-    // Verificar si hay un token  y userData almacenados en el localStorage al cargar la aplicación
     const token = localStorage.getItem("token");
     const storedUserData = localStorage.getItem("userData");
     if (token && storedUserData) {
@@ -46,25 +45,26 @@ function App() {
       });
       if (response.status === 200) {
         const data = await response.json();
-        const token = data.token;
-        localStorage.setItem("token", token);
-        const usuarioId = data.usuarioId;
-        localStorage.setItem("usuarioId", usuarioId);
-        setIsLoggedIn(true);
-        console.log("Inicio de sesión exitoso");
-        localStorage.setItem('userData', JSON.stringify(data));
-        setUserData(data);
-        getFavProduct();
         if (data.success === true) {
+          const token = data.token;
+          localStorage.setItem("token", token);
+          const usuarioId = data.usuarioId;
+          localStorage.setItem("usuarioId", usuarioId);
+          setIsLoggedIn(true);
+          console.log("Inicio de sesión exitoso");
+          localStorage.setItem("userData", JSON.stringify(data));
+          setUserData(data);
+          getFavProduct();
+          getCartItem();
           toast.success("Inicio de sesión exitoso", {
             className: "mobile-toast",
           });
-        }
-      } else {
+        }else {
         const data = await response.json();
         setIsLoggedIn(false);
-        console.error("Inicio de sesión fallido:", data.error);
+        console.error("Inicio de sesión fallido:", data.error);        
       }
+      } 
     } catch (error) {
       console.error("Error al iniciar sesión:", error.message);
       toast.error("Inicio de sesión fallido", {
@@ -73,7 +73,6 @@ function App() {
     }
   };
   const handleLogout = () => {
-    // Eliminar el token del localStorage
     localStorage.clear();
     localStorage.removeItem("usuarioId");
     localStorage.removeItem("token");
@@ -93,8 +92,8 @@ function App() {
   };
   return (
     <FavoritesProvider isLoggedIn={isLoggedIn}>
-      <CartProvider>
-       <Banner/>
+      <CartProvider isLoggedIn={isLoggedIn}>
+        <Banner />
         <Navbar
           scrollToCategory={scrollToCategory}
           isLoggedIn={isLoggedIn}
@@ -104,10 +103,10 @@ function App() {
         />
         <ProductsCarousel />
         <ToastContainer />
-        {showTutorial && <Tutorial/>}
+        {showTutorial && <Tutorial />}
         {showFooter && <Footer />}
       </CartProvider>
-      <WspLogo/>
+      <WspLogo />
     </FavoritesProvider>
   );
 }
