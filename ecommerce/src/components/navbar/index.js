@@ -13,7 +13,7 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Badge } from "@mui/material";
+import { Badge, Button } from "@mui/material";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import "./navbar.css";
 import Favorite from "@mui/icons-material/Favorite";
@@ -21,7 +21,7 @@ import User from "@mui/icons-material/Person";
 import CartDrawer from "./cartDrawer";
 import ModalUser from "./modalUser";
 import { useState, useEffect } from "react";
-import logo from "../../img/logo.jpg";
+import logo from "../../img/pizza_grosso.webp";
 import FavDrawer from "./favDrawer";
 import { FavoritesContext } from "../../hook/useFav";
 import { useContext } from "react";
@@ -110,53 +110,52 @@ function Navbar(props) {
       <AppBar
         component="nav"
         className="nav-container"
-        style={{ backgroundColor: "#348759", height: "90px", left: "0px" }}
+        style={{ backgroundColor: "#f4e2d0", opacity: "1", height: "90px", left: "0px" }}
       >
-        <Toolbar variant="permanent" style={{ marginTop: "5px" }}>
-          <IconButton
-            className="nav-drawer"
-            color="#ffffff"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 0, display: { sm: "list-item" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="img"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "block", sm: "block" } }}
-            style={{ color: "#333" }}
-          >
-            <img className="nav-logo" src={logo} alt="Romero y Ajo logo" />
-          </Typography>
-          <div className="nav-icons-div">
-          
-            <IconButton className="navbar-icons" onClick={handleModalUser}>
-              {isLoggedIn ? (
-                <h6
-                  style={{ fontSize: "15px", position: "relative", top: "5px", padding: "2px" }}
-                >
-                  {`${userData.nombre}`}
-                </h6>
-              ) : null}
-              
-              <User className="nav-icon" />
-            </IconButton>
-            <IconButton className="navbar-icons" onClick={handleFavDrawer}>
-              <Favorite className="nav-icon" style={{color: favData.length > 0 ? 'red' : '#fff'}}/>
-            </IconButton>
-            <IconButton className="navbar-icons" onClick={handleDrawerCart}>
-              <Badge
-                badgeContent={cartData.length}
-                color="error"
-              >
-                <ShoppingCart className="nav-icon" />
-              </Badge>
-            </IconButton>
-          </div>
-        </Toolbar>
+       <Toolbar variant="permanent" style={{ marginTop: "5px", display: "flex", justifyContent: "space-between" }}>
+  <div>
+    {/* <IconButton
+      className="nav-drawer"
+      color="inherit"
+      aria-label="open drawer"
+      edge="start"
+      onClick={handleDrawerToggle}
+      sx={{ mr: 0, display: { sm: "list-item" } }}
+    >
+      <MenuIcon />
+    </IconButton> */}
+    <div sx={{ display: "flex", alignItems: "center" }}>
+      <img className="nav-logo" src={logo} alt="Romero y Ajo logo" />
+      
+    </div>
+    
+  </div>
+  <div>
+      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#000",fontWeight:"bold" }}>Carta digital</Button>
+      <Button variant="transparent" sx={{ marginLeft: "10px",color:"#000",fontWeight:"bold"  }}>Sucursal</Button>
+      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#000", fontWeight:"bold" }}>Contacto</Button>
+  </div>
+  
+  <div className="nav-icons-div" style={{ display: "flex", alignItems: "center" }}>
+  
+    <IconButton className="navbar-icons" onClick={handleModalUser}>
+      {isLoggedIn ? (
+        <h6 style={{ fontSize: "15px", position: "relative", top: "5px", padding: "2px" }}>
+          {`${userData.nombre}`}
+        </h6>
+      ) : null}
+      <User className="nav-icon" />
+    </IconButton>
+    <IconButton className="navbar-icons" onClick={handleFavDrawer}>
+      <Favorite className="nav-icon" style={{ color: favData.length > 0 ? 'red' : '#fff' }} />
+    </IconButton>
+    <IconButton className="navbar-icons" onClick={handleDrawerCart}>
+      <Badge badgeContent={cartData.length} color="error">
+        <ShoppingCart className="nav-icon" />
+      </Badge>
+    </IconButton>
+  </div>
+</Toolbar>
       </AppBar>
       {/*Modal de Inicio de Sesión o Registro */}
       <ModalUser
@@ -209,7 +208,7 @@ function Navbar(props) {
         </Drawer>
       </Box>
       {/* Drawer del menú hamburguesa */}
-      <Box component="nav">
+      {/* <Box component="nav">
         <Drawer
           container={container}
           variant="temporary"
@@ -234,7 +233,7 @@ function Navbar(props) {
           {drawer}
 
         </Drawer>
-      </Box>
+      </Box> */}
     </Box>
   );
 }

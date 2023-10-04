@@ -1,15 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 
 .banner {
     position: relative;
-    height: 50vh;
-    background-image: url(../../img/banner.webp);
-    background-size: cover;
+    height: 100vh;
+    background-image: url(../../img/banner.jpg);
+    background-size: 100% 110%;
+    background-position: bottom center;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
+    padding-left: 5rem;
     color: white;
     z-index: 50;
     animation: fadeAnimation 1.7s ease-in-out;
@@ -28,21 +30,46 @@
   }
 
   .banner-tittle{
-    font-family: 'PT Serif', serif !important;
+    font-family: 'Lilita One', sans-serif !important;
     margin-top: 4.5rem !important;
+    font-weight: bold !important;
+    width: 45rem;
     padding: 1rem;
+    font-size: 4rem !important;
     z-index: 110;
   }
 .banner-sub-tittle{
-    font-family: 'PT Serif', serif !important;
-    text-align: center;
-    font-size: 1.4rem !important;
+    font-family: sans-serif !important;
+    text-align: left !important;
+    font-size: 1.5rem !important;
     color: white;
-    font-weight: bold;
-    width: fit-content;
+    width: 50rem;
     z-index: 100;
 }
 
+.banner-sub-tittle-2{
+    font-family: 'Lilita One', sans-serif !important;
+    font-size: 1.5rem;
+    color: #d2342c;
+    filter: brightness(1.3);
+}
+
+.btn-banner{
+    text-transform: uppercase;
+    margin-top: 1.5rem !important;
+    font-weight: bold !important;
+    border: none !important;
+    background-color: #d2342c !important;
+    margin-right: .5rem !important;
+}
+
+.btn-banner-negro{
+    text-transform: uppercase;
+    margin-top: 1.5rem !important;
+    font-weight: bold !important;
+    border: none !important;
+    background-color: black !important;
+}
 @media(max-width:1366px){
     .banner{
         height: 60vh !important;
