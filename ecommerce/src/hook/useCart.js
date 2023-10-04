@@ -51,6 +51,7 @@ const CartProvider = ({ isLoggedIn, children }) => {
           getCartItem();
           toast.info(`${item.Nombre} agregado al carrito.`, {
             className: "mobile-toast",
+            position: "top-left"
           })
         }
       }
@@ -83,6 +84,7 @@ const CartProvider = ({ isLoggedIn, children }) => {
           getCartItem();
           toast.info(`${item.Nombre} eliminado del carrito.`, {
             className: "mobile-toast",
+            position: "top-left",
           })
         } else {
           console.error(

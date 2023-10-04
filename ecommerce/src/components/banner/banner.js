@@ -1,19 +1,26 @@
 import React from "react";
 import banner from "../../img/banner.webp";
 import "./banner.css";
-import { Typography } from "@mui/material";
+import { Typography, Button } from "@mui/material";
 
 const Banner = () => {
   return (
    <>
     <div className="banner">
       <Typography variant="h2" className="banner-tittle">
-            Bienvenido a Romero & Ajo
+           ¡Pizza Grosso te va a enamorar con sus sabores!
       </Typography>
-        <Typography className="banner-sub-tittle" variant="body2">
-        Descubre la excelencia culinaria en cada bocado. Productos comestibles envasados de alta calidad, <br/>
-         cuidadosamente seleccionados para tu deleite. ¡Sabores auténticos te esperan!
-        </Typography>
+      <Typography variant="body3" className="banner-sub-tittle">
+            ¿Estas buscando la mejor experiencia de pizzas que vas a tener?
+      </Typography>
+      <Typography variant="body3" className="banner-sub-tittle-2">
+            Estas en el lugar correcto
+      </Typography>
+       
+        <div>
+          <Button className="btn-banner">Carta digital</Button>
+          <Button className="btn-banner-negro">Contactanos</Button>
+        </div>
       </div>
    </>
  

@@ -1,5 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
+import { toast } from "react-toastify";
 const FavoritesContext = createContext();
+
 
 const FavoritesProvider = ({ isLoggedIn, children }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -47,6 +49,10 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
         });
         if (response.ok) {
           console.log("Producto agregado a favoritos");
+          toast.info(`Producto agregado a favoritos`, {
+            position: "top-left",
+            className: "mobile-toast"
+          });
           const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
           favorites.push(id);
           setFavoriteIds([...favoriteIds, id]);
@@ -93,6 +99,10 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
 
         if (response.ok) {
           console.log("Producto eliminado de favoritos");
+          toast.info("Producto eliminado de favoritos", {
+            position: "top-left",
+            className: "mobile-toast",
+          });
           const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
           const updatedFavorites = favorites.filter((favId) => favId !== id);
           localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
