@@ -34,6 +34,7 @@ export default function ProductCard(props) {
         borderRadius: "10px",
         height: "380px",
         marginRight: "0px",
+        marginBottom: "1rem",
         backgroundColor: "#f4e2d0",
         boxShadow: "2px 2px 4px rgba(0,0,0,0.3)",
       }}
