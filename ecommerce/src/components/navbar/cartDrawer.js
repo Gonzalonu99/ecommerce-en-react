@@ -82,6 +82,7 @@ function CartDrawer(props) {
     setEmptyModal(false);
   };
   return (
+    
     <React.Fragment>
       <IconButton
         style={{ position: "absolute", zIndex: "2000", top: 0, right: 0 }}

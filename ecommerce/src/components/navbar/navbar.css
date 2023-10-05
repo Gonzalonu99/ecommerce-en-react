@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+
 .navbar-toggler{
     margin-right: 20px;
     /* margin-top: 10px; */
@@ -10,12 +13,10 @@
     justify-content: end;
 }
 .navbar-icons{
-    color: #d2342c !important; 
+    color: #fff !important; 
 }
 .navContainer{
     margin-bottom: 2rem;
-  
-    
 }
 .nav-logo{
     position: relative;
@@ -23,9 +24,17 @@
     height: 80px;
     border-radius: .6rem;
 }
-
 .nav-drawer{
-    color: #d2342c !important;
+    display: none;
+}
+@media (max-width: 768px){
+    .nav-drawer{
+        display: block;
+        color: #d2342c !important;
+    }
+}
+.drawer-title{
+    font-family: 'Abril Fatface', cursive;
 }
 .nav--logo-drawer{
     margin: 0 auto;
@@ -49,3 +58,23 @@
 .user-drawer-navbar{
     flex-direction: row-reverse !important;
 }
+
+@media (max-width: 1366px) {
+    .nav-logo-container{
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .nav-logo-container{
+        margin-left: -190px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-logo-container{
+        margin-left: -75px;
+    }
+}
+
+
