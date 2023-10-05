@@ -10,6 +10,7 @@ const Banner = () => {
       <Typography variant="h2" className="banner-tittle">
            ¡Pizza Grosso te va a enamorar con sus sabores!
       </Typography>
+      
       <Typography variant="body3" className="banner-sub-tittle">
             ¿Estas buscando la mejor experiencia de pizzas que vas a tener?
       </Typography>

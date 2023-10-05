@@ -6,10 +6,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -26,6 +22,7 @@ import FavDrawer from "./favDrawer";
 import { FavoritesContext } from "../../hook/useFav";
 import { useContext } from "react";
 import { CartContext } from "../../hook/useCart";
+
 
 
 const drawerWidth = 300;
@@ -46,6 +43,9 @@ function Navbar(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+
+  
+
   useEffect(() => {
     fetch("https://a365.com.ar/ecommerce/getProductos")
       .then((response) => response.json())
@@ -58,6 +58,10 @@ function Navbar(props) {
         setIsLoading(false);
       });
   }, []);
+
+
+
+
   const handleFavDrawer = () => {
     setFavDrawerOpen((prevState) => !prevState);
   };
@@ -74,23 +78,13 @@ function Navbar(props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Romero y Ajo
+      <Typography className="drawer-title" variant="h6" sx={{ my: 2 }}>
+      Pizza Grosso
       </Typography>
       <Divider />
-      <List>
-        {data &&
-          data.SubRubros.map((subrubro) => (
-            <ListItem key={subrubro.NombreSubRubro} disablePadding>
-              <ListItemButton
-                onClick={() => scrollToCategory(subrubro.NombreSubRubro)}
-                sx={{ textAlign: "center" }}
-              >
-                <ListItemText primary={subrubro.NombreSubRubro} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-      </List>
+      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#d2342c",fontWeight:"bold" }}>Carta digital</Button>
+      <Button variant="transparent" sx={{ marginLeft: "10px",color:"#d2342c",fontWeight:"bold"  }}>Sucursal</Button>
+      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#d2342c", fontWeight:"bold" }}>Contacto</Button>
     </Box>
   );
 
@@ -109,31 +103,30 @@ function Navbar(props) {
       <CssBaseline />
       <AppBar
         component="nav"
-        className="nav-container"
-        style={{ backgroundColor: "#f4e2d0", opacity: "1", height: "90px", left: "0px" }}
+        className={"nav-container"}
+        style={{ backgroundColor: "#111",width:'100vw', opacity: "1", height: "90px", left: "0px" }}
       >
        <Toolbar variant="permanent" style={{ marginTop: "5px", display: "flex", justifyContent: "space-between" }}>
-  <div>
-    {/* <IconButton
+    <IconButton
       className="nav-drawer"
       color="inherit"
       aria-label="open drawer"
       edge="start"
       onClick={handleDrawerToggle}
-      sx={{ mr: 0, display: { sm: "list-item" } }}
-    >
-      <MenuIcon />
-    </IconButton> */}
-    <div sx={{ display: "flex", alignItems: "center" }}>
-      <img className="nav-logo" src={logo} alt="Romero y Ajo logo" />
+      sx={{ mr: 0, display: { xs:"list-item",  sm: "list-item" , md:"none" , lg: "none", xl: "none" } }}
       
+    >
+    
+      <MenuIcon />
+    </IconButton>
+    <div className="nav-logo-container" sx={{ display: "flex", alignItems: "center" }}>
+      <img className="nav-logo" src={logo} alt="Pizza Grosso logo" />
     </div>
     
-  </div>
-  <div>
-      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#000",fontWeight:"bold" }}>Carta digital</Button>
-      <Button variant="transparent" sx={{ marginLeft: "10px",color:"#000",fontWeight:"bold"  }}>Sucursal</Button>
-      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#000", fontWeight:"bold" }}>Contacto</Button>
+  <div style={{ display: "flex"}}>
+      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#fff",fontWeight:"bold", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"} }}>Carta digital</Button>
+      <Button variant="transparent" sx={{ marginLeft: "10px",color:"#fff",fontWeight:"bold", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"}  }}>Sucursal</Button>
+      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#fff", fontWeight:"bold",display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"}  }}>Contacto</Button>
   </div>
   
   <div className="nav-icons-div" style={{ display: "flex", alignItems: "center" }}>
@@ -176,12 +169,9 @@ function Navbar(props) {
             keepMounted: true,
           }}
           sx={{
-            display: { xs: "block", sm: "inherit" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
               width: drawerCartWidth,
-            },
-          }}
+            }
+          }
         >
           <CartDrawer cartOpen={cartOpen} handleDrawerCart={handleDrawerCart} />
         </Drawer>
@@ -197,18 +187,16 @@ function Navbar(props) {
             keepMounted: true,
           }}
           sx={{
-            display: { xs: "block", sm: "inherit" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
+
               width: drawerCartWidth,
-            },
-          }}
+            }
+          }
         >
           <FavDrawer favDrawerOpen={favDrawerOpen} handleFavDrawer={handleFavDrawer}/>
         </Drawer>
       </Box>
       {/* Drawer del menú hamburguesa */}
-      {/* <Box component="nav">
+      <Box component="nav">
         <Drawer
           container={container}
           variant="temporary"
@@ -231,9 +219,8 @@ function Navbar(props) {
             alt="Romero y Ajo"
           />
           {drawer}
-
         </Drawer>
-      </Box> */}
+      </Box>
     </Box>
   );
 }
