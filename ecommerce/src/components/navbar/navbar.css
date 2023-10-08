@@ -13,9 +13,10 @@
     justify-content: end;
 }
 .navbar-icons{
-    color: #fff !important; 
+    color: #fff !important;
 }
 .navContainer{
+    
     margin-bottom: 2rem;
 }
 .nav-logo{
@@ -30,8 +31,9 @@
 @media (max-width: 768px){
     .nav-drawer{
         display: block;
-        color: #d2342c !important;
+        color: white !important;
     }
+    
 }
 .drawer-title{
     font-family: 'Abril Fatface', cursive;
@@ -57,6 +59,10 @@
 
 .user-drawer-navbar{
     flex-direction: row-reverse !important;
+}
+
+.navbar-icons{
+    height: 2rem!important;
 }
 
 @media (max-width: 1366px) {
