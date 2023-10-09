@@ -51,7 +51,7 @@ const ModalUser = (props) => {
     transform: "translate(-50%, -50%)",
     width: 320,
     bgcolor: "background.paper",
-    border: "2px solid #000",
+    borderRadius: "10px",
     boxShadow: 24,
     p: 4,
   };
@@ -124,10 +124,10 @@ const ModalUser = (props) => {
                 onChange={handlePasswordChange}
               />
             </FormControl>
-            <Button
-              className="btn-login"
+            <Button 
+             className={`${loginButtonDisabled ? 'btn-login' : 'btn-active'}`}
               variant="contained"
-              color="primary"
+              
               disabled={loginButtonDisabled}
               onClick={handleSubmit}
             >

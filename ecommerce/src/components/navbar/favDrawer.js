@@ -81,6 +81,7 @@ const FavDrawer = (props) => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            width:"25rem"
           }}
         >
           <img

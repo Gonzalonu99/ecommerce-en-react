@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import { IconButton, Typography, TextField, Radio } from "@mui/material";
 import "./registro.css"
 import 'animate.css';
-import logo from "../../img/logo.jpg";
+import logo from "../../img/pizza_grosso.webp";
 import { CheckBox, Close } from "@mui/icons-material";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -69,7 +69,7 @@ const SignInModal = () => {
   };
   const handleSignIn = async () => {
     try {
-      const response = await fetch("http://a365.com.ar/ecommerce/registrar", {
+      const response = await fetch("https://a365.com.ar/ecommerce/registrar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -219,7 +219,7 @@ const SignInModal = () => {
           />
           <Button  className="btn-register-confirm"
             variant="contained"
-            style={{ backgroundColor: loginButtonDisabled ? 'grey' : 'green' }}
+            style={{ backgroundColor: loginButtonDisabled ? 'grey' : '#d2342c' }}
             disabled={loginButtonDisabled}
             onClick={handleSignIn}
             >

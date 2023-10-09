@@ -109,7 +109,7 @@ function CartDrawer(props) {
               <ListItemAvatar>
                 <img className="img-cart-drawer-product" src={item.Imagen} />
               </ListItemAvatar>
-              <ListItemText
+              <ListItemText sx={{width: "17rem"}}
                 className="text-cart-drawer-product"
                 primary={`${item.Nombre}`}
                 secondary={`$${item.Precio * item.Cantidad}`}

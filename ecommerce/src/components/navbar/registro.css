@@ -32,18 +32,18 @@
 /*div completo de login */
 .css-18twnu7{
     border-radius: .7rem !important;
-    border: 2px solid #348759 !important;
+    border: 2px solid #d2342c !important;
 }
 .css-1mx2gd{
     border-radius: .7rem !important;
-    border: 2px solid #348759 !important;
+    border: 2px solid #f4e2d0 !important;
 }
 /*                      */
 #modal-modal-title{
     text-align: center;
     font-size: 1.4rem;
     font-weight: bold;
-    border-bottom: 1px solid #7abd4a !important;   
+    border-bottom: 1px solid #d2342c !important;   
 }
 #modal-modal-description{
     text-align: center;
@@ -52,9 +52,13 @@
     margin-bottom: 1rem;
 }
 .btn-login{
-
  margin-bottom: .5rem !important;
 } 
+
+.btn-active{
+    background-color: #d2342c !important;
+    margin-bottom: .5rem !important;
+}
 
 .restablecer-contraseña{
     display: block;
@@ -70,9 +74,8 @@
 }
 /*btn de register*/
 .MuiButton-text{
-
-    border: 1px solid #348759 !important;
-    background-color: #348759 !important;
+    
+    background-color: #d2342c !important;
     color: white !important;
     padding: .5rem 1rem !important;
     border-radius: 1rem !important;
@@ -84,7 +87,7 @@
     text-align: center;
     font-size: 1.4rem;
     font-weight: bold;
-    border-bottom: 1px solid #7abd4a !important;   
+    border-bottom: 1px solid #d2342c !important;   
     margin-bottom: 1rem;
 }
 .register-subtittle{
@@ -132,6 +135,7 @@
 .btn-register-confirm:hover{
     transform: scale(1.1);
 }
+
 
 
 @media((max-width: 768px)){
