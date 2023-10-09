@@ -77,7 +77,7 @@ const TutorialBox = () => {
         }}
       >
         <Typography className="tittle-tutorial-section" variant="subtitle1">
-          Romero y Ajo
+          Grosso
         </Typography>
         <Typography className="sub-title-tutorial-section" variant="h4">
           ¿QUERÉS COMPRAR AHORA?
