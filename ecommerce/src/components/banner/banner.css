@@ -50,7 +50,7 @@
     z-index: 110;
   }
 .banner-sub-tittle{
-    font-family: sans-serif !important;
+    font-family: 'Lilita One', sans-serif !important;
     text-align: left !important;
     font-size: 1.5rem !important;
     color: white;
@@ -69,18 +69,18 @@
 .btn-banner{
     text-transform: uppercase;
     margin-top: 1.5rem !important;
-    font-weight: bold !important;
     border: none !important;
     background-color: #d2342c !important;
     margin-right: .5rem !important;
+    font-family: 'Lilita One', sans-serif !important;
 }
 
 .btn-banner-negro{
     text-transform: uppercase;
     margin-top: 1.5rem !important;
-    font-weight: bold !important;
     border: none !important;
     background-color: black !important;
+    font-family: 'Lilita One', sans-serif !important;
 }
 
 
