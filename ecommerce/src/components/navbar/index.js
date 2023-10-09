@@ -129,7 +129,7 @@ function Navbar(props) {
       <Button variant="transparent" sx={{ marginLeft: "10px", color:"#fff", fontWeight:"bold",display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"}  }}>Contacto</Button>
   </div>
   
-  <div className="nav-icons-div" style={{ display: "flex", alignItems: "center" }}>
+  <div className="" style={{ display: "flex", alignItems: "end" }}>
   
     <IconButton className="navbar-icons" onClick={handleModalUser}>
       {isLoggedIn ? (
@@ -143,8 +143,8 @@ function Navbar(props) {
       <Favorite className="nav-icon" style={{ color: favData.length > 0 ? 'red' : '#fff' }} />
     </IconButton>
     <IconButton className="navbar-icons" onClick={handleDrawerCart}>
-      <Badge badgeContent={cartData.length} color="error">
-        <ShoppingCart className="nav-icon" />
+      <Badge sx={{}} badgeContent={cartData.length} color="error">
+        <ShoppingCart className="nav-icons" />
       </Badge>
     </IconButton>
   </div>

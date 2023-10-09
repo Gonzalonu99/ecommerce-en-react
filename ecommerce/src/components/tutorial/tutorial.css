@@ -1,7 +1,7 @@
 .tutorial-section{
     margin-top: 6rem;
     margin-bottom:  9rem !important;
-    height: 25rem;
+    height: auto;
 }
 
 .tutorial-flex {

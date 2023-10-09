@@ -17,6 +17,7 @@
     z-index: 50;
     height: 100vh !important;
     animation: fadeAnimation 1.7s ease-in-out;
+    overflow-x: hidden;
   }
 
   @media (max-width: 768px) {
