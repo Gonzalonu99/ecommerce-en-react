@@ -35,7 +35,9 @@
         display: block;
         color: white !important;
     }
-    
+    .nav-logo{
+        margin-left: 2rem;
+    }
 }
 .nav--logo-drawer{
     margin: 0 auto;
