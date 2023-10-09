@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import './card/cards.css';
 import ProductCard from './card/cards';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";

@@ -124,9 +124,9 @@ function Navbar(props) {
     </div>
     
   <div style={{ display: "flex"}}>
-      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#fff",fontWeight:"bold", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"} }}>Carta digital</Button>
-      <Button variant="transparent" sx={{ marginLeft: "10px",color:"#fff",fontWeight:"bold", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"}  }}>Sucursal</Button>
-      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#fff", fontWeight:"bold",display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"}  }}>Contacto</Button>
+      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#fff", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"} }} className="navbar-btn-cntr">Menú</Button>
+      <Button variant="transparent" sx={{ marginLeft: "10px",color:"#fff", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"}  }} className="navbar-btn-cntr">Sucursal</Button>
+      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#fff",  display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"}  }} className="navbar-btn-cntr">Contacto</Button>
   </div>
   
   <div className="" style={{ display: "flex", alignItems: "end" }}>
