@@ -105,16 +105,15 @@ function CartDrawer(props) {
       <List dense sx={{ padding: "16px" }}>
         {groupedItems.length > 0 ? (
           groupedItems.map((item, index) => (
-            <ListItem key={index} id={item.Id}>
+            <ListItem key={index} id={item.Id} sx={{display: "flex", flexDirection: "row"}}>
               <ListItemAvatar>
                 <img className="img-cart-drawer-product" src={item.Imagen} />
               </ListItemAvatar>
-              <ListItemText sx={{width: "17rem"}}
+              <ListItemText
                 className="text-cart-drawer-product"
                 primary={`${item.Nombre}`}
                 secondary={`$${item.Precio * item.Cantidad}`}
               />
-              <ListItemSecondaryAction>
                 <IconButton
                   style={{ marginRight: "0px" }}
                   edge="end"
@@ -131,7 +130,6 @@ function CartDrawer(props) {
                 >
                   <AddCircleOutline />
                 </IconButton>
-              </ListItemSecondaryAction>
             </ListItem>
           ))
         ) : (
