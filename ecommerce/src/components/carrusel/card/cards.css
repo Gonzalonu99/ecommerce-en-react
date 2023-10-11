@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&display=swap');
 .card-content-container{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     padding: 5px;
+    text-align: center;
 }
 .products-carousel-title{
     color: #d2342c;
@@ -24,17 +28,8 @@
     justify-content: center;
 } */
 /*carrusel*/
-.MuiCard-root {
-    margin-right: 0;
-}
-.MuiPaper-root,
-.MuiPaper-elevation,
-.MuiPaper-rounded,
-.MuiPaper-elevation1,
-.MuiCard-root, 
-.css-1xez8po-MuiPaper-root-MuiCard-root{
-    margin-right: 0;
-}
+
+
 .slick-slide{
     width: 240px !important;
     margin-right: 2rem;
@@ -76,3 +71,83 @@
     margin-top: 2rem;
     
 }
+
+
+.btn-card-cart{
+    font-family: 'Lilita One', sans-serif !important;
+}
+.cards-btn-container{
+    justify-content:center !important;
+}
+
+/*MODAL*/
+
+.modal-container{
+    animation: fadeAnimation .7s ease-in-out;
+    display: flex;
+    gap: 2rem;
+    padding: 0rem 4.5rem 0rem 2rem;
+}
+@media (max-width:1124px){
+    .modal-container{
+        flex-wrap: wrap;
+        text-align: center;
+        padding: 0rem 3.5rem;
+    }
+}
+.modal-content{
+    display: flex;
+    flex-direction: column;
+}
+.modal-header{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+}
+@media (max-width:1124px){
+    .modal-header{
+        align-items: center;
+    }
+}
+
+.modal-header h4{
+    font-family: "Croissant One", cursive !important;
+    font-weight: 600 !important;
+    font-size: 2rem;
+ color: #d2342c;
+}
+
+.modal-header p{
+    padding: .5rem 0rem;
+    opacity: .6;
+}
+
+.modal-price p {
+    font-size: 30px;
+    color: #d2342c;
+}
+
+.modal-icons{
+    display: flex;
+    align-items: center;
+
+}
+
+@media (max-width:1124px){
+    .modal-icons{
+        justify-content: center;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .modal{
+        width: 20rem;
+    }
+}
+
+@keyframes fadeAnimation {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
