@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&display=swap');
+
+.info-section{
+    font-family: "Croissant One", cursive !important;
+    
+}
+
+.sub-title-tutorial-section{
+    font-family: "Croissant One", cursive !important;;
+}
+
+@media (max-width:768px) {
+    .tutorial-box{
+    gap: 1.5rem;
+    }
+}
+
+@media (max-width:768px) {
+    .tutorial-box:last-child{
+    display: none !important;
+    }
+}

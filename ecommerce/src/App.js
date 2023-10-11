@@ -11,6 +11,7 @@ import WspLogo from "./components/wspLogo/wspLogo";
 import Banner from "./components/banner/banner";
 import Tutorial from "./components/tutorial/tutorial";
 import { CartContext, CartProvider } from "./hook/useCart";
+import Info from "./components/info/info";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,7 +24,7 @@ function App() {
     setTimeout(() => {
       setShowTutorial(true);
       setShowFooter(true);
-    }, 2000);
+    }, 0);
   }, []);
 
   useEffect(() => {
@@ -101,6 +102,7 @@ function App() {
           handleLogin={handleLogin}
           handleLogout={handleLogout}
         />
+        <Info/>
         <ProductsCarousel />
         <ToastContainer />
         {showTutorial && <Tutorial />}
