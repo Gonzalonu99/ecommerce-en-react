@@ -158,7 +158,7 @@ export default function ProductCard(props) {
                             width: "auto",
                           }}
                         >
-                          AGREGAR A FAVORITOS{" "}
+                        {isFavorite ? `QUITAR DE FAVORITOS` : `AGREGAR A FAVORITOS`}  
                           <FavoriteIcon
                             style={{ marginLeft: ".4rem", color: "#fff" }}
                           />
