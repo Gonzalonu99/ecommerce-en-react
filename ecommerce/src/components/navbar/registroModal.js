@@ -23,7 +23,6 @@ const SignInModal = () => {
   const [loginButtonDisabled, setLoginButtonDisabled] = React.useState(true);
   const [showPassword, setShowPassword] = React.useState(false);
   const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [phone, setPhone] = React.useState("");
@@ -37,31 +36,25 @@ const SignInModal = () => {
   const handleNameChange = (event) => {
     setName(event.target.value);
     setLoginButtonDisabled(
-      !(event.target.value && password && lastName && email && phone)
-    );
-  };
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-    setLoginButtonDisabled(
-      !(event.target.value && password && name && email && phone)
+      !(event.target.value && password && email && phone)
     );
   };
   const handlePhoneChange = (event) => {
     setPhone(event.target.value);
     setLoginButtonDisabled(
-      !(event.target.value && password && name && email && lastName)
+      !(event.target.value && password && name && email)
     );
   };
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
     setLoginButtonDisabled(
-      !(event.target.value && password && name && lastName && phone)
+      !(event.target.value && password && name && phone)
     );
   };
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
     setLoginButtonDisabled(
-      !(event.target.value && email && name && lastName && phone)
+      !(event.target.value && email && name && phone)
     );
   };
   const handleSignInModal = () => {
@@ -76,7 +69,6 @@ const SignInModal = () => {
         },
         body: JSON.stringify({
           Nombre: name,
-          Apellido: lastName,
           Email: email,
           Password: password,
           Telefono: phone,
@@ -103,7 +95,6 @@ const SignInModal = () => {
           },
         });
         setName("");
-        setLastName("");
         setPhone("");
         setEmail("");
         setPassword("");
@@ -158,13 +149,6 @@ const SignInModal = () => {
             label="Name"
             value={name}
             onChange={handleNameChange}
-          />
-          <TextField className="input-register"
-            required
-            id="outlined-required-lastName"
-            label="Last Name"
-            value={lastName}
-            onChange={handleLastNameChange}
           />
          
           <TextField className="input-register"
