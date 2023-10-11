@@ -29,15 +29,11 @@ const InfonfoBox = () => {
           alignItems: "center",
         }}
       >
-        <Typography
-          sx={{
-            color: "#d2342c",
-          }}
-          className="sub-title-tutorial-section "
-          variant="h4"
+        <h2
+          className="sub-title-info-section "
         >
           Sobre Nosotros
-        </Typography>
+        </h2>
       </Box>
       <div className="tutorial-flex">
         {boxData.map((tutorial, index) => (

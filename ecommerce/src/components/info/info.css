@@ -5,8 +5,10 @@
     
 }
 
-.sub-title-tutorial-section{
+.sub-title-info-section{
     font-family: "Croissant One", cursive !important;;
+    color: #d2342c;
+    font-weight: normal !important;
 }
 .tutorial-box{
     gap: 1.5rem;
