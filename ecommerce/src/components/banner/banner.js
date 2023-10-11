@@ -12,7 +12,7 @@ const Banner = () => {
       </Typography>
       
       <Typography variant="body3" className="banner-sub-tittle">
-            ¿Estas buscando la mejor experiencia de pizzas que vas a tener?
+            ¿Estas buscando Pizzas al mejor estilo Italiano?
       </Typography>
       <Typography variant="body3" className="banner-sub-tittle-2">
             Estas en el lugar correcto

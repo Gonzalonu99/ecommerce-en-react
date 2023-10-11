@@ -97,7 +97,7 @@ const Footer = () => {
 
         <div className="sb__footer-below">
           <p>
-            &copy;{new Date().getFullYear()} Romero y Ajo all right reserved
+            &copy;{new Date().getFullYear()} Napoletana Grosso all right reserved
           </p>
         </div>
       </div>
