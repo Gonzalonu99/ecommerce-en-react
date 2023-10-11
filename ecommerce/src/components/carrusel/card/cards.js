@@ -21,13 +21,17 @@ import Modal from "react-modal";
 
 const customStyles = {
   content: {
-    
+    marginTop: "2rem",
+    zIndex: 9999,
     top: "50%",
     left: "50%",
     right: "auto",
     bottom: "auto",
     width: "auto",
+    backgroundColor:"#111",
     transform: "translate(-50%, -50%)",
+    borderRadius: "10px",
+    
   },
 };
 
@@ -104,11 +108,11 @@ export default function ProductCard(props) {
             }}
             className="cards-btn"
           />
+          <div className="modal1">
           <Modal
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             style={customStyles}
-            
             contentLabel="Example Modal"
           >
           
@@ -117,10 +121,10 @@ export default function ProductCard(props) {
               <div>
                 <CardMedia
                   component="img"
-                  width="50"
+                 className="img-modal"
                   height="300"
                   sx={{
-                    borderRadius:"10px"
+                  borderRadius:"10px",
                   }}
                   image={props.Imagen}
                   alt={props.Nombre}
@@ -137,7 +141,7 @@ export default function ProductCard(props) {
                   <ModalAddToCart
                     onClick={() => {
                       addToCart({ id: props.id, ...props }); // Note: 'props.Id' should be 'props.id'
-                      openModal(); // Corrected to call the 'openModal' function
+                      closeModal(); // Corrected to call the 'openModal' function
                     }}
                     className="cards-btn"
                   />
@@ -145,13 +149,16 @@ export default function ProductCard(props) {
                     aria-label="add to favorites"
                     onClick={() => handleFavorites(props.Id, props.PrecioId)}
                   >
-                   <Button style={{ fontSize:'15px', borderRadius:'10px', color:'#fff', width: 'auto'}}>AGREGAR A FAVORITOS</Button>
+                   <Button className="btn-fav-modal" style={{ borderRadius:'10px', color:'#fff', width: 'auto'}}>AGREGAR A FAVORITOS <FavoriteIcon style={{marginLeft:".4rem", color: "#fff" }}/></Button>
+                   
                   </IconButton>
                   </div>
                 </div>
               </div>
             </div>
+            
           </Modal>
+          </div>
           {/* <IconButton
             aria-label="add to favorites"
             onClick={() => handleFavorites(props.Id, props.PrecioId)}

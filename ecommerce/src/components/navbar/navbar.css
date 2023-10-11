@@ -84,4 +84,15 @@
     }
 }
 
+@media (max-width: 360px) {
+    .nav-logo-container{
+       display: none;
+    }
+}
+
+@media (max-width: 429px) {
+    .nav-container{
+        justify-content: center !important;
+    }
+}
 

@@ -67,21 +67,39 @@
  
 }
 
-.products-carousel-container{
+.products-container{
     overflow-x: hidden;
     margin-top: 2rem;
-    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.6rem;    
 }
+
 
 
 .btn-card-cart{
     font-family: 'Lilita One', sans-serif !important;
+}
+@media (max-width:768px){
+    .btn-card-cart{
+        font-size: .8rem !important;
+        width: auto !important;
+    }
 }
 .cards-btn-container{
     justify-content:center !important;
 }
 
 /*MODAL*/
+@media (max-width:768px){
+    .btn-fav-modal{
+        font-size: .8rem !important;
+        width: auto !important;
+    }
+}
+
 
 .modal-container{
     animation: fadeAnimation .7s ease-in-out;
@@ -93,12 +111,19 @@
     .modal-container{
         flex-wrap: wrap;
         text-align: center;
-        padding: 0rem 3.5rem;
+        padding: 0rem 1.5rem;
+        justify-content: center;
     }
 }
 .modal-content{
     display: flex;
     flex-direction: column;
+}
+
+@media (max-width:768px){
+    .modal-content{
+        font-size: .9rem;
+    }
 }
 .modal-header{
     display: flex;
@@ -118,9 +143,17 @@
  color: #d2342c;
 }
 
+@media (max-width:768px){
+    .modal-header h4{
+        font-size: 1.4rem;
+    }
+}
+
 .modal-header p{
     padding: .5rem 0rem;
-    opacity: .6;
+    opacity: .7;
+    color: white;
+
 }
 
 .modal-price p {
@@ -131,7 +164,26 @@
 .modal-icons{
     display: flex;
     align-items: center;
+    width: auto;
+}
+.modal1{
+    z-index: 99999999999 !important;
+}
 
+@media (max-width:768px){
+    .modal-icons button{
+        font-size: .2rem;
+    }
+}
+
+.img-modal{
+    width: 20rem !important;
+}
+
+@media (max-width:768px) {
+    .img-modal{
+        width: 12rem !important;
+    }
 }
 
 @media (max-width:1124px){
@@ -146,6 +198,7 @@
     .modal{
         width: 20rem;
     }
+    
 }
 
 @keyframes fadeAnimation {
