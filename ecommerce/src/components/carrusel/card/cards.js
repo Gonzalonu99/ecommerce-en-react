@@ -16,7 +16,7 @@ import { useContext } from "react";
 import { FavoritesContext } from "../../../hook/useFav";
 import { CartContext } from "../../../hook/useCart";
 import { Button } from "@mui/material";
-import CancelIcon from '@mui/icons-material/Cancel';
+import CancelIcon from "@mui/icons-material/Cancel";
 import Modal from "react-modal";
 
 const customStyles = {
@@ -28,10 +28,9 @@ const customStyles = {
     right: "auto",
     bottom: "auto",
     width: "auto",
-    backgroundColor:"#111",
+    backgroundColor: "#111",
     transform: "translate(-50%, -50%)",
     borderRadius: "10px",
-    
   },
 };
 
@@ -66,9 +65,6 @@ export default function ProductCard(props) {
         marginBottom: "1rem",
         backgroundColor: "rgba(255, 255, 255, .62",
         boxShadow: "2px 2px 4px rgba(0,0,0,0.3)",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
         display: "flex",
         width: "300px",
         flexDirection: "column",
@@ -79,7 +75,7 @@ export default function ProductCard(props) {
     >
       <CardMedia
         component="img"
-        height="300"
+        height="220"
         image={props.Imagen}
         alt={props.Nombre}
       />
@@ -104,60 +100,75 @@ export default function ProductCard(props) {
         <CardActions disableSpacing className="cards-btn-container">
           <AddToCart
             onClick={() => {
-              openModal(); // Corrected to call the 'openModal' function
+              openModal();
             }}
             className="cards-btn"
           />
           <div className="modal1">
-          <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={closeModal}
-            style={customStyles}
-            contentLabel="Example Modal"
-          >
-          
-            <CancelIcon sx={{cursor:"pointer", color:"#d2342c", height:"25px"}} onClick={closeModal}close/>
-            <div className="modal-container">
-              <div>
-                <CardMedia
-                  component="img"
-                 className="img-modal"
-                  height="300"
-                  sx={{
-                  borderRadius:"10px",
-                  }}
-                  image={props.Imagen}
-                  alt={props.Nombre}
-                />
-              </div>
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h4>{props.Nombre}</h4>
-                  <p>{props.Descripcion}</p>
-                </div>
-                <div className="modal-price">
-                  <p>${props.Precio}</p>
-                  <div className="modal-icons">
-                  <ModalAddToCart
-                    onClick={() => {
-                      addToCart({ id: props.id, ...props }); // Note: 'props.Id' should be 'props.id'
-                      closeModal(); // Corrected to call the 'openModal' function
+            <Modal
+              isOpen={modalIsOpen}
+              onRequestClose={closeModal}
+              style={customStyles}
+              contentLabel="Example Modal"
+            >
+              <CancelIcon
+                sx={{ cursor: "pointer", color: "#d2342c", height: "25px" }}
+                onClick={closeModal}
+                close
+              />
+              <div className="modal-container">
+                <div>
+                  <CardMedia
+                    component="img"
+                    className="img-modal"
+                    height="300"
+                    sx={{
+                      borderRadius: "10px",
                     }}
-                    className="cards-btn"
+                    image={props.Imagen}
+                    alt={props.Nombre}
                   />
-                  <IconButton
-                    aria-label="add to favorites"
-                    onClick={() => handleFavorites(props.Id, props.PrecioId)}
-                  >
-                   <Button className="btn-fav-modal" style={{ borderRadius:'10px', color:'#fff', width: 'auto'}}>AGREGAR A FAVORITOS <FavoriteIcon style={{marginLeft:".4rem", color: "#fff" }}/></Button>
-                   
-                  </IconButton>
+                </div>
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h4>{props.Nombre}</h4>
+                    <p>{props.Descripcion}</p>
+                  </div>
+                  <div className="modal-price">
+                    <p>${props.Precio}</p>
+                    <div className="modal-icons">
+                      <ModalAddToCart
+                        onClick={() => {
+                          addToCart({ id: props.id, ...props });
+                          closeModal();
+                        }}
+                        className="cards-btn"
+                      />
+                      <IconButton
+                        aria-label="add to favorites"
+                        onClick={() =>
+                          handleFavorites(props.Id, props.PrecioId)
+                        }
+                      >
+                        <Button
+                          className="btn-fav-modal"
+                          style={{
+                            borderRadius: "10px",
+                            color: "#fff",
+                            width: "auto",
+                          }}
+                        >
+                          AGREGAR A FAVORITOS{" "}
+                          <FavoriteIcon
+                            style={{ marginLeft: ".4rem", color: "#fff" }}
+                          />
+                        </Button>
+                      </IconButton>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            
-          </Modal>
+            </Modal>
           </div>
           {/* <IconButton
             aria-label="add to favorites"
