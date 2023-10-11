@@ -34,6 +34,7 @@
 a{
     color: rgb(175, 175, 170);
     text-decoration: none ;
+    width: fit-content;
 }
 
 .social-media{
@@ -90,7 +91,6 @@ hr{
 .sb__footer-below p{
     font-size: 13px;
     color: white;
-    font-weight: 600;
     text-align: center;
 }
 
