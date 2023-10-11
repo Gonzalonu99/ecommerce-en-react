@@ -10,6 +10,9 @@
     color: red;
     text-align: center;
 }
+.subtittle-cart-clear{
+    text-align: center;
+}
 .btn-cart-clear-remove{
     margin-right: 5rem !important;
    
@@ -33,11 +36,12 @@
     background-color: grey !important;
   }
 
-  .carrito-vacio-img{
+.carrito-vacio-img{
     overflow: hidden;
     width: 15rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    opacity: .6;
   }
 
 .img-cart-drawer-product{

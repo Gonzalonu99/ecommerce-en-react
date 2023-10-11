@@ -23,7 +23,7 @@ import {
 } from "@mui/icons-material";
 import "./cartDrawer.css";
 import { useState } from "react";
-import CarritoVacio from "../../img/carritoVacio.webp";
+import PorcionPizza from "../../img/porcion-pizza.webp";
 import { CartContext } from "../../hook/useCart";
 
 function CartDrawer(props) {
@@ -107,7 +107,7 @@ function CartDrawer(props) {
           groupedItems.map((item, index) => (
             <ListItem key={index} id={item.Id} sx={{display: "flex", flexDirection: "row"}}>
               <ListItemAvatar>
-                <img className="img-cart-drawer-product" src={item.Imagen} />
+                <img className="img-cart-drawer-product" src={item.Imagen} alt="imagen de producto"/>
               </ListItemAvatar>
               <ListItemText
                 className="text-cart-drawer-product"
@@ -137,7 +137,7 @@ function CartDrawer(props) {
             <Typography variant="subtitle1" align="center">
               Tu carrito está vacío
             </Typography>
-            <img className="carrito-vacio-img" src={CarritoVacio} />
+            <img className="carrito-vacio-img" src={PorcionPizza} alt="porcion de pizza"/>
             <Button
               className="btn-vaciar-carrito"
               onClick={props.handleDrawerCart}
