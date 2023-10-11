@@ -128,6 +128,39 @@
         width: 20rem;
     }
 }
+.modal-container{
+    animation: fadeAnimation .7s ease-in-out;
+    display: flex;
+    gap: 2rem;
+    padding: 0rem 4.5rem 0rem 2rem;
+}
+@media (max-width:768px){
+    .modal-container{
+        flex-wrap: wrap;
+        text-align: center;
+        padding: 0rem 1.5rem;
+        justify-content: center;
+    }
+        .modal-content{
+        font-size: .9rem;
+    }
+        .btn-fav-modal{
+        font-size: .8rem !important;
+        width: auto !important;
+    }
+    .modal-header h4{
+        font-size: 1.4rem;
+    }
+    .modal-icons button{
+        font-size: .2rem;
+    }
+    .img-modal{
+        width: 12rem !important;
+    }
+    .modal{
+        width: 20rem;
+    }
+}
 .modal-content{
     display: flex;
     flex-direction: column;
