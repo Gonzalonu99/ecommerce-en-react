@@ -107,7 +107,7 @@ const CartProvider = ({ isLoggedIn, children }) => {
       const userId = getUserId();
       if (userId) {
         const response = await fetch(
-          `https://a365.com.ar/ecommerce/deleteProd/${userId}`,
+          `https://a365.com.ar/ecommerce/deleteAllProd`,
           {
             method: "DELETE",
             headers: {
@@ -117,9 +117,13 @@ const CartProvider = ({ isLoggedIn, children }) => {
             body: JSON.stringify({ UsuarioId: userId }),
           }
         );
-        if (response.ok) {
+        if (response) {
           console.log("Carrito vaciado");
-          setCartData([]);
+          getCartItem();
+          toast.info(`Carrito vaciado.`, {
+            className: "mobile-toast",
+            position: "top-left",
+          })
         } else {
           console.error("Error al vaciar el carrito:", response.status);
         }
