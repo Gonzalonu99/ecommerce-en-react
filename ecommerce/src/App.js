@@ -13,6 +13,7 @@ import Tutorial from "./components/tutorial/tutorial";
 import { CartContext, CartProvider } from "./hook/useCart";
 import Info from "./components/info/info";
 import AboutUs from "./components/aboutUs/aboutUs";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -93,25 +94,52 @@ function App() {
     }, 100);
   };
   return (
-    <FavoritesProvider isLoggedIn={isLoggedIn}>
-      <CartProvider isLoggedIn={isLoggedIn}>
-        <Navbar
-          scrollToCategory={scrollToCategory}
-          isLoggedIn={isLoggedIn}
-          userData={userData}
-          handleLogin={handleLogin}
-          handleLogout={handleLogout}
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/nosotros"
+          element={
+            <FavoritesProvider isLoggedIn={isLoggedIn}>
+                <CartProvider isLoggedIn={isLoggedIn}>
+                <Navbar
+                  scrollToCategory={scrollToCategory}
+                  isLoggedIn={isLoggedIn}
+                  userData={userData}
+                  handleLogin={handleLogin}
+                  handleLogout={handleLogout}
+                />
+                <AboutUs/>
+                {showFooter && <Footer />}
+                <WspLogo />
+                </CartProvider>
+            </FavoritesProvider>
+          }
         />
-        {/* <Banner />
-        <Info />
-        <ProductsCarousel />
-        <ToastContainer />
-        {showTutorial && <Tutorial />}
-        {showFooter && <Footer />}
-        <WspLogo /> */}
-        <AboutUs />
-      </CartProvider>
-    </FavoritesProvider>
+        <Route
+          path="/"
+          element={
+            <FavoritesProvider isLoggedIn={isLoggedIn}>
+              <CartProvider isLoggedIn={isLoggedIn}>
+                <Navbar
+                  scrollToCategory={scrollToCategory}
+                  isLoggedIn={isLoggedIn}
+                  userData={userData}
+                  handleLogin={handleLogin}
+                  handleLogout={handleLogout}
+                />
+                <Banner />
+                <Info />
+                <ProductsCarousel />
+                <ToastContainer />
+                {showTutorial && <Tutorial />}
+                {showFooter && <Footer />}
+                <WspLogo />
+              </CartProvider>
+            </FavoritesProvider>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
