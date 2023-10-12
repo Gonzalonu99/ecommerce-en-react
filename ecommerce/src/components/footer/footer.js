@@ -3,7 +3,7 @@ import "../footer/footer.css";
 import fb from "../../img/facebookLogo.webp";
 import twitter from "../../img/twitterLogo.webp";
 import instagram from "../../img/instagramLogo.webp";
-
+import {Link} from "react-router-dom"
 const Footer = () => {
   return (
     <div className="footer">
@@ -41,9 +41,7 @@ const Footer = () => {
           </div>
           <div className="sb__footer-links-div">
             <h4>Compañía</h4>
-            <a href="#">
-              <p>Acerca de</p>
-            </a>
+            <Link to="/nosotros">Acerca de nosotros</Link>
             <a href="#">
               <p>Prensa</p>
             </a>
