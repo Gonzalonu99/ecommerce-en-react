@@ -151,6 +151,7 @@
     }
 }
 .divider{
+    margin-top: .5rem;
     width: auto;
     height: 20px;
     background-color: #d2342c;
