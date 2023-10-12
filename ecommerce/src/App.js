@@ -12,6 +12,7 @@ import Banner from "./components/banner/banner";
 import Tutorial from "./components/tutorial/tutorial";
 import { CartContext, CartProvider } from "./hook/useCart";
 import Info from "./components/info/info";
+import AboutUs from "./components/aboutUs/aboutUs";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -60,12 +61,12 @@ function App() {
           toast.success("Inicio de sesión exitoso", {
             className: "mobile-toast",
           });
-        }else {
-        const data = await response.json();
-        setIsLoggedIn(false);
-        console.error("Inicio de sesión fallido:", data.error);        
+        } else {
+          const data = await response.json();
+          setIsLoggedIn(false);
+          console.error("Inicio de sesión fallido:", data.error);
+        }
       }
-      } 
     } catch (error) {
       console.error("Error al iniciar sesión:", error.message);
       toast.error("Inicio de sesión fallido", {
@@ -94,7 +95,6 @@ function App() {
   return (
     <FavoritesProvider isLoggedIn={isLoggedIn}>
       <CartProvider isLoggedIn={isLoggedIn}>
-        <Banner />
         <Navbar
           scrollToCategory={scrollToCategory}
           isLoggedIn={isLoggedIn}
@@ -102,13 +102,15 @@ function App() {
           handleLogin={handleLogin}
           handleLogout={handleLogout}
         />
-        <Info/>
+        {/* <Banner />
+        <Info />
         <ProductsCarousel />
         <ToastContainer />
         {showTutorial && <Tutorial />}
         {showFooter && <Footer />}
+        <WspLogo /> */}
+        <AboutUs />
       </CartProvider>
-      <WspLogo />
     </FavoritesProvider>
   );
 }
