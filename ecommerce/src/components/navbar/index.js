@@ -84,7 +84,9 @@ function Navbar(props) {
       Pizza Grosso
       </Typography>
       <Divider />
-      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#d2342c",fontWeight:"bold" }}>Carta digital</Button>
+      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#d2342c",fontWeight:"bold" }}>
+        <Link to="/" style={{color:"#d2342c"}}>Menú</Link>
+      </Button>
       <Button variant="transparent" sx={{ marginLeft: "10px",color:"#d2342c",fontWeight:"bold"  }}>Sucursal</Button>
       <Button variant="transparent" sx={{ marginLeft: "10px", color:"#d2342c", fontWeight:"bold" }}>
       <Link to="/contacto" style={{color:"#d2342c"}}>Contacto</Link>
@@ -128,7 +130,9 @@ function Navbar(props) {
     </div>
     
   <div style={{ display: "flex"}}>
-      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#fff", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"} }} className="navbar-btn-cntr">Menú</Button>
+      <Button variant="transparent" sx={{ marginLeft: "10px", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"} }} className="navbar-btn-cntr">
+        <Link to="/" style={{color:"#fff"}}>Menú</Link>
+      </Button>
       <Button variant="transparent" sx={{ marginLeft: "10px",color:"#fff", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"}  }} className="navbar-btn-cntr">Sucursal</Button>
       <Button variant="transparent" sx={{ marginLeft: "10px", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"}  }} className="navbar-btn-cntr">
       <Link to="/contacto" style={{color:"#fff"}}>Contacto</Link>
