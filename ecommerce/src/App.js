@@ -13,7 +13,7 @@ import Tutorial from "./components/tutorial/tutorial";
 import { CartContext, CartProvider } from "./hook/useCart";
 import Info from "./components/info/info";
 import AboutUs from "./components/aboutUs/aboutUs";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Redes from "./components/redesDivider/redes";
 import ContactUs from "./components/contactUs/contactUs";
 
@@ -95,9 +95,16 @@ function App() {
       window.scrollTo({ top: topPos, behavior: "smooth" });
     }, 100);
   };
+  const ScrollToTop = () => {
+    const { pathname } = useLocation();
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+  };
   return (
     <BrowserRouter>
-      <Routes>  
+      <ScrollToTop />
+      <Routes>
         <Route
           path="/"
           element={
@@ -142,7 +149,7 @@ function App() {
             </FavoritesProvider>
           }
         />
-        <Route 
+        <Route
           path="/contacto"
           element={
             <FavoritesProvider isLoggedIn={isLoggedIn}>
@@ -155,7 +162,7 @@ function App() {
                   handleLogout={handleLogout}
                 />
                 <ToastContainer />
-                <ContactUs/>
+                <ContactUs />
                 {showFooter && <Footer />}
                 <WspLogo />
               </CartProvider>
