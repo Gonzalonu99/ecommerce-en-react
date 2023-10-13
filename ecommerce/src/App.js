@@ -14,8 +14,6 @@ import { CartContext, CartProvider } from "./hook/useCart";
 import Info from "./components/info/info";
 import AboutUs from "./components/aboutUs/aboutUs";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Redes from "./components/redesDivider/redes";
 
 function App() {
