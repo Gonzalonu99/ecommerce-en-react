@@ -50,7 +50,7 @@
     }
 }
 .faqs-contact{
-    background-image: url(https://uploads-ssl.webflow.com/63744706d15e6608dee002b8/638ce22b2c86b70113dc8305_background.webp) !important;
+    /* background-image: url(../../img/background2.webp) !important; */
     background-position: 50% 0;
     background-size: cover;
     background-attachment: fixed;
