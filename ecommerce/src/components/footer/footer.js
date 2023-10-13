@@ -42,15 +42,7 @@ const Footer = () => {
           <div className="sb__footer-links-div">
             <h4>Compañía</h4>
             <Link to="/nosotros">Nosotros</Link>
-            <a href="#">
-              <p>Prensa</p>
-            </a>
-            <a href="#">
-              <p>Carrera</p>
-            </a>
-            <a href="#">
-              <p>Contacto</p>
-            </a>
+            <Link to="/contacto">Contacto</Link>
           </div>
           <div className="sb__footer-links-div">
             <h4>Enlaces</h4>
