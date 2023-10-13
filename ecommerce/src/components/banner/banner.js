@@ -2,6 +2,7 @@ import React from "react";
 import banner from "../../img/banner.webp";
 import "./banner.css";
 import { Typography, Button } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
   return (
@@ -20,7 +21,9 @@ const Banner = () => {
        
         <div>
           <Button className="btn-banner">Carta digital</Button>
-          <Button className="btn-banner-negro">Contactanos</Button>
+          <Button className="btn-banner-negro">
+          <Link to="/contacto" style={{color:"#fff"}}>Contacto</Link>
+          </Button>
         </div>
       </div>
    </>
