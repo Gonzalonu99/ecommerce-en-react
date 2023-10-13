@@ -22,6 +22,7 @@ import FavDrawer from "./favDrawer";
 import { FavoritesContext } from "../../hook/useFav";
 import { useContext } from "react";
 import { CartContext } from "../../hook/useCart";
+import { Link } from "react-router-dom";
 
 
 
@@ -85,7 +86,9 @@ function Navbar(props) {
       <Divider />
       <Button variant="transparent" sx={{ marginLeft: "10px", color:"#d2342c",fontWeight:"bold" }}>Carta digital</Button>
       <Button variant="transparent" sx={{ marginLeft: "10px",color:"#d2342c",fontWeight:"bold"  }}>Sucursal</Button>
-      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#d2342c", fontWeight:"bold" }}>Contacto</Button>
+      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#d2342c", fontWeight:"bold" }}>
+      <Link to="/contacto" style={{color:"#d2342c"}}>Contacto</Link>
+      </Button>
     </Box>
   );
 
@@ -127,7 +130,9 @@ function Navbar(props) {
   <div style={{ display: "flex"}}>
       <Button variant="transparent" sx={{ marginLeft: "10px", color:"#fff", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"} }} className="navbar-btn-cntr">Menú</Button>
       <Button variant="transparent" sx={{ marginLeft: "10px",color:"#fff", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"}  }} className="navbar-btn-cntr">Sucursal</Button>
-      <Button variant="transparent" sx={{ marginLeft: "10px", color:"#fff",  display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"}  }} className="navbar-btn-cntr">Contacto</Button>
+      <Button variant="transparent" sx={{ marginLeft: "10px", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"}  }} className="navbar-btn-cntr">
+      <Link to="/contacto" style={{color:"#fff"}}>Contacto</Link>
+      </Button>
   </div>
   
   <div className="" style={{ display: "flex", alignItems: "end" }}>

@@ -15,6 +15,7 @@ import Info from "./components/info/info";
 import AboutUs from "./components/aboutUs/aboutUs";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Redes from "./components/redesDivider/redes";
+import ContactUs from "./components/contactUs/contactUs";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -96,28 +97,7 @@ function App() {
   };
   return (
     <BrowserRouter>
-      <Routes>
-        <Route
-          path="/nosotros"
-          element={
-            <FavoritesProvider isLoggedIn={isLoggedIn}>
-                <CartProvider isLoggedIn={isLoggedIn}>
-                <Navbar
-                  scrollToCategory={scrollToCategory}
-                  isLoggedIn={isLoggedIn}
-                  userData={userData}
-                  handleLogin={handleLogin}
-                  handleLogout={handleLogout}
-                />
-                <ToastContainer />
-                <AboutUs/>
-                <Redes/>
-                {showFooter && <Footer />}
-                <WspLogo />
-                </CartProvider>
-            </FavoritesProvider>
-          }
-        />
+      <Routes>  
         <Route
           path="/"
           element={
@@ -135,6 +115,47 @@ function App() {
                 <ProductsCarousel />
                 <ToastContainer />
                 {showTutorial && <Tutorial />}
+                {showFooter && <Footer />}
+                <WspLogo />
+              </CartProvider>
+            </FavoritesProvider>
+          }
+        />
+        <Route
+          path="/nosotros"
+          element={
+            <FavoritesProvider isLoggedIn={isLoggedIn}>
+              <CartProvider isLoggedIn={isLoggedIn}>
+                <Navbar
+                  scrollToCategory={scrollToCategory}
+                  isLoggedIn={isLoggedIn}
+                  userData={userData}
+                  handleLogin={handleLogin}
+                  handleLogout={handleLogout}
+                />
+                <ToastContainer />
+                <AboutUs />
+                <Redes />
+                {showFooter && <Footer />}
+                <WspLogo />
+              </CartProvider>
+            </FavoritesProvider>
+          }
+        />
+        <Route 
+          path="/contacto"
+          element={
+            <FavoritesProvider isLoggedIn={isLoggedIn}>
+              <CartProvider isLoggedIn={isLoggedIn}>
+                <Navbar
+                  scrollToCategory={scrollToCategory}
+                  isLoggedIn={isLoggedIn}
+                  userData={userData}
+                  handleLogin={handleLogin}
+                  handleLogout={handleLogout}
+                />
+                <ToastContainer />
+                <ContactUs/>
                 {showFooter && <Footer />}
                 <WspLogo />
               </CartProvider>
