@@ -32,7 +32,7 @@ const ContactUs = () => {
                   <div className="rl_faq1_heading_wrapper">
                     <h2 className="h2-faq1-heading">
                       <span className="bold-contact-text">Explore</span>{" "}
-                      nuestras preguntas frecuentes o contáctenos llenando el
+                      nuestras preguntas frecuentes o <span className="bold-contact-text">contáctenos</span> llenando el
                       formulario.
                     </h2>
                   </div>
