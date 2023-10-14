@@ -9,9 +9,14 @@
 body {
   background-color: #f4e2d0 !important;
   background-image: url(./img/background2.webp);
-  background-size: 70%;
+  background-size: 150%;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+@media screen and (max-width: 767px) {
+  body {
+    background-size: 300%;
+  }
 }
