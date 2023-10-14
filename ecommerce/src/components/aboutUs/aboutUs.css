@@ -5,6 +5,7 @@
     /* background-image: url(../../img/background2.webp) !important; */
     background-position: 50%;
     background-size: cover;
+    color: white !important;
 }
 .section-padding {
     width: 100%;
@@ -69,7 +70,7 @@
 }
 .au-heading{
     font-family: 'Lilita One', sans-serif !important;
-    color: #333;
+    color: #fff;
     text-align: left;
     margin-top: 0;
     margin-bottom: 0;
@@ -80,6 +81,7 @@
     .au-heading{
        text-align: center;
        font-size: 1.7rem !important; 
+       color: #fff;
     }
 }
 @media screen and (max-width:767px){
@@ -106,7 +108,7 @@
     }
 }
 ._1-3-rem-paragraph{
-    color: #333;
+    color: #fff;
     margin-bottom: 0;
     font-size: 1.3rem !important;
     line-height: 1.5;
@@ -185,4 +187,6 @@
     opacity: 1;
     transform: translateX(0);
   }
-  
+  .ct-h1-heading{
+    color: #fff !important;
+  }
