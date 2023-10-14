@@ -2,11 +2,15 @@
 
 .contact-section{
     margin-top: 65px !important;
+    animation: slideIn 1.5s ease-out forwards;
+    opacity: 0;
+    transform: translateY(-20px);
 }
 .contact-banner{
     background-image: url(../../img/contactoBanner.webp);
-    background-position: 0% 25%;
+    background-position: 0% 26%;
     background-size: cover;
+
 }
 .contact-section-padding{
     width: 100%;
@@ -217,6 +221,10 @@
 }
 .rl_faq1_answer-wrapper{
     margin-bottom: 1.5rem;
+}
+
+.acordion{
+    border-bottom: 2px solid #d2342c;
 }
 @media screen and (max-width: 767px){
     .rl_faq1_answer-wrapper {
