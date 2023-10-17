@@ -60,15 +60,15 @@ export default function ProductCard(props) {
       sx={{ width: 240 }}
       style={{
         borderRadius: "10px",
-        height: "400px",
+        height: "420px",
         marginRight: "0px",
         marginBottom: "1rem",
         backgroundColor: "rgba(255, 255, 255, .62",
         boxShadow: "2px 2px 4px rgba(0,0,0,0.3)",
         display: "flex",
-        width: "300px",
+        width: "270px",
         flexDirection: "column",
-        justifyContent: "flex-end",
+   
       }}
       key={props.Id}
       id={props.Id}
@@ -80,18 +80,21 @@ export default function ProductCard(props) {
         alt={props.Nombre}
       />
       <CardContent className="card-content-container">
-        <Typography
+        <Typography className="text-limit-title"
           variant="body1"
           color="text.primary"
           style={{ fontSize: "20px", maxHeight: "50px", color: "black" }}
         >
           {props.Nombre}
         </Typography>
+        <Typography className="text-limit-Desc descripcionProducto">
+          {props.Descripcion}
+        </Typography>
         <Typography
           style={{
-            paddingTop: "20px",
-            textAlign: "center",
-            fontSize: "28px",
+            paddingTop: "10px",
+            textAlign: "left",
+            fontSize: "26px",
             color: "#d2342c",
           }}
         >
@@ -104,6 +107,17 @@ export default function ProductCard(props) {
             }}
             className="cards-btn"
           />
+             <IconButton
+            aria-label="add to favorites"
+            onClick={() => handleFavorites(props.Id, props.PrecioId)}
+            className="cards-btn"
+            style={{ backgroundColor: isFavorite ? "#d2342c" : "gray" }}
+          >
+            <FavoriteIcon style={{ color: "#fff" }} />
+          </IconButton> 
+
+
+          
           <div className="modal1">
             <Modal
               isOpen={modalIsOpen}
