@@ -97,9 +97,6 @@ function Navbar(props) {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
   if (error && error.isError) {
     return <div>{error.message}</div>;
   }

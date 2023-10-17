@@ -7,6 +7,11 @@
     background-size: cover;
     color: white !important;
 }
+    .contact-banner{
+        background-size: cover;
+        background-position: 0% 25%;
+        background-image: url(../../img/contactoBanner.webp);
+    }
 .section-padding {
     width: 100%;
     height: 100%;
@@ -81,7 +86,7 @@
     .au-heading{
        text-align: center;
        font-size: 1.7rem !important; 
-       color: #fff;
+       color: #333;
     }
 }
 @media screen and (max-width:767px){
@@ -186,7 +191,4 @@
   .appear-from-right-3.appeared {
     opacity: 1;
     transform: translateX(0);
-  }
-  .ct-h1-heading{
-    color: #fff !important;
   }

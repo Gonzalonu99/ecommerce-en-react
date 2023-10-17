@@ -46,7 +46,6 @@ const ProductsCarousel = () => {
                 0:{
                   slidesPerView:1,
                 },
-                // Define breakpoints for different screen sizes
                 320:{
                   slidesPerView: 1.1,
                 },
@@ -63,10 +62,10 @@ const ProductsCarousel = () => {
                   slidesPerView: 1.8
                 },
                 640: {
-                  slidesPerView: 2.2, // Display 2 slides on screens wider than 640px
+                  slidesPerView: 2.2, 
                 },
                 768: {
-                  slidesPerView: 2.5, // Display 3 slides on screens wider than 768px
+                  slidesPerView: 2.5, 
                 },
                 856:{
                   slidesPerView: 2.8,
@@ -75,7 +74,7 @@ const ProductsCarousel = () => {
                   slidesPerView: 3.1,
                 },
                 1024: {
-                  slidesPerView: 3.4, // Display 5.1 slides on screens wider than 1024px
+                  slidesPerView: 3.4, 
                 },
                 1124:{
                   slidesPerView: 3.8
