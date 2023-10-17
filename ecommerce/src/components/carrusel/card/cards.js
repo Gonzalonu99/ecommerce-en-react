@@ -27,19 +27,19 @@ const customStyles = {
     left: "50%",
     right: "auto",
     bottom: "auto",
-    width: "auto",
+    maxHeight:"auto",
     backgroundColor: "#111",
     transform: "translate(-50%, -50%)",
     borderRadius: "10px",
   },
 };
 
-export default function ProductCard(props) {
+function ProductCard(props) {
   const { addToCart } = useContext(CartContext);
   const { favoriteIds, handleFavorites, setFavoriteIds } =
     useContext(FavoritesContext);
   const isFavorite = favoriteIds.includes(props.Id);
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const  [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
     setIsOpen(true);
@@ -55,7 +55,18 @@ export default function ProductCard(props) {
     setFavoriteIds(favorites);
   }, []);
 
+  useEffect(() => {
+    if (modalIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [modalIsOpen]);
+
+  const buttonText = window.innerWidth >= 768 ? (isFavorite ? "QUITAR DE FAVORITOS" : "AGREGAR A FAVORITOS") : (isFavorite ? "Quitar" : "Agregar");
+
   return (
+    
     <Card
       sx={{ width: 240 }}
       style={{
@@ -172,7 +183,7 @@ export default function ProductCard(props) {
                             width: "auto",
                           }}
                         >
-                        {isFavorite ? `QUITAR DE FAVORITOS` : `AGREGAR A FAVORITOS`}  
+                      {buttonText}  
                           <FavoriteIcon
                             style={{ marginLeft: ".4rem", color: "#fff" }}
                           />
@@ -197,3 +208,6 @@ export default function ProductCard(props) {
     </Card>
   );
 }
+
+
+export default ProductCard  

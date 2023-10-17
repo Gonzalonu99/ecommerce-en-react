@@ -65,11 +65,13 @@
 
 .btn-card-cart{
     font-family: 'Lilita One', sans-serif !important;
+    width: 10rem;
 }
 
 @media (max-width:768px){
     .btn-card-cart{
         font-size: .8rem !important;
+        width: auto;
     }
 }
 .cards-btn-container{
@@ -77,6 +79,7 @@
     left: -10px;
     justify-content:start !important;
     gap: 1rem;
+    
 }
 
 
@@ -169,6 +172,10 @@
 @media (max-width:768px) {
     .img-modal{
         width: 12rem !important;
+        height: 16rem;
+    }
+    .ReactModal__Content {
+        width: 20rem !important;
     }
 }
 
@@ -179,13 +186,6 @@
 }
 
 
-
-@media (max-width: 768px) {
-    .modal{
-        width: 20rem;
-    }
-    
-}
 
 @keyframes fadeAnimation {
     0% { opacity: 0; }

@@ -116,7 +116,7 @@ function Navbar(props) {
       aria-label="open drawer"
       edge="start"
       onClick={handleDrawerToggle}
-      sx={{ mr: 0, display: { xs:"list-item",  sm: "list-item" , md:"none" , lg: "none", xl: "none" } }}
+      sx={{ mr: 0, display: { xs:"list-item",  sm: "list-item" , md:"none" , lg: "none", xl: "none", zIndex:999999 } }}
       
     >
     
