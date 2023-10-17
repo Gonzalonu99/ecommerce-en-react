@@ -8,8 +8,9 @@
     color: white !important;
 }
     .contact-banner{
-        background-size: cover;
-        background-position: 0% 25%;
+        background-size:  cover;
+        background-repeat: no-repeat;
+        background-position: 50% 25%;
         background-image: url(../../img/contactoBanner.webp);
     }
 .section-padding {
@@ -72,10 +73,11 @@
     max-width: 100%;
     vertical-align: middle;
     display: inline-block;
+    border-radius: .5rem;
 }
 .au-heading{
     font-family: 'Lilita One', sans-serif !important;
-    color: #fff;
+    color: #333;
     text-align: left;
     margin-top: 0;
     margin-bottom: 0;
