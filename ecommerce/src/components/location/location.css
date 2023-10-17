@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+.location-section{
+    margin-top: 65px !important;
+    animation: slideIn 1.5s ease-out forwards;
+    opacity: 0;
+    transform: translateY(-20px);
+}
+.location-banner{
+    background-position: 50%;
+    background-size: cover;
+    background-image: url();
+}
+.location-section-padding{
+    width: 100%;
+    height: 100%;
+    padding: 40px 5%;
+}
+.space-banner-wrapper{
+    justify-content: center;
+    align-items: center;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    display: flex;
+}
+.lt-h1-heading{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    color: #fff;
+    font-family: 'Lilita One', sans-serif !important;
+    letter-spacing: 0;
+}

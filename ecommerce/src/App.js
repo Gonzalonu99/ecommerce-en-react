@@ -1,8 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/navbar/index";
-import ProductsCarousel from "./components/carrusel/carrusel";
 import { useState, useEffect, useContext } from "react";
-import jwt_decode from "jwt-decode";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./components/footer/footer";
@@ -17,6 +15,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Redes from "./components/redesDivider/redes";
 import ContactUs from "./components/contactUs/contactUs";
 import Carrusel from "./components/carrusel/carrusel";
+import Location from "./components/location/location";
 
 
 function App() {
@@ -165,6 +164,26 @@ function App() {
                 />
                 <ToastContainer />
                 <ContactUs />
+                {showFooter && <Footer />}
+                <WspLogo />
+              </CartProvider>
+            </FavoritesProvider>
+          }
+        />
+        <Route
+          path="/ubicacion"
+          element={
+            <FavoritesProvider isLoggedIn={isLoggedIn}>
+              <CartProvider isLoggedIn={isLoggedIn}>
+                <Navbar
+                  scrollToCategory={scrollToCategory}
+                  isLoggedIn={isLoggedIn}
+                  userData={userData}
+                  handleLogin={handleLogin}
+                  handleLogout={handleLogout}
+                />
+                <ToastContainer />
+                <Location/>
                 {showFooter && <Footer />}
                 <WspLogo />
               </CartProvider>

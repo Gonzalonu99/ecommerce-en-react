@@ -87,7 +87,9 @@ function Navbar(props) {
       <Button variant="transparent" sx={{ marginLeft: "10px", color:"#d2342c",fontWeight:"bold" }}>
         <Link to="/" style={{color:"#d2342c"}}>Menú</Link>
       </Button>
-      <Button variant="transparent" sx={{ marginLeft: "10px",color:"#d2342c",fontWeight:"bold"  }}>Sucursal</Button>
+      <Button variant="transparent" sx={{ marginLeft: "10px",color:"#d2342c",fontWeight:"bold"  }}>
+        <Link to="/ubicacion" style={{color:"#d2342c"}}> Ubicación</Link>
+      </Button>
       <Button variant="transparent" sx={{ marginLeft: "10px", color:"#d2342c", fontWeight:"bold" }}>
       <Link to="/contacto" style={{color:"#d2342c"}}>Contacto</Link>
       </Button>
@@ -130,7 +132,9 @@ function Navbar(props) {
       <Button variant="transparent" sx={{ marginLeft: "10px", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"} }} className="navbar-btn-cntr">
         <Link to="/" style={{color:"#fff"}}>Menú</Link>
       </Button>
-      <Button variant="transparent" sx={{ marginLeft: "10px",color:"#fff", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"}  }} className="navbar-btn-cntr">Sucursal</Button>
+      <Button variant="transparent" sx={{ marginLeft: "10px",color:"#fff", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"}  }} className="navbar-btn-cntr">
+        <Link to="/ubicacion" style={{color:"#fff"}}>Ubicación</Link>
+      </Button>
       <Button variant="transparent" sx={{ marginLeft: "10px", display: {xs: "none", sm: "none", md: "inline-block", lg: "inline-block", xl: "inline-block"}  }} className="navbar-btn-cntr">
       <Link to="/contacto" style={{color:"#fff"}}>Contacto</Link>
       </Button>
