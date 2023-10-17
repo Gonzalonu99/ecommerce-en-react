@@ -7,17 +7,16 @@
 
 }
 body {
-  background-color: #f4e2d0 !important;
+  background-color: #d6d4d4 !important;
+  background-image: url(./img/bodyCeramicas.webp);
+
+  
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-@media screen and (max-width: 767px) {
-  body {
-    background-size: 300%;
-  }
-}
+
 
 .swiper-button-next, .swiper-button-prev {
   display: none !important;
