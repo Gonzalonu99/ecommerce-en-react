@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 
-.redes-container{
-    background-image: url(https://uploads-ssl.webflow.com/63744706d15e6608dee002b8/638ce22b2c86b70113dc8305_background.webp) !important;
-    background-position: 50%;
-    background-size: cover;
-}
 .redes-section-padding{
     width: 100%;
     height: 100%;

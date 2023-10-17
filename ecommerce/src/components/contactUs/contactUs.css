@@ -6,12 +6,6 @@
     opacity: 0;
     transform: translateY(-20px);
 }
-.contact-banner{
-    background-image: url(../../img/contactoBanner.webp);
-    background-position: 0% 26%;
-    background-size: cover;
-
-}
 .contact-section-padding{
     width: 100%;
     height: 100%;

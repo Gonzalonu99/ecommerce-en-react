@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     padding: 5px;
-    text-align: center;
+    text-align: start;
 }
 .products-carousel-title{
     font-family: "Croissant One", cursive !important;
@@ -14,46 +14,28 @@
 .nombreProducto{
     padding-top: 10px;
     font-size: 10px;
-    font-weight: bold;
 }
 .descripcionProducto{
-    font-size: 15px;
+    font-size: 14px !important;
+    color: #838383;
 }
 .precioProducto{
     padding-top: 20px;
     font-size: 20px;
-    font-weight: bold;
 }
-/* .cards-btn-container{
-    display: flex;
-    justify-content: center;
-} */
-/*carrusel*/
+.text-limit-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px; /* Establece el ancho máximo que desees */
+  }
+.text-limit-Desc {
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 38px; /* Establece el ancho máximo que desees */
+  }
 
-
-.slick-slide{
-    width: 240px !important;
-    margin-right: 2rem;
-    margin-left: 3rem;
-   
-}
-.slick-list{
-    height: 450px !important;
-}
-.slick-track{
-    margin-top: 2rem;
-}
-.slick-dots {
-    position: absolute;
-    height: auto;
-    width: auto;
-    bottom: 428px !important;
-
-
-}
-.slick-dots li button:before{
-    color: #d2342c !important;
-}
 
 /*categoria centrar*/
 
@@ -76,6 +58,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.6rem;    
+    padding: 0rem .5rem;
 }
 
 
@@ -83,17 +66,23 @@
 .btn-card-cart{
     font-family: 'Lilita One', sans-serif !important;
 }
+
 @media (max-width:768px){
     .btn-card-cart{
         font-size: .8rem !important;
-        width: auto !important;
     }
 }
 .cards-btn-container{
-    justify-content:center !important;
+    position: relative;
+    left: -10px;
+    justify-content:start !important;
+    gap: .6rem;
 }
 
+
 /*MODAL*/
+
+
 @media (max-width:768px){
     .btn-fav-modal{
         font-size: .8rem !important;

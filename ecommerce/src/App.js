@@ -16,6 +16,8 @@ import AboutUs from "./components/aboutUs/aboutUs";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Redes from "./components/redesDivider/redes";
 import ContactUs from "./components/contactUs/contactUs";
+import Carrusel from "./components/carrusel/carrusel";
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -119,7 +121,7 @@ function App() {
                 />
                 <Banner />
                 <Info />
-                <ProductsCarousel />
+                <Carrusel />
                 <ToastContainer />
                 {showTutorial && <Tutorial />}
                 {showFooter && <Footer />}
