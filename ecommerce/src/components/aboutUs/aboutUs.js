@@ -4,6 +4,7 @@ import Foto1Grosso from "../../img/foto1Grosso.webp";
 import Foto2Grosso from "../../img/foto2Grosso.webp";
 import Foto3Grosso from "../../img/foto3Grosso.webp";
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   const [appeared1, setAppeared1] = useState(false);
@@ -66,7 +67,9 @@ const AboutUs = () => {
                 Estamos ubicados en Av. La Séptima 2023, Ituzaingó. Cerca de
                 Independiete S.A, a la vuelta del Maracaná.
               </p>
-              <Button className="au-btn">Ver ubicación</Button>
+              <Button className="au-btn">
+                <Link to="/ubicacion" style={{color:"#fff"}}>Ver Ubicación</Link>
+              </Button>
             </div>
           </div>
         </div>
