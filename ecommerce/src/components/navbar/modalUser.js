@@ -57,20 +57,6 @@ const ModalUser = (props) => {
   };
   return (
     <React.Fragment>
-      {isLoggedIn ? (
-        <Modal open={props.modalOpen}>
-          <Box sx={style}>
-            <IconButton
-              style={{ position: "absolute", zIndex: "3000", top: 0, right: 0 }}
-              onClick={props.handleModalUser}
-            >
-              <Close />
-            </IconButton>
-            <p>¿Deseas cerrar la sesion?</p>
-            <Button onClick={handleLogout}>Cerrar sesión</Button>
-          </Box>
-        </Modal>
-      ) : (
         <Modal open={props.modalOpen}>
           <Box sx={style}>
             <IconButton
@@ -148,7 +134,6 @@ const ModalUser = (props) => {
             <SignInModal />
           </Box>
         </Modal>
-      )}
     </React.Fragment>
   );
 };
