@@ -19,7 +19,7 @@ const Location = () => {
             <h2 className="h2-lt-heading ubi">Ituzaingó</h2>
             <iframe
               title="Grosso Pizza Napoletana"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.7658572515597!2d-58.6575249!3d-34.6353568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcbf4843c0ff33%3A0x5f78ac3c8470d157!2sGROSSO%20Pizza%20Napoletana!5e0!3m2!1sen!2sar!4v1697667032097!5m2!1sen!2sar"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.7658572515597!2d-58.6575249!3d-34.6353568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcbf4843c0ff33%3A0x5f78ac3c8470d157!2sGROSSO%20Pizza%20Napoletana!5e0!3m2!1sen!2sar!4v1697667032097!5m2!1es!2sar"
               className="grosso-map"
               allowfullscreen=""
               loading="lazy"
