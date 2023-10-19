@@ -134,9 +134,6 @@
         padding-bottom: 4rem;
     }
 }
-.rl_faq1_list{
-    border-bottom: 2px solid #d2342c;
-}
 .rl_faq1_acordion{
     flex-direction: column;
     justify-content: flex-start;
