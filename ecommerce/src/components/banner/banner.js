@@ -1,11 +1,10 @@
 import React from "react";
-import banner from "../../img/banner.webp";
 import "./banner.css";
 import { Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const Banner = (props) => {
-  const {scrollToCategory} = props;
+  const { scrollToCategory } = props;
   return (
     <>
       <div className="banner">
@@ -20,7 +19,12 @@ const Banner = (props) => {
           Estas en el lugar correcto
         </Typography>
         <div>
-          <Button className="btn-banner" onClick={()=> scrollToCategory("carrusel")}>Carta digital</Button>
+          <Button
+            className="btn-banner"
+            onClick={() => scrollToCategory("carrusel")}
+          >
+            Carta digital
+          </Button>
           <Button className="btn-banner-negro">
             <Link to="/contacto" style={{ color: "#fff" }}>
               Contacto

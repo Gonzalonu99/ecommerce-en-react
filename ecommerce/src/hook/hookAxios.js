@@ -16,7 +16,6 @@ const useAxios = (url)=>{
             setIsLoading(true);
             try {
                 const res = await axios.get(url, { cancelToken: source.token });
-                console.log(res.data);
                 setData(res.data);
             } catch (err) {
                 setError({
