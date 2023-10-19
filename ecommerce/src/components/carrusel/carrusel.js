@@ -35,7 +35,7 @@ const ProductsCarousel = () => {
   return (
     <>
       {data.SubRubros.map((subrubro) => (
-        <div style={{ textAlign: "center" }} key={subrubro.NombreSubRubro}>
+        <div style={{ textAlign: "center" }} key={subrubro.NombreSubRubro} id="carrusel">
           <h2 className="products-carousel-title">{subrubro.NombreSubRubro}</h2>
           <div className="products-container" id={subrubro.NombreSubRubro}>
             <Swiper style={{zIndex:0}}

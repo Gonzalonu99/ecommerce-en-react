@@ -17,7 +17,6 @@ import ContactUs from "./components/contactUs/contactUs";
 import Carrusel from "./components/carrusel/carrusel";
 import Location from "./components/location/location";
 
-
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
@@ -118,7 +117,7 @@ function App() {
                   handleLogin={handleLogin}
                   handleLogout={handleLogout}
                 />
-                <Banner />
+                <Banner scrollToCategory={scrollToCategory} />
                 <Info />
                 <Carrusel />
                 <ToastContainer />
@@ -183,7 +182,7 @@ function App() {
                   handleLogout={handleLogout}
                 />
                 <ToastContainer />
-                <Location/>
+                <Location />
                 {showFooter && <Footer />}
                 <WspLogo />
               </CartProvider>
