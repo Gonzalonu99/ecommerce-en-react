@@ -64,8 +64,7 @@ const AboutUs = () => {
                 familia? ¡Estás en el lugar correcto!
               </p>
               <p className={`_1-rem-paragraph appear-from-right-1 ${appeared1 ? "appeared" : ""}`}>
-                Estamos ubicados en Av. La Séptima 2023, Ituzaingó. Cerca de
-                Independiete S.A, a la vuelta del Maracaná.
+                Estamos ubicados en Ing. Quartino 2176, B1714 Ituzaingó, Provincia de Buenos Aires.
               </p>
               <Button className="au-btn">
                 <Link to="/ubicacion" style={{color:"#fff"}}>Ver Ubicación</Link>
