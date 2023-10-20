@@ -304,6 +304,8 @@
 a{
     text-decoration: none;
 }
-.terms{
-    margin-right: 1rem;
+@media screen and (max-width: 767px){
+    .terms{
+        margin-right: 1rem;
+    }
 }
