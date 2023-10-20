@@ -106,7 +106,7 @@ const Footer = () => {
                 <div className="footer-text">Política de Privacidad</div>
               </a>
               <a href="" className="footer-link-block w-inline-block">
-                <div className="footer-text">Términos de uso</div>
+                <div className="footer-text terms">Términos de uso</div>
               </a>
             </div>
             <div className="bottom-footer-block right">
