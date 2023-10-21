@@ -16,6 +16,7 @@ import Redes from "./components/redesDivider/redes";
 import ContactUs from "./components/contactUs/contactUs";
 import Carrusel from "./components/carrusel/carrusel";
 import Location from "./components/location/location";
+import UserProfile from "./components/userProfile/UserProfile";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -183,6 +184,30 @@ function App() {
                 />
                 <ToastContainer />
                 <Location />
+                {showFooter && <Footer />}
+                <WspLogo />
+              </CartProvider>
+            </FavoritesProvider>
+          }
+        />
+             <Route
+          path="/mi-perfil"
+          element={
+            <FavoritesProvider isLoggedIn={isLoggedIn}>
+              <CartProvider isLoggedIn={isLoggedIn}>
+                <Navbar
+                  scrollToCategory={scrollToCategory}
+                  isLoggedIn={isLoggedIn}
+                  userData={userData}
+                  handleLogin={handleLogin}
+                  handleLogout={handleLogout}
+                />
+                <UserProfile
+               
+                 userData={userData}
+
+                 />
+                <ToastContainer />
                 {showFooter && <Footer />}
                 <WspLogo />
               </CartProvider>

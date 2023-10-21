@@ -1,0 +1,262 @@
+.user-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  height: auto;
+  margin-bottom: 2rem;
+  padding: .7rem;
+  animation: opacity .8s;
+}
+
+.aside {
+
+  position: relative;
+  top: 3rem;
+  z-index: 0;
+  min-width: 17rem;
+  width: 20rem;
+  min-height: 30rem;
+  max-height: 100%;
+  margin-bottom: 3rem;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.aside-profile {
+  line-height: .5;
+  padding: 2.5rem 0 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  width: 100%;
+  gap: 1rem;
+}
+
+.aside-avatar-info-profile {
+  opacity: .7;
+  color: gray;
+
+
+}
+
+.avatar {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+  border-bottom: 1px solid #d2342c;
+}
+
+.aside-buttons {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+}
+
+@media (max-width: 768px) {
+  .user-section {
+    display: block;
+  }
+
+  .aside-avatar{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    line-height: .4;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .aside-avatar-info-profile{
+    margin-top: 1rem;
+  }
+
+  .aside-btn{
+    padding: 15px 0px !important;
+  }
+
+  .aside {
+    width: 100%;
+    height: 15rem;
+  }
+
+  .user-content{
+    margin-top: 2.5rem !important;
+  }
+
+  .aside-profile {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .aside-buttons a {
+    justify-content: center;
+    display: flex;
+  }
+}
+
+.swiper-container {
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+ .user-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ }
+.aside{
+  margin-top: 1.2rem;
+  margin-bottom: 0;
+  min-height: 7rem;
+  display: flex;
+  justify-content: center;
+
+  flex-direction: column;
+  
+}
+.swiper-slide{
+  height: 7rem;
+}
+.swiper-profile{
+  height: 7rem !important;
+  margin: 0 auto !important;
+}
+  .swiper-container {
+    position: relative;
+display: block;
+    align-items: center;
+    height:auto;
+
+  }
+
+  .aside-profile {
+    display: none;
+  }
+
+  .aside-buttons {
+    display: none;
+  }
+}
+
+.aside-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
+.aside-user a {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: .2rem;
+}
+
+.aside-user a:hover{
+  color: #d2342c;
+}
+
+.aside-btn {
+  padding: 15px;
+  background-color: transparent;
+  color: #000;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  border-bottom: 1px solid rgb(0, 0, 0, .5);
+}
+@media (max-width: 768px){
+  .aside-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+  }
+}
+.aside-btn:last-child {
+  border: none;
+}
+
+.aside-btn:hover {
+  background-color: rgb(0, 0, 0, .1);
+  border-bottom: 1px solid rgb(210, 52, 44);
+}
+
+.aside-btn:hover:last-child {
+  border: none;
+}
+
+.user-content {
+  justify-content: center;
+  padding: 20px;
+  margin-top: 6.4rem;
+  height: auto;
+  background-color: #fff;
+  max-width: 70rem;
+  border-radius: .5rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.MuiInputBase-input {
+  padding: .7rem .6rem !important;
+}
+
+.form-button-tienda span {
+  animation: bounce 2s infinite;
+  color: #d2342c;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+.form-button-tienda {
+  border-top: 1px solid #a0a0a0;
+  margin-top: 2rem;
+  padding: 1.5rem 0;
+}
+
+.btn-edit-form {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.btn-edit-form button {
+  border-radius: 2rem;
+}
+
+.btn-edit-form button:hover {
+  background-color: #ed615a;
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateX(0) scale(1);
+  }
+
+  50% {
+    transform: translateX(10px) scale(1.1);
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
