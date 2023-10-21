@@ -99,6 +99,10 @@
     gap: 2rem;
     padding: 0rem 4.5rem 0rem 2rem;
 }
+
+.img-modal{
+    height: 17rem;
+}
 @media (max-width:1124px){
     .modal-container{
         flex-wrap: wrap;
@@ -106,6 +110,7 @@
         padding: 0rem 1.5rem;
         justify-content: center;
     }
+   
 }
 .modal-content{
     display: flex;
@@ -185,6 +190,36 @@
     }
 }
 
+@media (max-width:350px) {
+    .img-modal{
+        width: 6rem !important;
+        height: 10rem;
+    }
+    .ReactModal__Content {
+        width: 19rem !important;
+    }
+}
+
+@media screen and (min-width: 350px) and (max-width: 768px) {
+    .img-modal{
+        width: 6rem !important;
+        height: 10rem;
+    }
+    .ReactModal__Content {
+        width: 19rem !important;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1124px) {
+    .img-modal{
+        width: 12rem !important;
+        height: 10.5rem;
+    }
+    .ReactModal__Content {
+        width: 25rem !important;
+
+    }
+}
 
 
 @keyframes fadeAnimation {

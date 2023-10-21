@@ -91,7 +91,7 @@ const ProductsCarousel = () => {
               }}
             >
               {subrubro.Productos.map((item) => (
-                <SwiperSlide style={{}} key={item.Id}>
+                <SwiperSlide  style={{}} key={item.Id}>
                   <ProductCard
                     Id={item.Id}
                     Nombre={item.Nombre}

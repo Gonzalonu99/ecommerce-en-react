@@ -37,7 +37,7 @@ function Navbar(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [cartOpen, setCartOpen] = React.useState(false);
   const [modalOpen, setModalOpen] = React.useState(false);
-  const [isUserMenuOpen, setUserMenuOpen] = React.useState(false);
+  const [isUserMenuOpen, setUserMenuOpen] = useState(false);
   const [favDrawerOpen, setFavDrawerOpen] = React.useState(false);
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -56,7 +56,20 @@ function Navbar(props) {
       });
   }, []);
 
-  const handleMenuUser = () => {
+  const closeUserMenu = () => {
+    setUserMenuOpen(false);
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", closeUserMenu);
+
+    return () => {
+      document.removeEventListener("click", closeUserMenu);
+    };
+  }, []);
+
+  const handleMenuUser = (e) => {
+    e.stopPropagation();
     setUserMenuOpen((prev) => !prev);
   };
   const handleFavDrawer = () => {
@@ -237,10 +250,15 @@ function Navbar(props) {
                   <User className="nav-icon" />
                 </IconButton>
                 {isUserMenuOpen && (
-                  <div className="user-dropdown">
+                  <div
+                    className="user-dropdown"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <ul className="user-dropdown-ul">
                       <li className="user-dropdown-li">
-                        <button className="user-dropdown-btn">Mi perfil</button>
+                        <Link to={"/mi-perfil"} className="user-dropdown-btn" onClick={closeUserMenu}>
+                          Mi perfil
+                        </Link>
                       </li>
                       <li className="user-dropdown-li cerrar-sesion-btn">
                         <button
