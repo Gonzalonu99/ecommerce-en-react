@@ -96,6 +96,7 @@
     background-color: #d2342c;
     color: white;
     border-radius: .5rem;
+    border: none;
   }
 
   .btn-submit:hover{
