@@ -27,7 +27,7 @@ const customStyles = {
     left: "50%",
     right: "auto",
     bottom: "auto",
-    maxHeight:"auto",
+    maxHeight: "auto",
     backgroundColor: "#111",
     transform: "translate(-50%, -50%)",
     borderRadius: "10px",
@@ -39,8 +39,7 @@ function ProductCard(props) {
   const { favoriteIds, handleFavorites, setFavoriteIds } =
     useContext(FavoritesContext);
   const isFavorite = favoriteIds.includes(props.Id);
-  const  [modalIsOpen, setIsOpen] = useState(false);
-
+  const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
     setIsOpen(true);
   }
@@ -50,7 +49,6 @@ function ProductCard(props) {
   }
 
   useEffect(() => {
-    // Verificar si el producto está en la lista de favoritos al cargar la página
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setFavoriteIds(favorites);
   }, []);
@@ -63,10 +61,16 @@ function ProductCard(props) {
     }
   }, [modalIsOpen]);
 
-  const buttonText = window.innerWidth >= 768 ? (isFavorite ? "QUITAR DE FAVORITOS" : "AGREGAR A FAVORITOS") : (isFavorite ? "Quitar" : "Agregar");
+  const buttonText =
+    window.innerWidth >= 768
+      ? isFavorite
+        ? "QUITAR DE FAVORITOS"
+        : "AGREGAR A FAVORITOS"
+      : isFavorite
+      ? "Quitar"
+      : "Agregar";
 
   return (
-    
     <Card
       sx={{ width: 240 }}
       style={{
@@ -79,7 +83,6 @@ function ProductCard(props) {
         display: "flex",
         width: "270px",
         flexDirection: "column",
-   
       }}
       key={props.Id}
       id={props.Id}
@@ -91,7 +94,8 @@ function ProductCard(props) {
         alt={props.Nombre}
       />
       <CardContent className="card-content-container">
-        <Typography className="text-limit-title"
+        <Typography
+          className="text-limit-title"
           variant="body1"
           color="text.primary"
           style={{ fontSize: "20px", maxHeight: "50px", color: "black" }}
@@ -118,17 +122,15 @@ function ProductCard(props) {
             }}
             className="cards-btn"
           />
-             <IconButton
+          <IconButton
             aria-label="add to favorites"
             onClick={() => handleFavorites(props.Id, props.PrecioId)}
             className="cards-btn"
             style={{ backgroundColor: isFavorite ? "#d2342c" : "gray" }}
           >
             <FavoriteIcon style={{ color: "#fff" }} />
-          </IconButton> 
+          </IconButton>
 
-
-          
           <div className="modal1">
             <Modal
               isOpen={modalIsOpen}
@@ -183,7 +185,7 @@ function ProductCard(props) {
                             width: "auto",
                           }}
                         >
-                      {buttonText}  
+                          {buttonText}
                           <FavoriteIcon
                             style={{ marginLeft: ".4rem", color: "#fff" }}
                           />
@@ -209,5 +211,4 @@ function ProductCard(props) {
   );
 }
 
-
-export default ProductCard  
+export default ProductCard;

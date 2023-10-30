@@ -26,14 +26,13 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
       return "";
     }
   };
-  const addToFavorites = async (id, precioId) => {
+  const addToFavorites = async (id) => {
     try {
       const userId = getUserId();
       if (userId) {
         const data = {
           ProductoId: id,
           UsuarioId: userId,
-          PrecioId: precioId,
         };
         if (favoriteIds.includes(id)) {
           console.log("El producto ya está marcado como favorito");
@@ -48,7 +47,7 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
           body: JSON.stringify(data),
         });
         if (response.ok) {
-          console.log("Producto agregado a favoritos");
+          console.log("Producto agregado a favoritos", data);
           toast.info(`Producto agregado a favoritos`, {
             position: "top-left",
             className: "mobile-toast"
@@ -75,7 +74,7 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
       console.error("Error al agregar producto a favoritos:", error);
     }
   };
-  const removeFromFavorites = async (id, precioId) => {
+  const removeFromFavorites = async (id) => {
     if (!favoriteIds.includes(id)) {
       return;
     }
@@ -86,7 +85,6 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
         const data = {
           ProductoId: id,
           UsuarioId: userId,
-          PrecioId: precioId,
         };
         const response = await fetch("https://a365.com.ar/ecommerce/favoritos", {
           method: "DELETE",
@@ -125,11 +123,11 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
       console.error("Error al eliminar producto de favoritos:", error);
     }
   };
-  const handleFavorites = (id, precioId) => {
+  const handleFavorites = (id) => {
     if (favoriteIds.includes(id)) {
-      removeFromFavorites(id, precioId);
+      removeFromFavorites(id);
     } else {
-      addToFavorites(id, precioId);
+      addToFavorites(id);
     }
     getFavProduct();
   };

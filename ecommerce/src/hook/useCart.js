@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -27,7 +27,6 @@ const CartProvider = ({ isLoggedIn, children }) => {
         const data = {
           UsuarioId: userId,
           ProductoId: item.Id,
-          PrecioId: item.PrecioId,
           Cantidad: 1,
           Precio: item.Precio,
         };
