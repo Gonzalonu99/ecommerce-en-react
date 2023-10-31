@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 const Form = ({ userData }) => {
@@ -35,14 +36,13 @@ const Form = ({ userData }) => {
   };
 
   const handleSubmit = (e) => {
- e.preventDefault()
-
+    e.preventDefault();
   };
 
-  const handleSaveChanges = (e) =>{
-    e.preventDefault()
-    setIsEditable(false)
-  }
+  const handleSaveChanges = (e) => {
+    e.preventDefault();
+    setIsEditable(false);
+  };
 
   return (
     <Container>
@@ -64,7 +64,7 @@ const Form = ({ userData }) => {
           <Grid item xs={6}>
             <label htmlFor="email">Email:</label>
             <TextField
-               sx={{ backgroundColor: "#F2F2F2" }}
+              sx={{ backgroundColor: "#F2F2F2" }}
               fullWidth
               name="email"
               value={formData.email}
@@ -77,7 +77,7 @@ const Form = ({ userData }) => {
           <Grid item xs={6}>
             <label htmlFor="dni">DNI:</label>
             <TextField
-               sx={{ backgroundColor: "#F2F2F2" }}
+              sx={{ backgroundColor: "#F2F2F2" }}
               fullWidth
               name="DNI"
               value={formData.dni}
@@ -90,7 +90,7 @@ const Form = ({ userData }) => {
           <Grid item xs={6}>
             <label htmlFor="telefono">Telefono:</label>
             <TextField
-             sx={{ backgroundColor: "#F2F2F2" }}
+              sx={{ backgroundColor: "#F2F2F2" }}
               fullWidth
               name="telefono"
               value={formData.telefono}
@@ -111,7 +111,7 @@ const Form = ({ userData }) => {
             >
               <label>Fecha de nacimiento:</label>
               <input
-               disabled={!isEditable}
+                disabled={!isEditable}
                 style={{
                   backgroundColor: "#F2F2F2",
                   padding: ".6rem .6rem",
@@ -121,26 +121,39 @@ const Form = ({ userData }) => {
               />
             </div>
           </Grid>
-
         </Grid>
         <div className="btn-edit-form">
           {isEditable ? (
-            <Button onClick={handleSaveChanges} type="submit" variant="contained" sx={{ backgroundColor: "#d2342c" }}>
+            <Button
+              onClick={handleSaveChanges}
+              type="submit"
+              variant="contained"
+              sx={{ backgroundColor: "#d2342c" }}
+            >
               Guardar cambios
             </Button>
           ) : (
-            <Button variant="contained" sx={{ backgroundColor: "#d2342c" }} onClick={handleEditClick}>
+            <Button
+              variant="contained"
+              sx={{ backgroundColor: "#d2342c" }}
+              onClick={handleEditClick}
+            >
               Editar mis datos
             </Button>
           )}
         </div>
       </form>
-     
+
       <div className="form-button-tienda">
-      <Button variant="ghost"> <span>{"<"}</span>Volver a la tienda</Button>
+        <Button variant="ghost">
+          {" "}
+          <span>{"<"}</span>
+          <Link style={{ color: "black" }} to={"/"}>
+            Volver a la tienda
+          </Link>
+        </Button>
       </div>
     </Container>
-    
   );
 };
 export default Form;

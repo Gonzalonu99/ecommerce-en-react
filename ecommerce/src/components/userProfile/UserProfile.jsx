@@ -9,10 +9,12 @@ import { deepOrange, deepPurple } from "@mui/material/colors";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation,Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import Form from "./form/form";
 import "./userProfile.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const UserProfile = ({ userData }) => {
   function stringAvatar(name) {
@@ -25,30 +27,25 @@ const UserProfile = ({ userData }) => {
       return name;
     }
   }
+
   return (
     <>
       <div className="user-section">
         <div className="aside">
           <div className="swiper-container">
             <div className="aside-avatar">
-              <Avatar
+              <img
                 className="avatar"
-                sx={{
-                  bgcolor: deepOrange[700],
-                  width: "70px",
-                  height: "70px",
-                }}
-              >
-                {stringAvatar(userData.nombre)}
-              </Avatar>
+                style={{ width: "70px", height: "70px", borderRadius: "50px" }}
+                src={`https://api.multiavatar.com/${userData.nombre}%20Bond.png`}
+              />
               <div className="aside-avatar-info">
                 <p className="aside-avatar-info-profile">Mi perfil</p>
                 <p>{userData.nombre}</p>
               </div>
             </div>
-            
+
             <Swiper
-              
               className="swiper-profile"
               modules={[Pagination, Navigation]}
               pagination={{ clickable: true }}
@@ -57,45 +54,70 @@ const UserProfile = ({ userData }) => {
             >
               <SwiperSlide>
                 {" "}
-                <div style={{textAlign:"center", marginTop:"1rem"}}>
-                <Link to={"/mi-perfil"} className="aside-btn">
-                <PersonIcon sx={{ width: "18px", color: "#d2342c", textAlign:"center" }} />
-                  Mis datos personales
-                </Link>
-                 
+                <div style={{ textAlign: "center", marginTop: "1rem" }}>
+                  <Link to={"/mi-perfil"} className="aside-btn">
+                    <PersonIcon
+                      sx={{
+                        width: "18px",
+                        color: "#d2342c",
+                        textAlign: "center",
+                      }}
+                    />
+                    Mis datos personales
+                  </Link>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
                 {" "}
-                <div style={{textAlign:"center", marginTop:"1rem"}}>
-                <Link to={"/mi-perfil/direcciones"} className="aside-btn">
-                <LocalShippingIcon sx={{ width: "18px", color: "#d2342c", textAlign:"center" }} />
-                  Mis direcciones de entrega
-                </Link>
-                 
+                <div style={{ textAlign: "center", marginTop: "1rem" }}>
+                  <Link to={"/mi-perfil/direcciones"} className="aside-btn">
+                    <LocalShippingIcon
+                      sx={{
+                        width: "18px",
+                        color: "#d2342c",
+                        textAlign: "center",
+                      }}
+                    />
+                    Mis direcciones de entrega
+                  </Link>
                 </div>
-                
               </SwiperSlide>
               <SwiperSlide>
                 {" "}
-                <div style={{textAlign:"center", marginTop:"1rem",display:"flex",justifyContent:"center", alignItems:"center"}}>
-                <Link to={"/mi-perfil/pedidos"} className="aside-btn">
-                <WalletIcon sx={{ width: "18px", color: "#d2342c", textAlign:"center" }} />
-                  Mis pedidos
-                </Link>
-                 
+                <div
+                  style={{
+                    textAlign: "center",
+                    marginTop: "1rem",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Link to={"/mi-perfil/pedidos"} className="aside-btn">
+                    <WalletIcon
+                      sx={{
+                        width: "18px",
+                        color: "#d2342c",
+                        textAlign: "center",
+                      }}
+                    />
+                    Mis pedidos
+                  </Link>
                 </div>
-                
               </SwiperSlide>
               <SwiperSlide>
-              <div style={{textAlign:"center", marginTop:"1rem"}}>
-                <Link to={"/mi-perfil/reseñas"} className="aside-btn">
-                <GradeIcon sx={{ width: "18px", color: "#d2342c", textAlign:"center" }} />
-                  Mis reseñas
-                </Link>
-                 
+                <div style={{ textAlign: "center", marginTop: "1rem" }}>
+                  <Link to={"/mi-perfil/reseñas"} className="aside-btn">
+                    <GradeIcon
+                      sx={{
+                        width: "18px",
+                        color: "#d2342c",
+                        textAlign: "center",
+                      }}
+                    />
+                    Mis reseñas
+                  </Link>
                 </div>
-                
               </SwiperSlide>
             </Swiper>
           </div>
@@ -103,16 +125,15 @@ const UserProfile = ({ userData }) => {
           <aside className="aside-user">
             <div className="aside-profile">
               <div className="aside-avatar">
-                <Avatar
+                <img
                   className="avatar"
-                  sx={{
-                    bgcolor: deepOrange[700],
+                  style={{
                     width: "70px",
                     height: "70px",
+                    borderRadius: "50px",
                   }}
-                >
-                  {stringAvatar(userData.nombre)}
-                </Avatar>
+                  src={`https://api.multiavatar.com/${userData.nombre}%20Bond.png`}
+                />
               </div>
               <div className="aside-avatar-info">
                 <p className="aside-avatar-info-profile">Mi perfil</p>
@@ -141,7 +162,14 @@ const UserProfile = ({ userData }) => {
           </aside>
         </div>
         <div className="user-content">
-          <h4 style={{ marginBottom: "0", textAlign: "center",padding:".5rem", borderBottom:"2px solid rgb(237, 97, 90, .3)" }}>
+          <h4
+            style={{
+              marginBottom: "0",
+              textAlign: "center",
+              padding: ".5rem",
+              borderBottom: "2px solid rgb(237, 97, 90, .3)",
+            }}
+          >
             MIS DATOS PERSONALES 🍕
           </h4>
           <Form userData={userData} />
