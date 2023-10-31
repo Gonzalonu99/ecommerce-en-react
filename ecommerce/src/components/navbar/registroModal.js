@@ -3,8 +3,8 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import { IconButton, Typography, TextField, Radio } from "@mui/material";
-import "./registro.css"
-import 'animate.css';
+import "./registro.css";
+import "animate.css";
 import logo from "../../img/pizza_grosso.webp";
 import { CheckBox, Close } from "@mui/icons-material";
 import { toast } from "react-toastify";
@@ -35,27 +35,19 @@ const SignInModal = () => {
   };
   const handleNameChange = (event) => {
     setName(event.target.value);
-    setLoginButtonDisabled(
-      !(event.target.value && password && email && phone)
-    );
+    setLoginButtonDisabled(!(event.target.value && password && email && phone));
   };
   const handlePhoneChange = (event) => {
     setPhone(event.target.value);
-    setLoginButtonDisabled(
-      !(event.target.value && password && name && email)
-    );
+    setLoginButtonDisabled(!(event.target.value && password && name && email));
   };
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
-    setLoginButtonDisabled(
-      !(event.target.value && password && name && phone)
-    );
+    setLoginButtonDisabled(!(event.target.value && password && name && phone));
   };
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
-    setLoginButtonDisabled(
-      !(event.target.value && email && name && phone)
-    );
+    setLoginButtonDisabled(!(event.target.value && email && name && phone));
   };
   const handleSignInModal = () => {
     setOpen((prevState) => !prevState);
@@ -76,32 +68,50 @@ const SignInModal = () => {
         }),
       });
       console.log(response);
-      if (response.status === 200) {
+      if (response) {
         const data = await response.json();
-        handleSignInModal(false);
-        console.log("Registro de usuario exitoso: ", JSON.stringify(data));
-        toast.success(`Cuenta creada con exito`, {
-          position: "top-left",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          className: 'mobile-toast',
-          progressStyle:{
-            background:"#C0FF00"
-          },
-        });
-        setName("");
-        setPhone("");
-        setEmail("");
-        setPassword("");
-        setLoginButtonDisabled(true);
+        if (data.succes) {
+          handleSignInModal(false);
+          console.log("Registro de usuario exitoso: ", JSON.stringify(data));
+          toast.success(`Cuenta creada con exito`, {
+            position: "top-left",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            className: "mobile-toast",
+            progressStyle: {
+              background: "#C0FF00",
+            },
+          });
+          setName("");
+          setPhone("");
+          setEmail("");
+          setPassword("");
+          setLoginButtonDisabled(true);
+        }
+        else{
+          toast.error(`No se pudo crear el usuario`, {
+            position: "top-left",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            className: "mobile-toast",
+            progressStyle: {
+              background: "#C0FF00",
+            },
+          });
+        }
       } else {
         const data = await response.json();
-        console.error("Registro fallido:", data.error);
+        console.error("No se pudo enviar la petición correctamente:", data.error);
       }
     } catch (error) {
       console.error("Error al registrarse:", error.message);
@@ -134,31 +144,38 @@ const SignInModal = () => {
           >
             <Close />
           </IconButton>
-          
-          <img className="register-logo-form animate__animated animate__fadeIn" src={logo} alt="Logo" />
-         
+
+          <img
+            className="register-logo-form animate__animated animate__fadeIn"
+            src={logo}
+            alt="Logo"
+          />
+
           <Typography id="modal-register-title" variant="h6" component="h2">
             Crea tu cuenta
           </Typography>
           <Typography className="register-subtittle">
             Registrate completando todos los campos a continuacion
-          </Typography> 
-          <TextField className="input-register"
+          </Typography>
+          <TextField
+            className="input-register"
             required
             id="outlined-required-name"
-            label="Name"
+            label="Full Name"
             value={name}
             onChange={handleNameChange}
           />
-         
-          <TextField className="input-register"
+
+          <TextField
+            className="input-register"
             required
             id="outlined-required-phone"
             label="Phone Number"
             value={phone}
             onChange={handlePhoneChange}
           />
-          <TextField className="input-register"
+          <TextField
+            className="input-register"
             required
             id="outlined-email-input"
             label="Email"
@@ -191,22 +208,23 @@ const SignInModal = () => {
               value={password}
               onChange={handlePasswordChange}
             />
-            
-        
           </FormControl>
           <TextField
             required
             id="outlined-required"
             label="User Type"
             value={userType}
-            style={{display:"none"}}
+            style={{ display: "none" }}
           />
-          <Button  className="btn-register-confirm"
+          <Button
+            className="btn-register-confirm"
             variant="contained"
-            style={{ backgroundColor: loginButtonDisabled ? 'grey' : '#d2342c' }}
+            style={{
+              backgroundColor: loginButtonDisabled ? "grey" : "#d2342c",
+            }}
             disabled={loginButtonDisabled}
             onClick={handleSignIn}
-            >
+          >
             Crear cuenta
           </Button>
         </Box>
