@@ -42,11 +42,11 @@ const Footer = () => {
                   <div className="info-wrapper hours">
                     <div className="footer-info">
                       <div className="footer-bold-text">Lunes - Jueves</div>
-                      <div class="footer-text">10 a.m. - 10 p.m.</div>
+                      <div className="footer-text">10 a.m. - 10 p.m.</div>
                     </div>
                     <div className="footer-info">
                       <div className="footer-bold-text">Viernes - Sábado</div>
-                      <div class="footer-text">10 a.m. - 11 p.m.</div>
+                      <div className="footer-text">10 a.m. - 11 p.m.</div>
                     </div>
                   </div>
                 </div>
