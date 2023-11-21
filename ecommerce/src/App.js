@@ -17,6 +17,7 @@ import ContactUs from "./components/contactUs/contactUs";
 import Carrusel from "./components/carrusel/carrusel";
 import Location from "./components/location/location";
 import UserProfile from "./components/userProfile/UserProfile";
+import { FormProvider } from "./hook/useUserForm";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -111,20 +112,22 @@ function App() {
           element={
             <FavoritesProvider isLoggedIn={isLoggedIn}>
               <CartProvider isLoggedIn={isLoggedIn}>
-                <Navbar
-                  scrollToCategory={scrollToCategory}
-                  isLoggedIn={isLoggedIn}
-                  userData={userData}
-                  handleLogin={handleLogin}
-                  handleLogout={handleLogout}
-                />
-                <Banner scrollToCategory={scrollToCategory} />
-                <Info />
-                <Carrusel />
-                <ToastContainer />
-                {showTutorial && <Tutorial />}
-                {showFooter && <Footer />}
-                <WspLogo />
+                <FormProvider isLoggedIn={isLoggedIn} userData={userData}>
+                  <Navbar
+                    scrollToCategory={scrollToCategory}
+                    isLoggedIn={isLoggedIn}
+                    userData={userData}
+                    handleLogin={handleLogin}
+                    handleLogout={handleLogout}
+                  />
+                  <Banner scrollToCategory={scrollToCategory} />
+                  <Info />
+                  <Carrusel />
+                  <ToastContainer />
+                  {showTutorial && <Tutorial />}
+                  {showFooter && <Footer />}
+                  <WspLogo />
+                </FormProvider>
               </CartProvider>
             </FavoritesProvider>
           }
@@ -134,18 +137,20 @@ function App() {
           element={
             <FavoritesProvider isLoggedIn={isLoggedIn}>
               <CartProvider isLoggedIn={isLoggedIn}>
-                <Navbar
-                  scrollToCategory={scrollToCategory}
-                  isLoggedIn={isLoggedIn}
-                  userData={userData}
-                  handleLogin={handleLogin}
-                  handleLogout={handleLogout}
-                />
-                <ToastContainer />
-                <AboutUs />
-                <Redes />
-                {showFooter && <Footer />}
-                <WspLogo />
+                <FormProvider isLoggedIn={isLoggedIn} userData={userData}>
+                  <Navbar
+                    scrollToCategory={scrollToCategory}
+                    isLoggedIn={isLoggedIn}
+                    userData={userData}
+                    handleLogin={handleLogin}
+                    handleLogout={handleLogout}
+                  />
+                  <ToastContainer />
+                  <AboutUs />
+                  <Redes />
+                  {showFooter && <Footer />}
+                  <WspLogo />
+                </FormProvider>
               </CartProvider>
             </FavoritesProvider>
           }
@@ -155,17 +160,19 @@ function App() {
           element={
             <FavoritesProvider isLoggedIn={isLoggedIn}>
               <CartProvider isLoggedIn={isLoggedIn}>
-                <Navbar
-                  scrollToCategory={scrollToCategory}
-                  isLoggedIn={isLoggedIn}
-                  userData={userData}
-                  handleLogin={handleLogin}
-                  handleLogout={handleLogout}
-                />
-                <ToastContainer />
-                <ContactUs />
-                {showFooter && <Footer />}
-                <WspLogo />
+                <FormProvider isLoggedIn={isLoggedIn} userData={userData}>
+                  <Navbar
+                    scrollToCategory={scrollToCategory}
+                    isLoggedIn={isLoggedIn}
+                    userData={userData}
+                    handleLogin={handleLogin}
+                    handleLogout={handleLogout}
+                  />
+                  <ToastContainer />
+                  <ContactUs />
+                  {showFooter && <Footer />}
+                  <WspLogo />
+                </FormProvider>
               </CartProvider>
             </FavoritesProvider>
           }
@@ -175,41 +182,41 @@ function App() {
           element={
             <FavoritesProvider isLoggedIn={isLoggedIn}>
               <CartProvider isLoggedIn={isLoggedIn}>
-                <Navbar
-                  scrollToCategory={scrollToCategory}
-                  isLoggedIn={isLoggedIn}
-                  userData={userData}
-                  handleLogin={handleLogin}
-                  handleLogout={handleLogout}
-                />
-                <ToastContainer />
-                <Location />
-                {showFooter && <Footer />}
-                <WspLogo />
+                <FormProvider isLoggedIn={isLoggedIn} userData={userData}>
+                  <Navbar
+                    scrollToCategory={scrollToCategory}
+                    isLoggedIn={isLoggedIn}
+                    userData={userData}
+                    handleLogin={handleLogin}
+                    handleLogout={handleLogout}
+                  />
+                  <ToastContainer />
+                  <Location />
+                  {showFooter && <Footer />}
+                  <WspLogo />
+                </FormProvider>
               </CartProvider>
             </FavoritesProvider>
           }
         />
-             <Route
+        <Route
           path="/mi-perfil"
           element={
             <FavoritesProvider isLoggedIn={isLoggedIn}>
               <CartProvider isLoggedIn={isLoggedIn}>
-                <Navbar
-                  scrollToCategory={scrollToCategory}
-                  isLoggedIn={isLoggedIn}
-                  userData={userData}
-                  handleLogin={handleLogin}
-                  handleLogout={handleLogout}
-                />
-                <UserProfile
-               
-                 userData={userData}
-
-                 />
-                <ToastContainer />
-                {showFooter && <Footer />}
-                <WspLogo />
+                <FormProvider isLoggedIn={isLoggedIn} userData={userData}>
+                  <Navbar
+                    scrollToCategory={scrollToCategory}
+                    isLoggedIn={isLoggedIn}
+                    userData={userData}
+                    handleLogin={handleLogin}
+                    handleLogout={handleLogout}
+                  />
+                  <UserProfile userData={userData} />
+                  <ToastContainer />
+                  {showFooter && <Footer />}
+                  <WspLogo />
+                </FormProvider>
               </CartProvider>
             </FavoritesProvider>
           }

@@ -1,49 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { FormContext } from "../../../hook/useUserForm";
 
-const Form = ({ userData }) => {
-  const [formData, setFormData] = useState({
-    nombre: userData.nombre,
-    email: userData.email,
-    dni: "",
-    telefono: userData.telefono,
-  });
-
-  const [isEditable, setIsEditable] = useState(false); // Nuevo estado para habilitar/deshabilitar el formulario
-
-  useEffect(() => {
-    setFormData({
-      nombre: userData.nombre,
-      email: userData.email,
-      dni: userData.dni,
-      telefono: userData.telefono,
-    });
-  }, [userData]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleEditClick = () => {
-    // Cambiar el estado de isEditable cuando se hace clic en "Editar mis datos"
-    setIsEditable(true);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
-  const handleSaveChanges = (e) => {
-    e.preventDefault();
-    setIsEditable(false);
-  };
-
+const Form = () => {
+  const {
+    formData,
+    handleSubmit,
+    handleChange,
+    isEditable,
+    handleEditClick,
+    handleSaveChanges,
+  } = useContext(FormContext);
   return (
     <Container>
       <form style={{ marginTop: "65px" }} onSubmit={handleSubmit}>
@@ -100,7 +73,6 @@ const Form = ({ userData }) => {
               disabled={!isEditable}
             />
           </Grid>
-
           <Grid item xs={6}>
             <div
               style={{
@@ -143,7 +115,6 @@ const Form = ({ userData }) => {
           )}
         </div>
       </form>
-
       <div className="form-button-tienda">
         <Button variant="ghost">
           {" "}
