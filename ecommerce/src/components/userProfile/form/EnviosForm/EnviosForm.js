@@ -6,29 +6,29 @@ import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import { FormContext } from "../../../hook/useUserForm";
+import { DireccionContext } from "../../../../hook/useDireccionesForm";
 
-const Form = () => {
+const EnviosForm = () => {
   const {
-    formData,
-    handleSubmit,
-    handleChange,
+    direccionData,
+    agregarDireccion,
     isEditable,
+    handleChange,
     handleEditClick,
-    handleSaveChanges,
-  } = useContext(FormContext);
+    handleSubmit,
+  } = useContext(DireccionContext);
   return (
     <Container>
-    <h4 style={{textAlign:"center"}}>MIS DATOS 🍕</h4>
+      <h4 style={{ textAlign: "center" }}>Agrega tu nueva direccion</h4>
       <form style={{ marginTop: "65px" }} onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={6}>
-            <label htmlFor="name">Nombre:</label>
+            <label htmlFor="calle">Calle:</label>
             <TextField
               sx={{ backgroundColor: "#F2F2F2" }}
               fullWidth
-              name="nombre"
-              value={formData.nombre}
+              name="Calle"
+              value={direccionData.Calle}
               onChange={handleChange}
               margin="normal"
               variant="outlined"
@@ -36,12 +36,26 @@ const Form = () => {
             />
           </Grid>
           <Grid item xs={6}>
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="altura">Altura:</label>
             <TextField
               sx={{ backgroundColor: "#F2F2F2" }}
               fullWidth
-              name="email"
-              value={formData.email}
+              name="Altura"
+              value={direccionData.Altura}
+              onChange={handleChange}
+              margin="normal"
+              variant="outlined"
+              type="number"
+              disabled={!isEditable}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <label htmlFor="ciudad">Ciudad:</label>
+            <TextField
+              sx={{ backgroundColor: "#F2F2F2" }}
+              fullWidth
+              name="Ciudad"
+              value={direccionData.Ciudad}
               onChange={handleChange}
               margin="normal"
               variant="outlined"
@@ -49,12 +63,12 @@ const Form = () => {
             />
           </Grid>
           <Grid item xs={6}>
-            <label htmlFor="dni">DNI:</label>
+            <label htmlFor="provincia">Provincia:</label>
             <TextField
               sx={{ backgroundColor: "#F2F2F2" }}
               fullWidth
-              name="DNI"
-              value={formData.dni}
+              name="Provincia"
+              value={direccionData.Provincia}
               onChange={handleChange}
               margin="normal"
               variant="outlined"
@@ -62,43 +76,24 @@ const Form = () => {
             />
           </Grid>
           <Grid item xs={6}>
-            <label htmlFor="telefono">Telefono:</label>
+          <label htmlFor="provincia">Codigo Postal:</label>
             <TextField
               sx={{ backgroundColor: "#F2F2F2" }}
               fullWidth
-              name="telefono"
-              value={formData.telefono}
+              name="CodigoPostal"
+              value={direccionData.CodigoPostal}
               onChange={handleChange}
               margin="normal"
               variant="outlined"
+              type="number"
               disabled={!isEditable}
             />
-          </Grid>
-          <Grid item xs={6}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-              }}
-            >
-              <label>Fecha de nacimiento:</label>
-              <input
-                disabled={!isEditable}
-                style={{
-                  backgroundColor: "#F2F2F2",
-                  padding: ".6rem .6rem",
-                  marginBottom: "1rem",
-                }}
-                type="date"
-              />
-            </div>
           </Grid>
         </Grid>
         <div className="btn-edit-form">
           {isEditable ? (
             <Button
-              onClick={handleSaveChanges}
+              onClick={agregarDireccion}
               type="submit"
               variant="contained"
               sx={{ backgroundColor: "#d2342c" }}
@@ -128,4 +123,4 @@ const Form = () => {
     </Container>
   );
 };
-export default Form;
+export default EnviosForm;
