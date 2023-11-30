@@ -9,6 +9,16 @@
   animation: opacity .8s;
 }
 
+.user-section-envios {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  height: auto;
+  margin-bottom: 2rem;
+  padding: .7rem;
+}
+
 .aside {
 
   position: relative;
@@ -106,14 +116,14 @@
 
 @media (max-width: 768px) {
  .user-section{
-  display: flex;
+  display: block;
   flex-direction: column;
   align-items: center;
   justify-content: center;
  }
 .aside{
   margin-top: 1.2rem;
-  margin-bottom: 0;
+  margin-bottom: 4rem;
   min-height: 7rem;
   display: flex;
   justify-content: center;

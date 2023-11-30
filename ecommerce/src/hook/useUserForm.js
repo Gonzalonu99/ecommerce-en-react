@@ -24,7 +24,7 @@ const FormProvider = ({ children, isLoggedIn, userData}) => {
       Telefono: formData.telefono,
       Password: formData.password,
     };
-    console.log("editData: ",editData);
+
     try {
       const response = await fetch(
         "https://a365.com.ar/ecommerce/updateUsuario",
@@ -44,7 +44,7 @@ const FormProvider = ({ children, isLoggedIn, userData}) => {
           className: "mobile-toast",
           position: "top-left",
         });
-        console.log("formData: ", editData);
+  
         
       } else {
         console.error("Error en la solicitud POST");
@@ -80,7 +80,7 @@ const FormProvider = ({ children, isLoggedIn, userData}) => {
           }
         );
         const getUserData = await response.json();
-        console.log("GetUserData", getUserData);
+
         setData({
           nombre: getUserData[0].Nombre,
           email: getUserData[0].Email,
@@ -99,7 +99,6 @@ const FormProvider = ({ children, isLoggedIn, userData}) => {
   useEffect(() => {
     getUserData();
   }, [isLoggedIn]);
-  console.log("data: ", formData);
   return (
     <FormContext.Provider
       value={{
