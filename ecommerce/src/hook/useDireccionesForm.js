@@ -47,7 +47,7 @@ const DireccionProvider = ({ children, isLoggedIn, userData }) => {
         );
         const getDireccionData = await response.json();
         setDireccionData(getDireccionData);
-        
+        // console.log("Direcciones: ", getDireccionData);
       }
     } catch (error) {
       console.log(error);

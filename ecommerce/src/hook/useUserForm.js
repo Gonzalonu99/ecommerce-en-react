@@ -79,15 +79,16 @@ const FormProvider = ({ children, isLoggedIn, userData}) => {
             },
           }
         );
-        const userData = await response.json();
+        const userFormData = await response.json();
 
         setFormData({
-          nombre: userData[0].Nombre,
-          email: userData[0].Email,
-          dni: userData[0].Dni,
-          telefono: userData[0].Telefono,
-          password: userData[0].Password,
+          nombre: userFormData[0].Nombre,
+          email: userFormData[0].Email,
+          dni: userFormData[0].Dni,
+          telefono: userFormData[0].Telefono,
+          password: userFormData[0].Password,
         }); 
+        // console.log("Form data: ", userFormData);
       } else {
         console.log("El usuario no esta autenticado o loggeado.");
       }
