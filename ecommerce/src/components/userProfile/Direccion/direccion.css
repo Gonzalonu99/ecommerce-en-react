@@ -31,17 +31,40 @@
 .card-container {
     border-radius: .6rem;
     border: 1px solid #c7c7c7;
-    height: 266px;
-    width: 320px;
+    height: 366px;
+    width: 280px;
     border-width: 2px;
 }
+
+.direccion-section {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .card-container {
+        display: block;
+    }
+
+    .direccion-section {
+        justify-content: center;
+        max-width: 100%;
+    }
+}
+
+
 
 .card-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: #333333a3;
-    padding: 1rem;
+    padding: .6rem;
 }
 
 .card-state {
