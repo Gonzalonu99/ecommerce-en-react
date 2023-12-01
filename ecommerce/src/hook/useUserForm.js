@@ -98,7 +98,7 @@ const FormProvider = ({ children, isLoggedIn, userData}) => {
 
   useEffect(() => {
     getUserData();
-  }, [isLoggedIn,]);
+  }, [isLoggedIn]);
   return (
     <FormContext.Provider
       value={{
