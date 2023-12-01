@@ -62,7 +62,7 @@ const Form = () => {
             />
           </Grid>
           <Grid item xs={6}>
-            <label htmlFor="telefono">Telefono:</label>
+            <label htmlFor="telefono">Télefono:</label>
             <TextField
               sx={{ backgroundColor: "#F2F2F2" }}
               fullWidth
