@@ -41,10 +41,7 @@ function ContactForm() {
           </div>
           <div className="btn-container">
           <input type="submit" className="btn-submit"/>
-          
           </div>
-          
-         
         </form>
       </div>
     );
