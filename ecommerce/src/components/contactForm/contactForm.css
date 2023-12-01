@@ -91,6 +91,10 @@
     display: flex;
     justify-content:center;
 }
+.btn-container-contact{
+  display: flex;
+  justify-content:center;
+}
   .btn-submit{
     width: 10rem;
     background-color: #d2342c;

@@ -228,26 +228,26 @@ function App() {
             <FavoritesProvider isLoggedIn={isLoggedIn}>
               <CartProvider isLoggedIn={isLoggedIn}>
                 <FormProvider isLoggedIn={isLoggedIn} userData={userData}>
-                <DireccionProvider
+                  <DireccionProvider
                     isLoggedIn={isLoggedIn}
                     userData={userData}
                   >
-                  <Navbar
-                    scrollToCategory={scrollToCategory}
-                    isLoggedIn={isLoggedIn}
-                    userData={userData}
-                    handleLogin={handleLogin}
-                    handleLogout={handleLogout}
-                  />
-                  <div className="user-section">
-                    <UserProfile userData={userData} />
-                    <div className="user-content">
-                      <DireccionSection />
+                    <Navbar
+                      scrollToCategory={scrollToCategory}
+                      isLoggedIn={isLoggedIn}
+                      userData={userData}
+                      handleLogin={handleLogin}
+                      handleLogout={handleLogout}
+                    />
+                    <div className="user-section">
+                      <UserProfile userData={userData} />
+                      <div className="user-content">
+                        <DireccionSection />
+                      </div>
                     </div>
-                  </div>
-                  <ToastContainer />
-                  {showFooter && <Footer />}
-                  <WspLogo />
+                    <ToastContainer />
+                    {showFooter && <Footer />}
+                    <WspLogo />
                   </DireccionProvider>
                 </FormProvider>
               </CartProvider>
