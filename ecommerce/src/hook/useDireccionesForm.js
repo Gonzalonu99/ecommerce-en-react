@@ -5,13 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 const DireccionContext = createContext();
 
 const DireccionProvider = ({ children, isLoggedIn, userData }) => {
-  const [direccionData, setDireccionData] = useState({
-    Calle: "",
-    Altura: "",
-    Ciudad: "",
-    Provincia: "",
-    CodigoPostal: "",
-  });
+  const [direccionData, setDireccionData] = useState({});
   const [direccionPostData, setDireccionPostData] = useState({});
   const [isEditable, setIsEditable] = useState(false);
 
@@ -35,7 +29,6 @@ const DireccionProvider = ({ children, isLoggedIn, userData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Puedes añadir lógica adicional aquí si es necesario
   };
 
   const getDireccion = async () => {
@@ -54,12 +47,14 @@ const DireccionProvider = ({ children, isLoggedIn, userData }) => {
         );
         const getDireccionData = await response.json();
         setDireccionData(getDireccionData);
-        console.log(getDireccionData);
+        
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+
 
   const agregarDireccion = async () => {
     try {
@@ -73,7 +68,7 @@ const DireccionProvider = ({ children, isLoggedIn, userData }) => {
           Provincia: direccionData.Provincia,
           CodigoPostal: parseInt(direccionData.CodigoPostal),
         };
-  
+
         const response = await fetch(
           `https://a365.com.ar/ecommerce/addDireccion`,
           {
@@ -85,9 +80,8 @@ const DireccionProvider = ({ children, isLoggedIn, userData }) => {
             body: JSON.stringify(direccion),
           }
         );
-  
+
         const postDireccionData = await response.json();
-        console.log(postDireccionData);
       }
     } catch (error) {
       console.log(error);
@@ -97,6 +91,7 @@ const DireccionProvider = ({ children, isLoggedIn, userData }) => {
   return (
     <DireccionContext.Provider
       value={{
+        getDireccion,
         direccionData,
         agregarDireccion,
         isEditable,

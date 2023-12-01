@@ -228,6 +228,10 @@ function App() {
             <FavoritesProvider isLoggedIn={isLoggedIn}>
               <CartProvider isLoggedIn={isLoggedIn}>
                 <FormProvider isLoggedIn={isLoggedIn} userData={userData}>
+                <DireccionProvider
+                    isLoggedIn={isLoggedIn}
+                    userData={userData}
+                  >
                   <Navbar
                     scrollToCategory={scrollToCategory}
                     isLoggedIn={isLoggedIn}
@@ -244,6 +248,7 @@ function App() {
                   <ToastContainer />
                   {showFooter && <Footer />}
                   <WspLogo />
+                  </DireccionProvider>
                 </FormProvider>
               </CartProvider>
             </FavoritesProvider>

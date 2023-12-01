@@ -1,17 +1,19 @@
-import React from 'react'
-import DireccionCard from './DireccionCard'
-import AddDireccion from './AddDireccion'
-
+import React from "react";
+import DireccionCard from "./DireccionCard";
+import AddDireccion from "./AddDireccion";
+import "./direccion.css";
 const DireccionSection = () => {
   return (
-    <div style={{marginTop:"1rem", display:"flex", flexWrap:"wrap", gap:"3rem", width:"70rem", minHeight:"32.9rem"}}>
-        <AddDireccion/>
-        <DireccionCard/>
-        <DireccionCard/>
-        
-    </div>
-    
-  )
-}
+    <>
+      <div className="direccion-section">
+        <AddDireccion />
+      </div>
+      <div style={{display:"flex", gap:"1.2rem", width:"100%", flexWrap:"wrap", justifyContent:"center"}}>
+      <DireccionCard />
+      </div>
+      
+    </>
+  );
+};
 
-export default DireccionSection
+export default DireccionSection;
