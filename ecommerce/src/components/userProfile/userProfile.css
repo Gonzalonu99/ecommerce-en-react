@@ -4,6 +4,7 @@
   align-items: center;
   gap: 2rem;
   height: auto;
+  margin-top: 5.4rem;
   margin-bottom: 2rem;
   padding: 1rem;
   padding-top: .7rem;
@@ -24,7 +25,6 @@
   position: relative;
   top: 3rem;
   z-index: 0;
-  min-width: 17rem;
   width: 20rem;
   min-height: 30rem;
   max-height: 100%;
@@ -206,7 +206,6 @@ display: block;
 .user-content {
   justify-content: center;
   padding: 20px;
-  margin-top: 5.4rem;
   height: auto;
   background-color: #fff;
   max-width: 100%;

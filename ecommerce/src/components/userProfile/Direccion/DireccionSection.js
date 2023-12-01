@@ -4,15 +4,10 @@ import AddDireccion from "./AddDireccion";
 import "./direccion.css";
 const DireccionSection = () => {
   return (
-    <>
-      <div className="direccion-section">
-        <AddDireccion />
-      </div>
-      <div style={{display:"flex", gap:"1.2rem", width:"100%", flexWrap:"wrap", justifyContent:"center"}}>
+    <div className="direccion-section">
+      <AddDireccion />
       <DireccionCard />
-      </div>
-      
-    </>
+    </div>
   );
 };
 

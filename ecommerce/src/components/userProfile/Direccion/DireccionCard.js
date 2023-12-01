@@ -5,16 +5,14 @@ import { DireccionContext } from "../../../hook/useDireccionesForm";
 import { FormContext } from "../../../hook/useUserForm";
 const DireccionCard = () => {
   const { direccionData, getDireccion } = useContext(DireccionContext);
-  const {getUserData,formData} = useContext(FormContext)
-
+  const { getUserData, formData } = useContext(FormContext);
 
   useEffect(() => {
     getUserData();
   }, []);
-  
+
   useEffect(() => {
     getDireccion();
-  
   }, []);
 
   return (
@@ -29,12 +27,15 @@ const DireccionCard = () => {
               </div>
               <div className="card-content">
                 <div className="card-data">
-                  <p>Nombre: {formData.nombre}</p>
-                  <p>Calle: {direccion.Calle}</p>
-                  <p>Altura: {direccion.Altura}</p>
-                  <p>Codigo postal: {direccion.CodigoPostal}</p>
-                  <p>ciudad: {direccion.Ciudad}</p>
-                  <p>Provincia: {direccion.Provincia}</p>
+                  <p style={{ color: "#222" }}>{formData.nombre}</p>
+                  <p>
+                    {direccion.Calle} {direccion.Altura}
+                  </p>
+                  <p>
+                    {direccion.Ciudad}, {direccion.Provincia}{" "}
+                    {direccion.CodigoPostal}
+                  </p>
+                  <p>Número de teléfono: {formData.telefono}</p>
                 </div>
               </div>
               <div>

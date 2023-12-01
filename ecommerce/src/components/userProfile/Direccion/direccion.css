@@ -1,12 +1,9 @@
 .btn-container {
     border-radius: .6rem;
     border: 1px dashed #c7c7c7;
-
-    height: 266px;
-    width: 320px;
     border-width: 2px;
-
-
+    height: 266px;
+    width: 300px;
 }
 
 .btn-content {
@@ -15,13 +12,13 @@
     justify-content: center;
     align-items: center;
     color: #333333a3;
-
 }
 
 .btn-add {
     display: flex;
     justify-content: center;
     transition: background-color .2s ease-in-out;
+
 }
 
 .btn-add:hover {
@@ -31,8 +28,8 @@
 .card-container {
     border-radius: .6rem;
     border: 1px solid #c7c7c7;
-    height: 366px;
-    width: 280px;
+    height: 266px;
+    width: 300px;
     border-width: 2px;
 }
 
@@ -41,7 +38,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 3rem;
+    gap: 1rem;
     width: 100%;
     margin-bottom: 2rem;
 }
