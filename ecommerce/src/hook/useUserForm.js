@@ -4,12 +4,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 const FormContext = createContext();
 const FormProvider = ({ children, isLoggedIn, userData}) => {
-  const [formData, setData] = useState({});
+  const [formData, setFormData] = useState({});
   const [isEditable, setIsEditable] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: value });
   };
   const handleEditClick = () => {
     setIsEditable(true);
@@ -79,14 +79,14 @@ const FormProvider = ({ children, isLoggedIn, userData}) => {
             },
           }
         );
-        const getUserData = await response.json();
+        const userData = await response.json();
 
-        setData({
-          nombre: getUserData[0].Nombre,
-          email: getUserData[0].Email,
-          dni: getUserData[0].Dni,
-          telefono: getUserData[0].Telefono,
-          password: getUserData[0].Password,
+        setFormData({
+          nombre: userData[0].Nombre,
+          email: userData[0].Email,
+          dni: userData[0].Dni,
+          telefono: userData[0].Telefono,
+          password: userData[0].Password,
         }); 
       } else {
         console.log("El usuario no esta autenticado o loggeado.");
@@ -98,12 +98,12 @@ const FormProvider = ({ children, isLoggedIn, userData}) => {
 
   useEffect(() => {
     getUserData();
-  }, [isLoggedIn]);
+  }, [isLoggedIn,]);
   return (
     <FormContext.Provider
       value={{
         formData,
-        setData,
+        setFormData,
         isEditable,
         handleChange,
         handleEditClick,
