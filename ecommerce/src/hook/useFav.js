@@ -188,10 +188,6 @@ const FavoritesProvider = ({ isLoggedIn, children }) => {
           if (favProd !== favData) {
             setFavData(favProd);
           }
-        } else {
-          console.log(
-            "El usuario no está autenticado o isLoggedIn es falso. No se pueden ver los favoritos."
-          );
         }
       } catch (error) {
         console.error("Error al ver productos de favoritos:", error);

@@ -9,7 +9,6 @@ const CartProvider = ({ isLoggedIn, children }) => {
   const [cartItemIds, setCartItemsIds] = useState([]);
   const [loading, setLoading] = useState(true);
 
-
   const getUserId = () => {
     const usuarioId = localStorage.getItem("usuarioId");
     if (usuarioId) {
@@ -50,8 +49,8 @@ const CartProvider = ({ isLoggedIn, children }) => {
           getCartItem();
           toast.info(`${item.Nombre} agregado al carrito.`, {
             className: "mobile-toast",
-            position: "top-left"
-          })
+            position: "top-left",
+          });
         }
       }
     } catch (error) {
@@ -84,7 +83,7 @@ const CartProvider = ({ isLoggedIn, children }) => {
           toast.info(`${item.Nombre} eliminado del carrito.`, {
             className: "mobile-toast",
             position: "top-left",
-          })
+          });
         } else {
           console.error(
             "Error al eliminar producto del carrito:",
@@ -122,7 +121,7 @@ const CartProvider = ({ isLoggedIn, children }) => {
           toast.info(`Carrito vaciado.`, {
             className: "mobile-toast",
             position: "top-left",
-          })
+          });
         } else {
           console.error("Error al vaciar el carrito:", response.status);
         }
@@ -202,10 +201,6 @@ const CartProvider = ({ isLoggedIn, children }) => {
           if (cartProd !== cartData) {
             setCartData(cartProd);
           }
-        } else {
-          console.log(
-            "El usuario no está autenticado o isLoggedIn es falso. No se pueden ver los productos en el carrito."
-          );
         }
       } catch (error) {
         console.log("Error al ver productos de favoritos: ", error);
