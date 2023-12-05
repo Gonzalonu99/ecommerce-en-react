@@ -48,9 +48,9 @@ const Location = () => {
                 <div className="open-hours-block">
                   <div className="open-hours">
                     <div className="text-block-5">Lunes - Jueves</div>
-                    <div class="_1-3-rem-paragraph">10 a.m. - 10 p.m.</div>
+                    <div className="_1-3-rem-paragraph">10 a.m. - 10 p.m.</div>
                     <div className="text-block-5">Viernes - Sábado</div>
-                    <div class="_1-3-rem-paragraph">10 a.m. - 11 p.m.</div>
+                    <div className="_1-3-rem-paragraph">10 a.m. - 11 p.m.</div>
                   </div>
                 </div>
               </div>
