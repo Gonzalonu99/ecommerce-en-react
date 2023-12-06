@@ -4,7 +4,8 @@ import { Button } from "@mui/material";
 import { DireccionContext } from "../../../hook/useDireccionesForm";
 import { FormContext } from "../../../hook/useUserForm";
 const DireccionCard = () => {
-  const { direccionData, getDireccion } = useContext(DireccionContext);
+  const { direccionData, getDireccion, loading, setLoading } =
+    useContext(DireccionContext);
   const { getUserData, formData } = useContext(FormContext);
 
   useEffect(() => {
@@ -17,7 +18,10 @@ const DireccionCard = () => {
 
   return (
     <>
-      {direccionData &&
+      {loading ? (
+        <h1>cargando...</h1>
+      ) : (
+        direccionData &&
         direccionData.length > 0 &&
         direccionData.map((direccion) => {
           return (
@@ -55,7 +59,8 @@ const DireccionCard = () => {
               </div>
             </div>
           );
-        })}
+        })
+      )}
     </>
   );
 };
