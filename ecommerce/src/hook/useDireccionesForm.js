@@ -8,6 +8,7 @@ const DireccionProvider = ({ children, isLoggedIn, userData }) => {
   const [direccionData, setDireccionData] = useState({});
   const [direccionPostData, setDireccionPostData] = useState({});
   const [isEditable, setIsEditable] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const getUserId = () => {
     const usuarioId = localStorage.getItem("usuarioId");
@@ -34,6 +35,7 @@ const DireccionProvider = ({ children, isLoggedIn, userData }) => {
   const getDireccion = async () => {
     try {
       const userId = getUserId();
+      setLoading(true);
       if (userId && isLoggedIn) {
         const response = await fetch(
           `https://a365.com.ar/ecommerce/getDirecciones/${userId}`,
@@ -47,14 +49,13 @@ const DireccionProvider = ({ children, isLoggedIn, userData }) => {
         );
         const getDireccionData = await response.json();
         setDireccionData(getDireccionData);
-        // console.log("Direcciones: ", getDireccionData);
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
-
-
 
   const agregarDireccion = async () => {
     try {
@@ -98,6 +99,8 @@ const DireccionProvider = ({ children, isLoggedIn, userData }) => {
         handleChange,
         handleEditClick,
         handleSubmit,
+
+        loading,
       }}
     >
       {children}

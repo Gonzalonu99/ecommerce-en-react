@@ -22,6 +22,7 @@ import { DireccionProvider } from "./hook/useDireccionesForm";
 import Form from "./components/userProfile/form/form";
 import DireccionSection from "./components/userProfile/Direccion/DireccionSection";
 import EnviosForm from "./components/userProfile/form/EnviosForm/EnviosForm";
+import PedidosSection from "./components/Pedidos/PedidosSection";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -228,26 +229,26 @@ function App() {
             <FavoritesProvider isLoggedIn={isLoggedIn}>
               <CartProvider isLoggedIn={isLoggedIn}>
                 <FormProvider isLoggedIn={isLoggedIn} userData={userData}>
-                <DireccionProvider
+                  <DireccionProvider
                     isLoggedIn={isLoggedIn}
                     userData={userData}
                   >
-                  <Navbar
-                    scrollToCategory={scrollToCategory}
-                    isLoggedIn={isLoggedIn}
-                    userData={userData}
-                    handleLogin={handleLogin}
-                    handleLogout={handleLogout}
-                  />
-                  <div className="user-section">
-                    <UserProfile userData={userData} />
-                    <div className="user-content">
-                      <DireccionSection />
+                    <Navbar
+                      scrollToCategory={scrollToCategory}
+                      isLoggedIn={isLoggedIn}
+                      userData={userData}
+                      handleLogin={handleLogin}
+                      handleLogout={handleLogout}
+                    />
+                    <div className="user-section">
+                      <UserProfile userData={userData} />
+                      <div className="user-content">
+                        <DireccionSection />
+                      </div>
                     </div>
-                  </div>
-                  <ToastContainer />
-                  {showFooter && <Footer />}
-                  <WspLogo />
+                    <ToastContainer />
+                    {showFooter && <Footer />}
+                    <WspLogo />
                   </DireccionProvider>
                 </FormProvider>
               </CartProvider>
@@ -281,6 +282,39 @@ function App() {
                     {showFooter && <Footer />}
                     <WspLogo />
                   </DireccionProvider>
+                </FormProvider>
+              </CartProvider>
+            </FavoritesProvider>
+          }
+        />
+        <Route
+          path="/mi-perfil/pedidos"
+          element={
+            <FavoritesProvider isLoggedIn={isLoggedIn}>
+              <CartProvider isLoggedIn={isLoggedIn}>
+                <FormProvider isLoggedIn={isLoggedIn} userData={userData}>
+                  <Navbar
+                    scrollToCategory={scrollToCategory}
+                    isLoggedIn={isLoggedIn}
+                    userData={userData}
+                    handleLogin={handleLogin}
+                    handleLogout={handleLogout}
+                  />
+                  <div className="user-section">
+                    <div>
+                      <UserProfile userData={userData} />
+                    </div>
+                    <div
+                      style={{ marginTop: "2.5rem" }}
+                      className="user-content"
+                    >
+                      <PedidosSection />
+                    </div>
+                  </div>
+
+                  <ToastContainer />
+                  {showFooter && <Footer />}
+                  <WspLogo />
                 </FormProvider>
               </CartProvider>
             </FavoritesProvider>
