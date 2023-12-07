@@ -9,6 +9,8 @@
 .loader-logo-container{
  width: 60px;
  height: 60px;
+ justify-content: center;
+ align-items: center;
  object-fit: cover;
  animation: girar 4s linear infinite;
 }

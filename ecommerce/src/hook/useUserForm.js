@@ -6,6 +6,7 @@ const FormContext = createContext();
 const FormProvider = ({ children, isLoggedIn, userData}) => {
   const [formData, setFormData] = useState({});
   const [isEditable, setIsEditable] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -67,6 +68,7 @@ const FormProvider = ({ children, isLoggedIn, userData}) => {
   };
   const getUserData = async () => {
     try {
+      setLoading(true);
       const userId = getUserId();
       if (userId && isLoggedIn) {
         const response = await fetch(
@@ -95,6 +97,9 @@ const FormProvider = ({ children, isLoggedIn, userData}) => {
     } catch (error) {
       console.log("Error al ver tus datos de usuario: ", error);
     }
+    finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -111,6 +116,7 @@ const FormProvider = ({ children, isLoggedIn, userData}) => {
         handleSubmit,
         handleSaveChanges,
         getUserData,
+        loading,
       }}
     >
       {children}

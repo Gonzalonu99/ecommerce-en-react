@@ -6,6 +6,7 @@ import "swiper/css/bundle";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Loader from "../loader/loader";
 
 const ProductsCarousel = () => {
   const [data, setData] = useState(null);
@@ -26,7 +27,11 @@ const ProductsCarousel = () => {
   }, []);
   console.log(data);
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div style={{display:"flex", justifyContent:"center", alignContent:"center"}}>
+        <Loader />
+      </div>
+    );
   }
   if (error && error.isError) {
     return <div>{error.message}</div>;
