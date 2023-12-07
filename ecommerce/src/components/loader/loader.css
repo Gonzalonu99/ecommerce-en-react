@@ -12,7 +12,7 @@
  justify-content: center;
  align-items: center;
  object-fit: cover;
- animation: girar 4s linear infinite;
+ animation: girar 2s linear infinite;
 }
 .loader-logo{
     width: 100%;
