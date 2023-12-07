@@ -28,7 +28,7 @@ const ProductsCarousel = () => {
   console.log(data);
   if (isLoading) {
     return (
-      <div style={{display:"flex", justifyContent:"center", alignContent:"center"}}>
+      <div style={{display:"flex", justifyContent:"center", alignContent:"center", marginTop:"4rem"}}>
         <Loader />
       </div>
     );
