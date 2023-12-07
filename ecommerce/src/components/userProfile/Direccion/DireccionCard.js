@@ -3,6 +3,7 @@ import "./direccion.css";
 import { Button } from "@mui/material";
 import { DireccionContext } from "../../../hook/useDireccionesForm";
 import { FormContext } from "../../../hook/useUserForm";
+import Loader from "../../loader/loader";
 const DireccionCard = () => {
   const { direccionData, getDireccion, loading, setLoading } =
     useContext(DireccionContext);
@@ -19,7 +20,7 @@ const DireccionCard = () => {
   return (
     <>
       {loading ? (
-        <h1>cargando...</h1>
+        <Loader/>
       ) : (
         direccionData &&
         direccionData.length > 0 &&
