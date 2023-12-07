@@ -41,7 +41,7 @@ const ProductsCarousel = () => {
     <>
       {data.SubRubros.map((subrubro) => (
         <div
-          style={{ textAlign: "center" }}
+          style={{ textAlign: "center", marginTop:"4rem" }}
           key={subrubro.NombreSubRubro}
           id="carrusel"
         >

@@ -125,7 +125,7 @@ function App() {
                   handleLogout={handleLogout}
                 />
                 <Banner scrollToCategory={scrollToCategory} />
-                <Info />
+                {/* <Info /> */}
                 <Carrusel />
                 <ToastContainer />
                 {showTutorial && <Tutorial />}
